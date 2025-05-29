@@ -77,7 +77,7 @@
               <a class="nav-link" href="#leadership">leadership</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#conteact">contact</a>
+              <a class="nav-link" href="#contact">contact</a>
             </li>
           </ul>
         </div>
@@ -134,15 +134,12 @@
     <section class="about-section" id = "leadership">
       <div class="container">
         <h2 class="mb-4 fw-bold">Leadership</h2>
-        <p class="fs-5 mb-5 text-muted">Meet our leadership, dedicated to advancing education and innovation in machine learning and biostatistics. If we don't have the skillset you need, we'll source to other talented professors and graduate students.</p>
+        <p class="fs-5 mb-5 text-muted">We tap into a broad network of exceptional professors, industry professionals, and talented graduate students to achieve the results you require. Your main points of contact at vectora will be with Shaina and Joshua.</p>
         <div class="row align-items-center">
           <div class="col-md-6 mb-4 mb-md-0 d-flex">
             <div class="card border-0 shadow-sm flex-fill">
               <div class="card-body text-center">
-                <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" fill="#adb5bd" class="mb-3 rounded-circle" viewBox="0 0 16 16">
-                  <rect width="100%" height="100%" rx="50" fill="#dee2e6"/>
-                  <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm0 1c-2.33 0-7 1.17-7 3.5V15h14v-2.5C15 10.17 10.33 9 8 9z" fill="#adb5bd"/>
-                </svg>
+                <img src="https://storage.googleapis.com/vectora-website/profiles/joshua.jpg" alt="Joshua D'Arcy" width="100" height="100" class="mb-3 rounded-circle shadow-sm" style="object-fit: cover;">
                 <h5 class="card-title fw-semibold mb-1">Joshua D'Arcy, M.D., M.Eng.</h5>
                 <p class="text-muted mb-2">Managing Partner &amp; Computer Science Professor</p>
                 <p class="card-text">Joshua is a machine learning professor and has years of experience developing ML solutions for Fortune 500 companies.</p>
@@ -152,10 +149,7 @@
           <div class="col-md-6 d-flex">
             <div class="card border-0 shadow-sm flex-fill">
               <div class="card-body text-center">
-                <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" fill="#adb5bd" class="mb-3 rounded-circle" viewBox="0 0 16 16">
-                  <rect width="100%" height="100%" rx="50" fill="#dee2e6"/>
-                  <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm0 1c-2.33 0-7 1.17-7 3.5V15h14v-2.5C15 10.17 10.33 9 8 9z" fill="#adb5bd"/>
-                </svg>
+                <img src="https://storage.googleapis.com/vectora-website/profiles/shaina.jpg" alt="Shaina Alexandria" width="100" height="100" class="mb-3 rounded-circle shadow-sm" style="object-fit: cover;">
                 <h5 class="card-title fw-semibold mb-1">Shaina Alexandria, Ph.D</h5>
                 <p class="text-muted mb-2">Partner &amp; Biostatistics Professor</p>
                 <p class="card-text">Shaina is a biostatistics professor with over 10 years of experience in clinical trial consulting.</p>
@@ -211,6 +205,24 @@
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      document.querySelectorAll('a.nav-link[href^="#"]').forEach(link => {
+        link.addEventListener('click', function(e) {
+          const targetId = this.getAttribute('href').slice(1);
+          const target = document.getElementById(targetId);
+          if (target) {
+            e.preventDefault();
+            const navbar = document.querySelector('.navbar');
+            const offset = navbar ? navbar.offsetHeight : 0;
+            const elementPosition = target.getBoundingClientRect().top + window.pageYOffset;
+            window.scrollTo({
+              top: elementPosition - offset - 10, // -10 for extra spacing
+              behavior: 'smooth'
+            });
+          }
+        });
+      });
+    </script>
 </body>
 </html>
 
