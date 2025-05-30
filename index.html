@@ -97,7 +97,7 @@
 
     <section class="container my-5" id = "services">
       <h2 class="mb-5 fw-bold">Services</h2>
-      <p class="fs-5 mb-4">We have broad experiences including green energy forecasting, wearable machine learning, intelligent drug design, and statistics support for nationwide studies.</p>
+      <p class="fs-5 mb-4">We have extensive experience using our combined machine learning and statistics expertise, bringing value to multiple Fortune 500 companies and academic centers across the world.</p>
       <div class="row">
         <div class="col-md-4 mb-4 mb-md-0">
           <div class="nav flex-column nav-pills me-3" id="services-tab" role="tablist" aria-orientation="vertical" style="min-height: 200px;">
@@ -120,11 +120,11 @@
             </div>
             <div class="tab-pane fade" id="service2" role="tabpanel" aria-labelledby="service2-tab">
               <h4 class="fw-semibold mb-4">Clinical Trial Consulting</h4>
-              <p class="fs-5">Comprehensive support for clinical trials, including study design, data analysis, and regulatory compliance to ensure successful outcomes.</p>
+              <p class="fs-5">Comprehensive support for clinical trials, including study design, statistical analysis, and regulatory compliance to ensure successful outcomes.</p>
             </div>
             <div class="tab-pane fade" id="service3" role="tabpanel" aria-labelledby="service3-tab">
               <h4 class="fw-semibold mb-4">AI Workshops</h4>
-              <p class="fs-5">We believe in democratizing AI knowledge. Our workshops are designed to equip your company with the skills you need to harness the power of AI effectively.</p>
+              <p class="fs-5">Our hands-on workshops empower your team to confidently leverage AI technologies. We customize each session to your organization’s needs, ensuring practical skills and immediate value.</p>
             </div>
           </div>
         </div>
@@ -142,7 +142,7 @@
                 <img src="https://storage.googleapis.com/vectora-website/profiles/joshua.jpg" alt="Joshua D'Arcy" width="100" height="100" class="mb-3 rounded-circle shadow-sm" style="object-fit: cover;">
                 <h5 class="card-title fw-semibold mb-1">Joshua D'Arcy, M.D., M.Eng.</h5>
                 <p class="text-muted mb-2">Managing Partner &amp; Computer Science Professor</p>
-                <p class="card-text">Joshua is a machine learning professor at Northwestern University with several years of experience developing ML solutions for Fortune 500 companies.</p>
+                <p class="card-text">Joshua is a machine learning professor at Northwestern University with years of experience developing ML solutions for Fortune 500 companies.</p>
               </div>
             </div>
           </div>
@@ -164,21 +164,21 @@
       <h2 class="mb-4 fw-bold">Contact Us</h2>
       <div class="row align-items-stretch">
         <div class="col-md-6 mb-4 mb-md-0 d-flex">
-          <form class="w-100 align-self-stretch">
-            <div class="mb-3">
-              <label for="contactName" class="form-label">Name</label>
-              <input type="text" class="form-control" id="contactName" placeholder="Your Name" required>
-            </div>
-            <div class="mb-3">
-              <label for="contactEmail" class="form-label">Email</label>
-              <input type="email" class="form-control" id="contactEmail" placeholder="you@example.com" required>
-            </div>
-            <div class="mb-3">
-              <label for="contactMessage" class="form-label">Message</label>
-              <textarea class="form-control" id="contactMessage" rows="5" placeholder="How can we help you?" required></textarea>
-            </div>
-            <button type="submit" class="btn btn-primary">Send Message</button>
-          </form>
+          <form class="w-100 align-self-stretch" action="https://formspree.io/f/xeoopzje" method="POST">
+          <div class="mb-3">
+            <label for="contactName" class="form-label">Name</label>
+            <input type="text" class="form-control" id="contactName" name="name" placeholder="Your Name" required>
+          </div>
+          <div class="mb-3">
+            <label for="contactEmail" class="form-label">Email</label>
+            <input type="email" class="form-control" id="contactEmail" name="email" placeholder="you@example.com" required>
+          </div>
+          <div class="mb-3">
+            <label for="contactMessage" class="form-label">Message</label>
+            <textarea class="form-control" id="contactMessage" name="message" rows="5" placeholder="How can we help you?" required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">Send Message</button>
+        </form>
         </div>
         <div class="col-md-6 d-none d-md-flex align-items-stretch">
           <div class="ratio ratio-4x3 rounded-4 overflow-hidden shadow-sm w-100">
@@ -223,6 +223,43 @@
         });
       });
     </script>
+
+    <script>
+      document.querySelector('form[action^="https://formspree.io"]').addEventListener('submit', async function(e) {
+        e.preventDefault();
+        const form = this;
+        const data = new FormData(form);
+        const action = form.action;
+        const response = await fetch(action, {
+          method: 'POST',
+          body: data,
+          headers: { 'Accept': 'application/json' }
+        });
+        if (response.ok) {
+          form.reset();
+          const thankYouModal = new bootstrap.Modal(document.getElementById('thankYouModal'));
+          thankYouModal.show();
+        } else {
+          alert('There was an error sending your message. Please try again later.');
+        }
+      });
+    </script>
+
+    <!-- Add this modal just before the closing </body> tag -->
+    <div class="modal fade" id="thankYouModal" tabindex="-1" aria-labelledby="thankYouModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="thankYouModalLabel">Thank You!</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            Your message has been sent. We appreciate your interest and will get back to you soon.
+          </div>
+        </div>
+      </div>
+    </div>
+
 </body>
 </html>
 
