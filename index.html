@@ -15,6 +15,7 @@
             padding: 100px 0; /* Increased padding for better spacing */
             text-align: left; /* Align text to the left */
             color: #343a40; /* Darker text for better contrast */
+            position: relative; 
         }
         .hero-title {
             font-size: 3rem; /* Larger font size for the title */
@@ -37,18 +38,33 @@
             color: #0a0a0a; /* Primary color for nav links */
         }
         .nav-link:hover, .nav-link:active {
-            color: #0056b3; /* Darker shade on hover/active */
+            color: #4C6E6C; /* changed from #0056b3 */
         }
+
+        .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+            background-color: #4C6E6C !important;
+            color: #fff !important;
+            border-color: #4C6E6C !important;
+  
+        }
+        .nav-pills .nav-link {
+            color: #4C6E6C;
+        }
+        .nav-pills .nav-link:hover {
+            color: #2e423f;
+        }
+
         .btn-primary {
             background-color: white;
-            border-color: #007bff;
-            color: #007bff;
-            font-weight: 500; /* Medium font weight for button */
-            padding: 12px 25px; /* Slightly increased button padding */
+            border-color: #4C6E6C; /* changed from #007bff */
+            color: #4C6E6C;        /* changed from #007bff */
+            font-weight: 500;
+            padding: 12px 25px;
         }
         .btn-primary:hover {
-            background-color: #0056b3;
-            border-color: #0056b3;
+            background-color: #4C6E6C; /* changed from #0056b3 */
+            border-color: #4C6E6C;     /* changed from #0056b3 */
+            color: white;              /* ensure text is visible on green */
         }
 
         .about-section {
@@ -56,8 +72,6 @@
             padding: 50px 0; /* Padding for the about section */
         }
         
-
-
 
     </style>
 </head>
@@ -85,6 +99,17 @@
     </nav>
 
     <header class="hero-section d-flex align-items-center" style="min-height: 100vh;">
+      <div class="hero-lottie position-absolute top-50 end-0 translate-middle-y d-none d-lg-block" style="z-index:2; right:-60px;">
+        <lottie-player
+          src="https://storage.googleapis.com/vectora-website/animation/brain.json"
+          background="transparent"
+          speed="1"
+          style="width: 500px; height: 500px;"
+          loop
+          autoplay
+        ></lottie-player>
+      </div>
+
       <div class="container">
         <div class="row">
           <div class="col-lg-6">
@@ -285,6 +310,8 @@
         <span class="text-muted">&copy; 2025 vectora LLC. All rights reserved.</span>
       </div>
     </footer>
+
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
