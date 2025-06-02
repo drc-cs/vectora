@@ -99,7 +99,20 @@
           border-color: #5f2ef4;
           box-shadow: 0 0 0 0.2rem rgba(95, 46, 244, 0.15);
         }
-                
+
+        .testimonial-text-scroll {
+          max-height: 9.8em;
+          overflow-y: auto;
+          text-align: left;
+          margin-bottom: 1rem;
+          scrollbar-width: none;         /* Firefox */
+          -ms-overflow-style: none;      /* IE and Edge */
+          pointer-events: none;          /* Prevent user scroll */
+          user-select: none;             /* Prevent text selection */
+        }
+        .testimonial-text-scroll::-webkit-scrollbar {
+          display: none;                 /* Chrome, Safari, Opera */
+        }                 
 
     </style>
 </head>
@@ -131,27 +144,27 @@
     </nav>
 
     <header class="hero-section d-flex align-items-center position-relative" style="min-height: 100vh;">
-    <div class="container">
-      <div class="row align-items-center">
-        <div class="col-lg-6 text-lg-start text-center mb-5 mb-lg-0">
-          <h1 class="hero-title">Expert Professors</h1>
-          <p class="hero-subtitle w-100">For <span style="font-weight: bold;">You.</span></p>
-        </div>
-        <div class="col-lg-6 d-none d-lg-flex justify-content-lg-end justify-content-center">
-          <div style="max-width: 400px; width: 100%;">
-            <lottie-player
-              src="https://storage.googleapis.com/vectora-website/animation/brain.json"
-              background="transparent"
-              speed="1"
-              style="width: 100%; height: auto;"
-              loop
-              autoplay
-            ></lottie-player>
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-lg-6 text-lg-start text-center mb-5 mb-lg-0">
+            <h1 class="hero-title">Expert Professors</h1>
+            <p class="hero-subtitle w-100">For <span style="font-weight: bold;">You.</span></p>
+          </div>
+          <div class="col-lg-6 d-none d-lg-flex justify-content-lg-end justify-content-center">
+            <div style="max-width: 400px; width: 100%;">
+              <lottie-player
+                src="https://storage.googleapis.com/vectora-website/animation/brain.json"
+                background="transparent"
+                speed="1"
+                style="width: 100%; height: auto;"
+                loop
+                autoplay
+              ></lottie-player>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </header>
+    </header>
 
     <section class="container my-5" id = "services">
       <h2 class="mb-5 fw-bold">
@@ -242,63 +255,14 @@
       <div class="card border-0 shadow-sm flex-fill text-center px-4 py-4" style="min-width:320px; max-width:340px; scroll-snap-align: start;">
         <div class="card-body d-flex flex-column align-items-center">
           <img src="https://storage.googleapis.com/vectora-website/profiles/rob.png" alt="Client 1" width="80" height="80" class="mb-3 rounded-circle shadow-sm" style="object-fit: cover;">
-          <p class="fs-5 mb-3 fst-italic">"Joshua combines intellectual horsepower with an exceptional ability to communicate complex ideas clearly and effectively. He's that rare consultant who not only knows his craft inside and out but also ensures everyone around him grows stronger through the collaboration."</p>
+          <p class="fs-5 mb-3 fst-italic testimonial-text-scroll">"Joshua combines intellectual horsepower with an exceptional ability to communicate complex ideas clearly and effectively. He's that rare consultant who not only knows his craft inside and out but also ensures everyone around him grows stronger through the collaboration."</p>
           <div>
             <div class="fw-semibold">Rob Grzywinski</div>
             <div class="text-muted small">CEO, CharmIQ</div>
           </div>
         </div>
       </div>
-      <div class="card border-0 shadow-sm flex-fill text-center px-4 py-4" style="min-width:320px; max-width:340px; scroll-snap-align: start;">
-        <div class="card-body d-flex flex-column align-items-center">
-          <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Client 2" width="80" height="80" class="mb-3 rounded-circle shadow-sm" style="object-fit: cover;">
-          <p class="fs-5 mb-3 fst-italic">"Their clinical trial consulting was invaluable. We achieved regulatory approval faster thanks to their guidance."</p>
-          <div>
-            <div class="fw-semibold">Maria Chen</div>
-            <div class="text-muted small">VP Clinical Operations, Medix</div>
-          </div>
-        </div>
-      </div>
-      <div class="card border-0 shadow-sm flex-fill text-center px-4 py-4" style="min-width:320px; max-width:340px; scroll-snap-align: start;">
-        <div class="card-body d-flex flex-column align-items-center">
-          <img src="https://randomuser.me/api/portraits/men/85.jpg" alt="Client 3" width="80" height="80" class="mb-3 rounded-circle shadow-sm" style="object-fit: cover;">
-          <p class="fs-5 mb-3 fst-italic">"The AI workshop was engaging and practical. Our team left with actionable skills and new confidence."</p>
-          <div>
-            <div class="fw-semibold">Samir Patel</div>
-            <div class="text-muted small">Lead Engineer, InnovateX</div>
-          </div>
-        </div>
-      </div>
-      <div class="card border-0 shadow-sm flex-fill text-center px-4 py-4" style="min-width:320px; max-width:340px; scroll-snap-align: start;">
-        <div class="card-body d-flex flex-column align-items-center">
-          <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Client 1" width="80" height="80" class="mb-3 rounded-circle shadow-sm" style="object-fit: cover;">
-          <p class="fs-5 mb-3 fst-italic">"Vectora’s expertise in machine learning transformed our analytics strategy. Their team was responsive, knowledgeable, and a pleasure to work with."</p>
-          <div>
-            <div class="fw-semibold">Alex Johnson</div>
-            <div class="text-muted small">Director of Data Science, Acme Corp</div>
-          </div>
-        </div>
-      </div>
-      <div class="card border-0 shadow-sm flex-fill text-center px-4 py-4" style="min-width:320px; max-width:340px; scroll-snap-align: start;">
-        <div class="card-body d-flex flex-column align-items-center">
-          <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Client 2" width="80" height="80" class="mb-3 rounded-circle shadow-sm" style="object-fit: cover;">
-          <p class="fs-5 mb-3 fst-italic">"Their clinical trial consulting was invaluable. We achieved regulatory approval faster thanks to their guidance."</p>
-          <div>
-            <div class="fw-semibold">Maria Chen</div>
-            <div class="text-muted small">VP Clinical Operations, Medix</div>
-          </div>
-        </div>
-      </div>
-      <div class="card border-0 shadow-sm flex-fill text-center px-4 py-4" style="min-width:320px; max-width:340px; scroll-snap-align: start;">
-        <div class="card-body d-flex flex-column align-items-center">
-          <img src="https://randomuser.me/api/portraits/men/85.jpg" alt="Client 3" width="80" height="80" class="mb-3 rounded-circle shadow-sm" style="object-fit: cover;">
-          <p class="fs-5 mb-3 fst-italic">"The AI workshop was engaging and practical. Our team left with actionable skills and new confidence."</p>
-          <div>
-            <div class="fw-semibold">Samir Patel</div>
-            <div class="text-muted small">Lead Engineer, InnovateX</div>
-          </div>
-        </div>
-      </div>
+      
       <!-- Add more cards as needed -->
     </div>
   </div>
@@ -450,6 +414,41 @@
 
     typeLoop();
   </script>
+
+  <script>
+    // Auto-scroll each testimonial-text-scroll element vertically if overflowed
+    document.querySelectorAll('.testimonial-text-scroll').forEach(el => {
+      const scrollStep = 1; // px per frame
+      const scrollDelay = 40; // ms per frame
+      const pauseDelay = 1000; // ms pause at top and bottom
+
+      function autoScroll() {
+        if (el.scrollHeight <= el.clientHeight) return; // No scroll needed
+
+        let scrollPos = 0;
+
+        function scrollDown() {
+          if (scrollPos < el.scrollHeight - el.clientHeight) {
+            scrollPos += scrollStep;
+            el.scrollTop = scrollPos;
+            setTimeout(scrollDown, scrollDelay);
+          } else {
+            // Pause at bottom, then snap to top and pause again
+            setTimeout(() => {
+              scrollPos = 0;
+              el.scrollTop = 0;
+              setTimeout(scrollDown, pauseDelay); // Pause at top
+            }, pauseDelay);
+          }
+        }
+
+        setTimeout(scrollDown, pauseDelay); // Initial pause at top before starting
+      }
+
+      autoScroll();
+    });
+  </script>
+  
 
     <!-- Add this modal just before the closing </body> tag -->
     <div class="modal fade" id="thankYouModal" tabindex="-1" aria-labelledby="thankYouModalLabel" aria-hidden="true">
