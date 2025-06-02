@@ -11,23 +11,46 @@
             font-family: 'Montserrat', sans-serif; /* Changed to Montserrat */
         }
         .hero-section {
-            background-color: #f8f9fa; /* Light background, adjust as needed */
-            padding: 100px 0; /* Increased padding for better spacing */
-            text-align: left; /* Align text to the left */
-            color: #343a40; /* Darker text for better contrast */
-            position: relative; 
-        }
+        background-color: #f8f9fa;
+        padding: 60px 0;
+        color: #343a40;
+        position: relative;
+        min-height: 60vh;
+      }
+      .hero-title {
+        font-size: 2.2rem;
+        font-weight: 500;
+        margin-bottom: 20px;
+      }
+      .hero-subtitle {
+        font-size: 1.15rem;
+        font-weight: 400;
+        color: #6c757d;
+        margin-bottom: 0;
+      }
+      @media (min-width: 768px) {
         .hero-title {
-            font-size: 3rem; /* Larger font size for the title */
-            font-weight: 500; /* Bold font weight */
-            margin-bottom: 20px; /* Increased margin below the title */
+          font-size: 3rem;
         }
-        .hero-subtitle {
-            font-size: 1.25rem; /* Slightly larger subtitle */
-            font-weight: 400;  /* Regular font weight */
-            color: #6c757d; /* Muted subtitle color */
-            margin-bottom: 0;
+        .hero-section {
+          padding: 100px 0;
+          min-height: 70vh;
         }
+      }
+      @media (min-width: 1200px) {
+        .hero-title {
+          font-size: 4rem;
+        }
+        .hero-section {
+          padding-top: 60px;
+          padding-bottom: 60px;
+          min-height: 60vh;
+        }
+        .hero-section .container {
+          max-width: 1200px;
+        }
+      }
+
         .navbar-brand {
             font-size: 1.5rem; /* Larger font size for the brand */
             font-weight: 400; /* Semi-bold font weight */
@@ -38,17 +61,17 @@
             color: #0a0a0a; /* Primary color for nav links */
         }
         .nav-link:hover, .nav-link:active {
-            color: #4C6E6C; /* changed from #0056b3 */
+            color: #5f2ef4; /* changed from #0056b3 */
         }
 
         .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
-            background-color: #4C6E6C !important;
+            background-color: #5f2ef4 !important;
             color: #fff !important;
-            border-color: #4C6E6C !important;
+            border-color: #5f2ef4 !important;
   
         }
         .nav-pills .nav-link {
-            color: #4C6E6C;
+            color: #5f2ef4;
         }
         .nav-pills .nav-link:hover {
             color: #2e423f;
@@ -56,14 +79,14 @@
 
         .btn-primary {
             background-color: white;
-            border-color: #4C6E6C; /* changed from #007bff */
-            color: #4C6E6C;        /* changed from #007bff */
+            border-color: #5f2ef4; /* changed from #007bff */
+            color: #5f2ef4;        /* changed from #007bff */
             font-weight: 500;
             padding: 12px 25px;
         }
         .btn-primary:hover {
-            background-color: #4C6E6C; /* changed from #0056b3 */
-            border-color: #4C6E6C;     /* changed from #0056b3 */
+            background-color: #5f2ef4; /* changed from #0056b3 */
+            border-color: #5f2ef4;     /* changed from #0056b3 */
             color: white;              /* ensure text is visible on green */
         }
 
@@ -71,7 +94,12 @@
             background-color: #f8f9fa; /* Light background for the about section */
             padding: 50px 0; /* Padding for the about section */
         }
-        
+
+        .form-control:focus {
+          border-color: #5f2ef4;
+          box-shadow: 0 0 0 0.2rem rgba(95, 46, 244, 0.15);
+        }
+                
 
     </style>
 </head>
@@ -90,6 +118,10 @@
             <li class="nav-item">
               <a class="nav-link" href="#leadership">leadership</a>
             </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="#testimonials">testimonials</a>
+            </li>
             <li class="nav-item">
               <a class="nav-link" href="#contact">contact</a>
             </li>
@@ -98,30 +130,35 @@
       </div>
     </nav>
 
-    <header class="hero-section d-flex align-items-center" style="min-height: 100vh;">
-      <div class="hero-lottie position-absolute top-50 end-0 translate-middle-y d-none d-lg-block" style="z-index:2; right:-60px;">
-        <lottie-player
-          src="https://storage.googleapis.com/vectora-website/animation/brain.json"
-          background="transparent"
-          speed="1"
-          style="width: 500px; height: 500px;"
-          loop
-          autoplay
-        ></lottie-player>
-      </div>
-
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-6">
-            <h1 class="hero-title">Expert Professors</h1>
-            <p class="hero-subtitle w-100 text-start">For <span style="font-weight: bold;">You.</span></p>
+    <header class="hero-section d-flex align-items-center position-relative" style="min-height: 100vh;">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-6 text-lg-start text-center mb-5 mb-lg-0">
+          <h1 class="hero-title">Expert Professors</h1>
+          <p class="hero-subtitle w-100">For <span style="font-weight: bold;">You.</span></p>
+        </div>
+        <div class="col-lg-6 d-none d-lg-flex justify-content-lg-end justify-content-center">
+          <div style="max-width: 400px; width: 100%;">
+            <lottie-player
+              src="https://storage.googleapis.com/vectora-website/animation/brain.json"
+              background="transparent"
+              speed="1"
+              style="width: 100%; height: auto;"
+              loop
+              autoplay
+            ></lottie-player>
           </div>
         </div>
       </div>
-    </header>
+    </div>
+  </header>
 
     <section class="container my-5" id = "services">
-      <h2 class="mb-5 fw-bold">Services</h2>
+      <h2 class="mb-5 fw-bold">
+        Your 
+        <span id="typewriter" style="color: #5f2ef4;"></span>
+        <span id="typewriter-cursor" style="color: #5f2ef4;">|</span>
+      </h2>
       <p class="fs-5 mb-4">We have extensive experience using our combined machine learning and statistics expertise, bringing value to multiple Fortune 500 companies and academic centers around the world.</p>
       <div class="row">
         <div class="col-md-4 mb-4 mb-md-0">
@@ -364,6 +401,55 @@
         scrollContainer.scrollBy({ left: 340, behavior: 'smooth' });
       };
     </script>
+
+    <script>
+    // Typewriter animation for Services section
+    const words = [
+      "Professors",
+      "Experts",
+      "Engineers",
+      "Clinicians",
+      "Scientists",
+      "Mentors",
+      "Consultants"
+    ];
+    const typewriter = document.getElementById('typewriter');
+    const cursor = document.getElementById('typewriter-cursor');
+    let wordIndex = 0;
+    let charIndex = 0;
+    let typing = true;
+
+    function typeLoop() {
+      const currentWord = words[wordIndex];
+      if (typing) {
+        if (charIndex < currentWord.length) {
+          typewriter.textContent += currentWord.charAt(charIndex);
+          charIndex++;
+          setTimeout(typeLoop, 90);
+        } else {
+          typing = false;
+          setTimeout(typeLoop, 1200);
+        }
+      } else {
+        if (charIndex > 0) {
+          typewriter.textContent = currentWord.substring(0, charIndex - 1);
+          charIndex--;
+          setTimeout(typeLoop, 40);
+        } else {
+          typing = true;
+          wordIndex = (wordIndex + 1) % words.length;
+          setTimeout(typeLoop, 400);
+        }
+      }
+    }
+
+    // Optional: blinking cursor
+    setInterval(() => {
+      cursor.style.opacity = cursor.style.opacity === "0" ? "1" : "0";
+    }, 500);
+
+    typeLoop();
+  </script>
 
     <!-- Add this modal just before the closing </body> tag -->
     <div class="modal fade" id="thankYouModal" tabindex="-1" aria-labelledby="thankYouModalLabel" aria-hidden="true">
