@@ -5,19 +5,20 @@
  * equivalent public, keyless API: Google Patents exposes no JSON endpoint,
  * and USPTO's PatentsView API began requiring an authenticated key in
  * February 2026, which cannot be embedded safely in client-side code on a
- * static site. Rather than fake that data, patents are surfaced as a live
- * search link straight to Google Patents. Technical Insights have no public
- * data source at all and stay manually curated in insights.json.
+ * static site. So patents are manually curated in patents.json as they're
+ * granted or published, with a live search link to the full Google Patents
+ * record alongside them. Technical Insights have no public data source at
+ * all either and stay manually curated in insights.json.
  */
 (function () {
   'use strict';
 
   var PRINCIPALS = [
     {
-      name: 'Joshua DeAndria',
-      familyName: 'deandria',
+      name: "Joshua D'Arcy",
+      familyName: 'darcy',
       domainTags: ['Machine Learning'],
-      patentsUrl: 'https://patents.google.com/?inventor=Joshua+DeAndria'
+      patentsUrl: 'https://patents.google.com/?inventor=Joshua+D%27Arcy'
     },
     {
       name: 'Shaina Alexandria',
@@ -75,10 +76,14 @@
     return names.join(', ');
   }
 
+  function normalizeName(str) {
+    return String(str || '').toLowerCase().replace(/[^a-z]/g, '');
+  }
+
   function matchesPrincipal(w, principal) {
     if (!Array.isArray(w.author)) return false;
     return w.author.some(function (a) {
-      return a.family && a.family.toLowerCase().indexOf(principal.familyName) !== -1;
+      return a.family && normalizeName(a.family).indexOf(principal.familyName) !== -1;
     });
   }
 
@@ -147,6 +152,13 @@
   function loadInsights() {
     return fetch('assets/data/insights.json').then(function (res) {
       if (!res.ok) throw new Error('insights.json request failed');
+      return res.json();
+    }).catch(function () { return []; });
+  }
+
+  function loadPatents() {
+    return fetch('assets/data/patents.json').then(function (res) {
+      if (!res.ok) throw new Error('patents.json request failed');
       return res.json();
     }).catch(function () { return []; });
   }
@@ -231,17 +243,19 @@
 
   Promise.all([
     loadPublications().catch(function (err) { return { error: err }; }),
-    loadInsights()
+    loadInsights(),
+    loadPatents()
   ]).then(function (results) {
     var pubResult = results[0];
     var insights = results[1] || [];
+    var patents = results[2] || [];
 
     if (pubResult && pubResult.error) {
       setStatus('Live publication lookup is temporarily unavailable — browse directly on ' +
         '<a href="https://search.crossref.org/?q=' + encodeURIComponent(PRINCIPALS.map(function (p) { return p.name; }).join(' ')) + '" target="_blank" rel="noopener noreferrer">Crossref</a>.');
-      items = insights;
+      items = insights.concat(patents);
     } else {
-      items = (pubResult || []).concat(insights);
+      items = (pubResult || []).concat(insights).concat(patents);
       setStatus('');
     }
 

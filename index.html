@@ -123,9 +123,9 @@
 
         <div class="grid grid-2">
           <article class="card card--outline person-card reveal">
-            <img src="https://storage.googleapis.com/vectora-website/profiles/joshua.jpg" alt="Portrait of Joshua DeAndria" loading="lazy" width="84" height="84">
+            <img src="https://storage.googleapis.com/vectora-website/profiles/joshua.jpg" alt="Portrait of Joshua D'Arcy" loading="lazy" width="84" height="84">
             <div>
-              <h3 class="title-lg">Joshua DeAndria, M.D., M.Eng.</h3>
+              <h3 class="title-lg">Joshua D'Arcy, M.D., M.Eng.</h3>
               <p class="person-card__role">Principal &amp; Co-Founder</p>
               <span class="person-card__focus">Machine Learning · AI Systems Architecture · Computational Infrastructure</span>
               <p>Clinical Assistant Professor of Computer Science at Northwestern University. Five-plus years building, optimizing, and deploying machine learning pipelines, deep learning models, and scalable software architecture across industry startups and academic labs.</p>
@@ -151,13 +151,14 @@
         <div class="section-head reveal">
           <p class="eyebrow">Research &amp; IP</p>
           <h2 id="research-heading" class="headline-lg">Proof of work.</h2>
-          <p>Publications update automatically from Crossref. Technical briefs are curated by our team below — and our patent portfolio lives directly on Google Patents.</p>
+          <p>Publications update automatically from Crossref. Patents and technical briefs are curated here as they're granted or published — browse the full patent record live on Google Patents.</p>
         </div>
 
         <div class="gallery-controls reveal">
           <div class="chip-row" role="group" aria-label="Filter by type">
             <button class="chip" type="button" data-filter="All" aria-pressed="true">All</button>
             <button class="chip" type="button" data-filter="Publication" aria-pressed="false">Publications</button>
+            <button class="chip" type="button" data-filter="Patent" aria-pressed="false">Patents</button>
             <button class="chip" type="button" data-filter="Technical Insight" aria-pressed="false">Technical Insights</button>
           </div>
           <div style="display:flex; gap:12px; flex-wrap:wrap;">
@@ -173,7 +174,10 @@
           </div>
         </div>
 
-        <div class="chip-row reveal" id="patents-links" aria-label="Search patents live on Google Patents" style="margin-bottom: 28px;"></div>
+        <div class="reveal" style="margin-bottom: 28px;">
+          <p class="field-hint" style="margin: 0 0 10px;">Browse the full patent record live:</p>
+          <div class="chip-row" id="patents-links" aria-label="Search patents live on Google Patents"></div>
+        </div>
 
         <p class="gallery-status" id="gallery-status" role="status" aria-live="polite"></p>
         <div class="works-grid reveal" id="works-grid" aria-live="polite"></div>
