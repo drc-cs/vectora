@@ -151,14 +151,13 @@
         <div class="section-head reveal">
           <p class="eyebrow">Research &amp; IP</p>
           <h2 id="research-heading" class="headline-lg">Proof of work.</h2>
-          <p>Publications, patents, and technical briefs from our faculty practice — filterable by type and domain.</p>
+          <p>Publications update automatically from Crossref. Technical briefs are curated by our team below — and our patent portfolio lives directly on Google Patents.</p>
         </div>
 
         <div class="gallery-controls reveal">
           <div class="chip-row" role="group" aria-label="Filter by type">
             <button class="chip" type="button" data-filter="All" aria-pressed="true">All</button>
             <button class="chip" type="button" data-filter="Publication" aria-pressed="false">Publications</button>
-            <button class="chip" type="button" data-filter="Patent" aria-pressed="false">Patents</button>
             <button class="chip" type="button" data-filter="Technical Insight" aria-pressed="false">Technical Insights</button>
           </div>
           <div style="display:flex; gap:12px; flex-wrap:wrap;">
@@ -168,12 +167,15 @@
             </select>
             <div class="gallery-search">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
-              <label class="visually-hidden" for="works-search">Filter by title, journal, USPTO number, or keyword</label>
-              <input type="search" id="works-search" placeholder="Filter by title, journal, USPTO number, or keyword…">
+              <label class="visually-hidden" for="works-search">Filter by title, journal, or keyword</label>
+              <input type="search" id="works-search" placeholder="Filter by title, journal, or keyword…">
             </div>
           </div>
         </div>
 
+        <div class="chip-row reveal" id="patents-links" aria-label="Search patents live on Google Patents" style="margin-bottom: 28px;"></div>
+
+        <p class="gallery-status" id="gallery-status" role="status" aria-live="polite"></p>
         <div class="works-grid reveal" id="works-grid" aria-live="polite"></div>
         <p class="gallery-empty" id="gallery-empty" hidden>No matching entries yet — try a different filter, or check back soon as our library grows.</p>
       </div>
@@ -317,5 +319,6 @@
 
   <script src="assets/js/color.js" defer></script>
   <script src="assets/js/app.js" defer></script>
+  <script src="assets/js/works.js" defer></script>
 </body>
 </html>
