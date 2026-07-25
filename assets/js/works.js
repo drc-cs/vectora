@@ -29,7 +29,7 @@
   ];
 
   var CROSSREF_FIELDS = 'DOI,title,author,container-title,issued,published-print,published-online,type,abstract,URL';
-  var CACHE_KEY = 'vectora-publications-cache-v1';
+  var CACHE_KEY = 'vectora-publications-cache-v2';
   var CACHE_TTL_MS = 60 * 60 * 1000; // 1 hour
   var FETCH_TIMEOUT_MS = 6000;
 
@@ -105,9 +105,15 @@
   }
 
   function fetchPublicationsFor(principal) {
+    // Deliberately no sort=published here: Crossref's default is relevance
+    // (best author-name match first). Sorting by date instead would return
+    // the most *recent* loosely-matching items regardless of author, which
+    // can push a less-prolific author's actual papers out of the row limit
+    // entirely — the client-side family-name filter below would then zero
+    // out every result even though real matches exist further down.
     var url = 'https://api.crossref.org/works?query.author=' +
       encodeURIComponent(principal.name) +
-      '&rows=15&sort=published&order=desc&select=' + CROSSREF_FIELDS;
+      '&rows=20&select=' + CROSSREF_FIELDS;
     var controller = new AbortController();
     var timer = setTimeout(function () { controller.abort(); }, FETCH_TIMEOUT_MS);
     return fetch(url, { signal: controller.signal })
@@ -173,6 +179,7 @@
         throw new Error('All Crossref requests failed');
       }
       var merged = dedupe([].concat.apply([], results.filter(Boolean)));
+      merged.sort(function (a, b) { return (b.year || 0) - (a.year || 0); });
       writeCache(merged);
       return merged;
     });
