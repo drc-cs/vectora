@@ -1,467 +1,505 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>vectora</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500&display=swap" rel="stylesheet">
-    <style>
-      body {
-          font-family: 'Montserrat', sans-serif; /* Changed to Montserrat */
-      }
-      .hero-section {
-        background-color: #f8f9fa;
-        padding: 60px 0;
-        color: #343a40;
-        position: relative;
-        min-height: 60vh;
-      }
-      .hero-title {
-        font-size: 2.2rem;
-        font-weight: 500;
-        margin-bottom: 20px;
-      }
-      .hero-subtitle {
-        font-size: 1.15rem;
-        font-weight: 400;
-        color: #6c757d;
-        margin-bottom: 0;
-      }
-      @media (min-width: 768px) {
-        .hero-title {
-          font-size: 3rem;
-        }
-        .hero-section {
-          padding: 100px 0;
-          min-height: 70vh;
-        }
-      }
-      @media (min-width: 1200px) {
-        .hero-title {
-          font-size: 4rem;
-        }
-        .hero-section {
-          padding-top: 60px;
-          padding-bottom: 60px;
-          min-height: 60vh;
-        }
-        .hero-section .container {
-          max-width: 1200px;
-        }
-      }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>vectora — Expert Professors For You</title>
+  <meta name="description" content="vectora connects you with expert professors and industry professionals for machine learning and AI consulting, clinical trial consulting, and hands-on AI workshops.">
+  <meta name="theme-color" content="#5f2ef4">
 
-        .navbar-brand {
-            font-size: 1.5rem; /* Larger font size for the brand */
-            font-weight: 400; /* Semi-bold font weight */
-        }
-        .nav-link {
-            font-size: 1.1rem; /* Increased font size for nav links */
-            font-weight: 500; /* Medium font weight */
-            color: #0a0a0a; /* Primary color for nav links */
-        }
-        .nav-link:hover, .nav-link:active {
-            color: #5f2ef4; /* changed from #0056b3 */
-        }
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="vectora — Expert Professors For You">
+  <meta property="og:description" content="Machine learning and statistics expertise for Fortune 500 companies and academic centers around the world.">
+  <meta property="og:url" content="https://vectora.co/">
 
-        .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
-            background-color: #5f2ef4 !important;
-            color: #fff !important;
-            border-color: #5f2ef4 !important;
-  
-        }
-        .nav-pills .nav-link {
-            color: #5f2ef4;
-        }
-        .nav-pills .nav-link:hover {
-            color: #2e423f;
-        }
-
-        .btn-primary {
-            background-color: white;
-            border-color: #5f2ef4; /* changed from #007bff */
-            color: #5f2ef4;        /* changed from #007bff */
-            font-weight: 500;
-            padding: 12px 25px;
-        }
-        .btn-primary:hover {
-            background-color: #5f2ef4; /* changed from #0056b3 */
-            border-color: #5f2ef4;     /* changed from #0056b3 */
-            color: white;              /* ensure text is visible on green */
-        }
-
-        .about-section {
-            background-color: #f8f9fa; /* Light background for the about section */
-            padding: 50px 0; /* Padding for the about section */
-        }
-
-        .form-control:focus {
-          border-color: #5f2ef4;
-          box-shadow: 0 0 0 0.2rem rgba(95, 46, 244, 0.15);
-        }
-
-        .testimonial-text-scroll {
-          max-height: 9.8em;
-          overflow-y: auto;
-          text-align: left;
-          margin-bottom: 1rem;
-          scrollbar-width: none;         /* Firefox */
-          -ms-overflow-style: none;      /* IE and Edge */
-          pointer-events: none;          /* Prevent user scroll */
-          user-select: none;             /* Prevent text selection */
-        }
-        .testimonial-text-scroll::-webkit-scrollbar {
-          display: none;                 /* Chrome, Safari, Opera */
-        }                 
-
-    </style>
-</head>
-<body>
-    <nav class="navbar navbar-expand-lg bg-white shadow-sm sticky-top">
-      <div class="container">
-        <a class="navbar-brand" href="#">vectora</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav ms-auto">
-            <li class="nav-item">
-              <a class="nav-link" href="#services">services</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#leadership">leadership</a>
-            </li>
-
-            <li class="nav-item">
-              <a class="nav-link" href="#testimonials">testimonials</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#contact">contact</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
-
-    <header class="hero-section d-flex align-items-center position-relative" style="min-height: 100vh;">
-      <div class="container">
-        <div class="row align-items-center">
-          <div class="col-lg-6 text-lg-start text-center mb-5 mb-lg-0">
-            <h1 class="hero-title">Expert Professors</h1>
-            <p class="hero-subtitle w-100">For <span style="font-weight: bold;">You.</span></p>
-          </div>
-          <div class="col-lg-6 d-none d-lg-flex justify-content-lg-end justify-content-center">
-            <div style="max-width: 600px; width: 100%;">
-              <lottie-player
-                src="https://storage.googleapis.com/vectora-website/animation/brain.json"
-                background="transparent"
-                speed="1"
-                style="width: 100%; height: auto;"
-                loop
-                autoplay
-              ></lottie-player>
-            </div>
-          </div>
-        </div>
-      </div>
-    </header>
-
-    <section class="container my-5" id = "services">
-      <h2 class="mb-5 fw-bold">
-        Your 
-        <span id="typewriter" style="color: #5f2ef4;"></span>
-        <span id="typewriter-cursor" style="color: #5f2ef4;">|</span>
-      </h2>
-      <p class="fs-5 mb-4">We have extensive experience using our combined machine learning and statistics expertise, bringing value to multiple Fortune 500 companies and academic centers around the world.</p>
-      <div class="row">
-        <div class="col-md-4 mb-4 mb-md-0">
-          <div class="nav flex-column nav-pills me-3" id="services-tab" role="tablist" aria-orientation="vertical" style="min-height: 200px;">
-            <button class="nav-link active py-4" id="service1-tab" data-bs-toggle="pill" data-bs-target="#service1" type="button" role="tab" aria-controls="service1" aria-selected="true">
-              ML / AI Consulting
-            </button>
-            <button class="nav-link py-4" id="service2-tab" data-bs-toggle="pill" data-bs-target="#service2" type="button" role="tab" aria-controls="service2" aria-selected="false">
-              Clinical Trial Consulting
-            </button>
-            <button class="nav-link py-4" id="service3-tab" data-bs-toggle="pill" data-bs-target="#service3" type="button" role="tab" aria-controls="service3" aria-selected="false">
-              AI Workshops
-            </button>
-          </div>
-        </div>
-        <div class="col-md-8 d-flex align-items-center">
-          <div class="tab-content w-100" id="services-tabContent" style="min-height: 200px;">
-            <div class="tab-pane fade show active" id="service1" role="tabpanel" aria-labelledby="service1-tab">
-              <h4 class="fw-semibold mb-4">ML / AI Consulting</h4>
-              <p class="fs-5">Expert guidance on machine learning and artificial intelligence projects, from initial concept to implementation and optimization.</p>
-            </div>
-            <div class="tab-pane fade" id="service2" role="tabpanel" aria-labelledby="service2-tab">
-              <h4 class="fw-semibold mb-4">Clinical Trial Consulting</h4>
-              <p class="fs-5">Comprehensive support for clinical trials, including study design, statistical analysis, and regulatory compliance to ensure successful outcomes.</p>
-            </div>
-            <div class="tab-pane fade" id="service3" role="tabpanel" aria-labelledby="service3-tab">
-              <h4 class="fw-semibold mb-4">AI Workshops</h4>
-              <p class="fs-5">Our hands-on workshops empower your team to confidently leverage AI technologies. We customize each session to your organization’s needs, ensuring practical skills and immediate value.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="about-section" id = "leadership">
-      <div class="container">
-        <h2 class="mb-4 fw-bold">Leadership</h2>
-        <p class="fs-5 mb-5 text-muted">We founded vectora to be the conduit you need for our wide network of exceptional professors and industry professionals. We work directly with you, and also give you access to our network of talented individuals. </p>
-        <div class="row align-items-stretch">
-        <div class="col-md-6 mb-4 mb-md-0 d-flex align-items-stretch">
-          <div class="card border-0 shadow-sm flex-fill h-100">
-            <div class="card-body text-center">
-              <img src="https://storage.googleapis.com/vectora-website/profiles/joshua.jpg" alt="Joshua DeAndria" width="100" height="100" class="mb-3 rounded-circle shadow-sm" style="object-fit: cover;">
-              <h5 class="card-title fw-semibold mb-1">Joshua DeAndria, M.D., M.Eng.</h5>
-              <p class="text-muted mb-2">Managing Partner &amp; Computer Science Professor</p>
-              <p class="card-text">Joshua is a machine learning professor at Northwestern University with over 5 years of experience developing ML solutions for Fortune 100 companies.</p>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-6 d-flex align-items-stretch">
-          <div class="card border-0 shadow-sm flex-fill h-100">
-            <div class="card-body text-center">
-              <img src="https://storage.googleapis.com/vectora-website/profiles/shaina.jpg" alt="Shaina Alexandria" width="100" height="100" class="mb-3 rounded-circle shadow-sm" style="object-fit: cover;">
-              <h5 class="card-title fw-semibold mb-1">Shaina Alexandria, Ph.D</h5>
-              <p class="text-muted mb-2">Partner &amp; Biostatistics Professor</p>
-              <p class="card-text">Shaina is a biostatistics professor at Northwestern University and expert in causal inference with over 10 years of experience in statistics consulting.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-      </div>
-    </section>
-
-    <section class="py-5" id="testimonials" style="background-color: #f8f9fa;">
-  <div class="container position-relative">
-    <h2 class="mb-4 fw-bold text-center">Testimonials</h2>
-    <button id="scrollLeft" class="btn btn-light position-absolute top-50 start-0 translate-middle-y shadow d-none d-md-inline" style="z-index:2;">
-      <span aria-hidden="true">&larr;</span>
-    </button>
-    <button id="scrollRight" class="btn btn-light position-absolute top-50 end-0 translate-middle-y shadow d-none d-md-inline" style="z-index:2;">
-      <span aria-hidden="true">&rarr;</span>
-    </button>
-    <div id="testimonials-scroll" class="d-flex flex-row gap-4 overflow-auto pb-3"
-      style="scroll-snap-type: x mandatory; -ms-overflow-style: none; scrollbar-width: none; background-color: #f8f9fa;">
-      <!-- Hide scrollbar for Chrome, Safari and Opera -->
-      <style>
-        #testimonials-scroll::-webkit-scrollbar {
-          display: none;
-        }
-      </style>
-      <div class="card border-0 shadow-sm flex-fill text-center px-4 py-4" style="min-width:320px; max-width:340px; scroll-snap-align: start;">
-        <div class="card-body d-flex flex-column align-items-center">
-          <img src="https://storage.googleapis.com/vectora-website/profiles/rob.png" alt="Client 1" width="80" height="80" class="mb-3 rounded-circle shadow-sm" style="object-fit: cover;">
-          <p class="fs-5 mb-3 fst-italic testimonial-text-scroll">"Joshua combines intellectual horsepower with an exceptional ability to communicate complex ideas clearly and effectively. He's that rare consultant who not only knows his craft inside and out but also ensures everyone around him grows stronger through the collaboration."</p>
-          <div>
-            <div class="fw-semibold">Rob Grzywinski</div>
-            <div class="text-muted small">CEO, CharmIQ</div>
-          </div>
-        </div>
-      </div>
-      
-      <!-- Add more cards as needed -->
-    </div>
-  </div>
-</section>
-
-    <section class="container my-5" id = "contact">
-      <h2 class="mb-4 fw-bold">Contact Us</h2>
-      <div class="row align-items-stretch">
-        <div class="col-md-6 mb-4 mb-md-0 d-flex">
-          <form class="w-100 align-self-stretch" action="https://formspree.io/f/xeoopzje" method="POST">
-          <div class="mb-3">
-            <label for="contactName" class="form-label">Name</label>
-            <input type="text" class="form-control" id="contactName" name="name" placeholder="Your Name" required>
-          </div>
-          <div class="mb-3">
-            <label for="contactEmail" class="form-label">Email</label>
-            <input type="email" class="form-control" id="contactEmail" name="email" placeholder="you@example.com" required>
-          </div>
-          <div class="mb-3">
-            <label for="contactMessage" class="form-label">Message</label>
-            <textarea class="form-control" id="contactMessage" name="message" rows="5" placeholder="How can we help you?" required></textarea>
-          </div>
-          <button type="submit" class="btn btn-primary">Send Message</button>
-        </form>
-        </div>
-        <div class="col-md-6 d-none d-md-flex align-items-stretch">
-          <div class="ratio ratio-4x3 rounded-4 overflow-hidden shadow-sm w-100">
-            <iframe
-              src="https://www.google.com/maps?q=Chicago,IL&output=embed"
-              width="100%"
-              height="100%"
-              style="border:0;"
-              allowfullscreen=""
-              loading="lazy"
-              referrerpolicy="no-referrer-when-downgrade"
-              title="Google Map of Chicago"
-            ></iframe>
-          </div>
-        </div>
-      </div>
-    </section>
-
-
-    <footer class="bg-white border-top py-4 mt-auto">
-      <div class="container text-center">
-        <span class="text-muted">&copy; 2025 vectora LLC. All rights reserved.</span>
-      </div>
-    </footer>
-
-    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-      document.querySelectorAll('a.nav-link[href^="#"]').forEach(link => {
-        link.addEventListener('click', function(e) {
-          const targetId = this.getAttribute('href').slice(1);
-          const target = document.getElementById(targetId);
-          if (target) {
-            e.preventDefault();
-            const navbar = document.querySelector('.navbar');
-            const offset = navbar ? navbar.offsetHeight : 0;
-            const elementPosition = target.getBoundingClientRect().top + window.pageYOffset;
-            window.scrollTo({
-              top: elementPosition - offset - 10, // -10 for extra spacing
-              behavior: 'smooth'
-            });
-          }
-        });
-      });
-    </script>
-
-    <script>
-      document.querySelector('form[action^="https://formspree.io"]').addEventListener('submit', async function(e) {
-        e.preventDefault();
-        const form = this;
-        const data = new FormData(form);
-        const action = form.action;
-        const response = await fetch(action, {
-          method: 'POST',
-          body: data,
-          headers: { 'Accept': 'application/json' }
-        });
-        if (response.ok) {
-          form.reset();
-          const thankYouModal = new bootstrap.Modal(document.getElementById('thankYouModal'));
-          thankYouModal.show();
-        } else {
-          alert('There was an error sending your message. Please try again later.');
-        }
-      });
-    </script>
-
-    <script>
-      // Arrow controls for testimonials scroll
-      const scrollContainer = document.getElementById('testimonials-scroll');
-      document.getElementById('scrollLeft').onclick = () => {
-        scrollContainer.scrollBy({ left: -340, behavior: 'smooth' });
-      };
-      document.getElementById('scrollRight').onclick = () => {
-        scrollContainer.scrollBy({ left: 340, behavior: 'smooth' });
-      };
-    </script>
-
-    <script>
-    // Typewriter animation for Services section
-    const words = [
-      "Experts",
-      "Engineers",
-      "Clinicians",
-      "Statisticians",
-    ];
-    const typewriter = document.getElementById('typewriter');
-    const cursor = document.getElementById('typewriter-cursor');
-    let wordIndex = 0;
-    let charIndex = 0;
-    let typing = true;
-
-    function typeLoop() {
-      const currentWord = words[wordIndex];
-      if (typing) {
-        if (charIndex < currentWord.length) {
-          typewriter.textContent += currentWord.charAt(charIndex);
-          charIndex++;
-          setTimeout(typeLoop, 90);
-        } else {
-          typing = false;
-          setTimeout(typeLoop, 1200);
-        }
-      } else {
-        if (charIndex > 0) {
-          typewriter.textContent = currentWord.substring(0, charIndex - 1);
-          charIndex--;
-          setTimeout(typeLoop, 40);
-        } else {
-          typing = true;
-          wordIndex = (wordIndex + 1) % words.length;
-          setTimeout(typeLoop, 400);
-        }
-      }
-    }
-
-    // Optional: blinking cursor
-    setInterval(() => {
-      cursor.style.opacity = cursor.style.opacity === "0" ? "1" : "0";
-    }, 500);
-
-    typeLoop();
-  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&family=Roboto+Flex:opsz,wght@8..144,300..600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0&display=block" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/styles.css">
 
   <script>
-    // Auto-scroll each testimonial-text-scroll element vertically if overflowed
-    document.querySelectorAll('.testimonial-text-scroll').forEach(el => {
-      const scrollStep = 1; // px per frame
-      const scrollDelay = 40; // ms per frame
-      const pauseDelay = 1000; // ms pause at top and bottom
-
-      function autoScroll() {
-        if (el.scrollHeight <= el.clientHeight) return; // No scroll needed
-
-        let scrollPos = 0;
-
-        function scrollDown() {
-          if (scrollPos < el.scrollHeight - el.clientHeight) {
-            scrollPos += scrollStep;
-            el.scrollTop = scrollPos;
-            setTimeout(scrollDown, scrollDelay);
-          } else {
-            // Pause at bottom, then snap to top and pause again
-            setTimeout(() => {
-              scrollPos = 0;
-              el.scrollTop = 0;
-              setTimeout(scrollDown, pauseDelay); // Pause at top
-            }, pauseDelay);
-          }
+    // Apply the stored theme before first paint to avoid a flash of the wrong scheme.
+    (function () {
+      try {
+        var stored = localStorage.getItem('vectora-theme');
+        if (stored === 'light' || stored === 'dark') {
+          document.documentElement.setAttribute('data-theme', stored);
         }
-
-        setTimeout(scrollDown, pauseDelay); // Initial pause at top before starting
-      }
-
-      autoScroll();
-    });
+      } catch (e) {}
+    })();
   </script>
-  
+</head>
+<body>
+  <a class="skip-link md-label-large" href="#main">Skip to content</a>
 
-    <!-- Add this modal just before the closing </body> tag -->
-    <div class="modal fade" id="thankYouModal" tabindex="-1" aria-labelledby="thankYouModalLabel" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="thankYouModalLabel">Thank You!</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+  <!-- ===================== Top app bar ===================== -->
+  <header class="top-app-bar" id="topAppBar" data-scrolled="false">
+    <div class="layout top-app-bar__inner">
+      <a class="brand" href="#top" aria-label="vectora — home">
+        <span class="brand__mark" aria-hidden="true">
+          <span class="material-symbols-rounded" style="font-size:1.125rem">north_east</span>
+        </span>
+        vectora
+      </a>
+
+      <nav class="top-app-bar__nav" id="primaryNav" aria-label="Primary">
+        <a class="nav-link md-state-layer" href="#services">services</a>
+        <a class="nav-link md-state-layer" href="#leadership">leadership</a>
+        <a class="nav-link md-state-layer" href="#testimonials">testimonials</a>
+        <a class="nav-link md-state-layer" href="#contact">contact</a>
+        <span class="nav-indicator" id="navIndicator" aria-hidden="true"></span>
+      </nav>
+
+      <div class="top-app-bar__actions">
+        <button class="md-icon-button md-state-layer theme-toggle" id="themeToggle" type="button"
+                aria-label="Switch to dark theme" aria-pressed="false" title="Toggle theme">
+          <span class="material-symbols-rounded" id="themeToggleIcon">dark_mode</span>
+        </button>
+        <a class="md-button md-button--tonal md-state-layer" href="#contact">
+          <span class="material-symbols-rounded">chat_bubble</span>
+          Start a conversation
+        </a>
+        <button class="md-icon-button md-state-layer nav-menu-button" id="navMenuButton" type="button"
+                aria-label="Open navigation menu" aria-expanded="false" aria-controls="navSheet">
+          <span class="material-symbols-rounded">menu</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===================== Modal navigation (compact) ===================== -->
+  <div class="nav-sheet" id="navSheet" data-open="false" role="dialog" aria-modal="true" aria-label="Navigation">
+    <div class="nav-sheet__scrim" data-nav-close></div>
+    <div class="nav-sheet__panel">
+      <div class="nav-sheet__header">
+        <span class="md-title-large">Menu</span>
+        <button class="md-icon-button md-state-layer" type="button" data-nav-close aria-label="Close navigation menu">
+          <span class="material-symbols-rounded">close</span>
+        </button>
+      </div>
+      <a class="nav-sheet__item md-state-layer" href="#services" data-nav-close>
+        <span class="material-symbols-rounded">workspaces</span> services
+      </a>
+      <a class="nav-sheet__item md-state-layer" href="#leadership" data-nav-close>
+        <span class="material-symbols-rounded">groups</span> leadership
+      </a>
+      <a class="nav-sheet__item md-state-layer" href="#testimonials" data-nav-close>
+        <span class="material-symbols-rounded">format_quote</span> testimonials
+      </a>
+      <a class="nav-sheet__item md-state-layer" href="#contact" data-nav-close>
+        <span class="material-symbols-rounded">mail</span> contact
+      </a>
+      <a class="md-button md-button--filled md-state-layer nav-sheet__cta" href="#contact" data-nav-close>
+        <span class="material-symbols-rounded">send</span>
+        Start a conversation
+      </a>
+    </div>
+  </div>
+
+  <main id="main">
+    <!-- ===================== Hero ===================== -->
+    <section class="hero" id="top">
+      <div class="hero__blob hero__blob--primary" aria-hidden="true"></div>
+      <div class="hero__blob hero__blob--tertiary" aria-hidden="true"></div>
+
+      <div class="layout hero__grid">
+        <div class="hero__copy">
+          <span class="section__eyebrow md-label-large" data-reveal>
+            <span class="material-symbols-rounded">school</span>
+            machine learning &amp; statistics consultancy
+          </span>
+
+          <h1 class="md-display-large hero__headline" data-reveal style="--reveal-delay:60ms">
+            Expert Professors<br><em>For You.</em>
+          </h1>
+
+          <p class="md-body-large hero__supporting" data-reveal style="--reveal-delay:120ms">
+            A direct line to a network of exceptional professors and industry professionals — bringing
+            combined machine learning and statistics expertise to Fortune 500 companies and academic
+            centers around the world.
+          </p>
+
+          <div class="hero__actions" data-reveal style="--reveal-delay:180ms">
+            <a class="md-button md-button--filled md-button--large md-state-layer" href="#contact">
+              <span class="material-symbols-rounded">send</span>
+              Start a conversation
+            </a>
+            <a class="md-button md-button--outlined md-button--large md-state-layer" href="#services">
+              <span class="material-symbols-rounded">explore</span>
+              Explore services
+            </a>
           </div>
-          <div class="modal-body">
-            Your message has been sent. We appreciate your interest and will get back to you soon.
+
+          <div class="hero__stats" data-reveal style="--reveal-delay:240ms">
+            <div class="stat-card">
+              <span class="stat-card__value">Fortune 500</span>
+              <span class="stat-card__label md-label-large">companies served</span>
+            </div>
+            <div class="stat-card">
+              <span class="stat-card__value">15+ yrs</span>
+              <span class="stat-card__label md-label-large">combined practice</span>
+            </div>
+            <div class="stat-card">
+              <span class="stat-card__value">Worldwide</span>
+              <span class="stat-card__label md-label-large">academic centers</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero__media" id="heroMedia" data-reveal style="--reveal-delay:200ms">
+          <div class="hero__media-shape">
+            <div class="hero__media-fallback" aria-hidden="true">
+              <span></span><span></span><span></span>
+            </div>
+            <lottie-player
+              src="https://storage.googleapis.com/vectora-website/animation/brain.json"
+              background="transparent"
+              speed="1"
+              loop
+              autoplay
+              aria-hidden="true"
+            ></lottie-player>
           </div>
         </div>
       </div>
-    </div>
+    </section>
 
+    <!-- ===================== Services ===================== -->
+    <section class="section section--surface" id="services">
+      <div class="layout">
+        <div class="section__header">
+          <span class="section__eyebrow md-label-large" data-reveal>
+            <span class="material-symbols-rounded">workspaces</span>
+            services
+          </span>
+          <h2 class="md-display-small" data-reveal style="--reveal-delay:60ms">
+            Your <span class="typewriter" id="typewriter"></span><span class="typewriter-cursor" id="typewriterCursor" aria-hidden="true">|</span>
+          </h2>
+          <p class="md-body-large section__supporting" data-reveal style="--reveal-delay:120ms">
+            We have extensive experience using our combined machine learning and statistics expertise,
+            bringing value to multiple Fortune 500 companies and academic centers around the world.
+          </p>
+        </div>
+
+        <div class="services" data-reveal>
+          <div class="services__nav">
+            <div class="services__tablist" role="tablist" aria-label="Services" aria-orientation="vertical">
+              <button class="service-tab md-state-layer" id="tab-ml" type="button" role="tab"
+                      aria-selected="true" aria-controls="panel-ml" tabindex="0">
+                <span class="service-tab__icon" aria-hidden="true"><span class="material-symbols-rounded">neurology</span></span>
+                ML / AI Consulting
+              </button>
+              <button class="service-tab md-state-layer" id="tab-trials" type="button" role="tab"
+                      aria-selected="false" aria-controls="panel-trials" tabindex="-1">
+                <span class="service-tab__icon" aria-hidden="true"><span class="material-symbols-rounded">clinical_notes</span></span>
+                Clinical Trial Consulting
+              </button>
+              <button class="service-tab md-state-layer" id="tab-workshops" type="button" role="tab"
+                      aria-selected="false" aria-controls="panel-workshops" tabindex="-1">
+                <span class="service-tab__icon" aria-hidden="true"><span class="material-symbols-rounded">school</span></span>
+                AI Workshops
+              </button>
+            </div>
+
+            <div class="services__aside">
+              <p class="md-body-medium">Not sure which of these fits? Tell us about your project and we will point you to the right expert.</p>
+              <a class="md-button md-button--text md-state-layer" href="#contact" style="padding-inline:0.75rem">
+                <span class="material-symbols-rounded">arrow_forward</span>
+                Talk to us
+              </a>
+            </div>
+          </div>
+
+          <div class="services__panels">
+            <div class="service-panel" id="panel-ml" role="tabpanel" aria-labelledby="tab-ml" tabindex="0">
+              <div class="service-panel__badge" aria-hidden="true"><span class="material-symbols-rounded">neurology</span></div>
+              <h3 class="md-headline-large service-panel__title">ML / AI Consulting</h3>
+              <p class="md-body-large service-panel__body">
+                Expert guidance on machine learning and artificial intelligence projects, from initial
+                concept to implementation and optimization.
+              </p>
+              <ul class="service-panel__list md-body-large">
+                <li><span class="material-symbols-rounded">lightbulb</span> Initial concept and problem framing</li>
+                <li><span class="material-symbols-rounded">build</span> Implementation alongside your team</li>
+                <li><span class="material-symbols-rounded">trending_up</span> Optimization of models already in production</li>
+              </ul>
+              <div class="md-chip-set">
+                <span class="md-chip"><span class="material-symbols-rounded">check</span> Machine learning</span>
+                <span class="md-chip"><span class="material-symbols-rounded">check</span> Applied AI</span>
+                <span class="md-chip"><span class="material-symbols-rounded">check</span> Statistics</span>
+              </div>
+            </div>
+
+            <div class="service-panel" id="panel-trials" role="tabpanel" aria-labelledby="tab-trials" tabindex="0" hidden>
+              <div class="service-panel__badge" aria-hidden="true"><span class="material-symbols-rounded">clinical_notes</span></div>
+              <h3 class="md-headline-large service-panel__title">Clinical Trial Consulting</h3>
+              <p class="md-body-large service-panel__body">
+                Comprehensive support for clinical trials, including study design, statistical analysis,
+                and regulatory compliance to ensure successful outcomes.
+              </p>
+              <ul class="service-panel__list md-body-large">
+                <li><span class="material-symbols-rounded">architecture</span> Study design</li>
+                <li><span class="material-symbols-rounded">query_stats</span> Statistical analysis</li>
+                <li><span class="material-symbols-rounded">verified</span> Regulatory compliance</li>
+              </ul>
+              <div class="md-chip-set">
+                <span class="md-chip"><span class="material-symbols-rounded">check</span> Biostatistics</span>
+                <span class="md-chip"><span class="material-symbols-rounded">check</span> Causal inference</span>
+                <span class="md-chip"><span class="material-symbols-rounded">check</span> Trial design</span>
+              </div>
+            </div>
+
+            <div class="service-panel" id="panel-workshops" role="tabpanel" aria-labelledby="tab-workshops" tabindex="0" hidden>
+              <div class="service-panel__badge" aria-hidden="true"><span class="material-symbols-rounded">school</span></div>
+              <h3 class="md-headline-large service-panel__title">AI Workshops</h3>
+              <p class="md-body-large service-panel__body">
+                Our hands-on workshops empower your team to confidently leverage AI technologies. We
+                customize each session to your organization’s needs, ensuring practical skills and
+                immediate value.
+              </p>
+              <ul class="service-panel__list md-body-large">
+                <li><span class="material-symbols-rounded">handyman</span> Hands-on, practical sessions</li>
+                <li><span class="material-symbols-rounded">tune</span> Customized to your organization</li>
+                <li><span class="material-symbols-rounded">bolt</span> Skills your team can use immediately</li>
+              </ul>
+              <div class="md-chip-set">
+                <span class="md-chip"><span class="material-symbols-rounded">check</span> Team enablement</span>
+                <span class="md-chip"><span class="material-symbols-rounded">check</span> Custom curriculum</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== Leadership ===================== -->
+    <section class="section section--container-low" id="leadership">
+      <div class="layout">
+        <div class="section__header">
+          <span class="section__eyebrow md-label-large" data-reveal>
+            <span class="material-symbols-rounded">groups</span>
+            leadership
+          </span>
+          <h2 class="md-display-small" data-reveal style="--reveal-delay:60ms">The people behind vectora</h2>
+          <p class="md-body-large section__supporting" data-reveal style="--reveal-delay:120ms">
+            We founded vectora to be the conduit you need for our wide network of exceptional professors
+            and industry professionals. We work directly with you, and also give you access to our network
+            of talented individuals.
+          </p>
+        </div>
+
+        <div class="leadership-grid">
+          <article class="md-card md-card--elevated md-card--interactive person-card" data-reveal>
+            <div class="person-card__head">
+              <img class="person-card__avatar"
+                   src="https://storage.googleapis.com/vectora-website/profiles/joshua.jpg"
+                   alt="Joshua DeAndria" width="84" height="84" loading="lazy">
+              <div>
+                <h3 class="md-title-large person-card__name">Joshua DeAndria, M.D., M.Eng.</h3>
+                <p class="md-label-large person-card__role">Managing Partner &amp; Computer Science Professor</p>
+              </div>
+            </div>
+            <p class="md-body-large person-card__bio">
+              Joshua is a machine learning professor at Northwestern University with over 5 years of
+              experience developing ML solutions for Fortune 100 companies.
+            </p>
+            <div class="md-chip-set">
+              <span class="md-chip md-chip--tonal">Machine learning</span>
+              <span class="md-chip md-chip--tonal">Northwestern University</span>
+              <span class="md-chip md-chip--tonal">Fortune 100</span>
+            </div>
+          </article>
+
+          <article class="md-card md-card--elevated md-card--interactive person-card" data-reveal style="--reveal-delay:100ms">
+            <div class="person-card__head">
+              <img class="person-card__avatar"
+                   src="https://storage.googleapis.com/vectora-website/profiles/shaina.jpg"
+                   alt="Shaina Alexandria" width="84" height="84" loading="lazy">
+              <div>
+                <h3 class="md-title-large person-card__name">Shaina Alexandria, Ph.D</h3>
+                <p class="md-label-large person-card__role">Partner &amp; Biostatistics Professor</p>
+              </div>
+            </div>
+            <p class="md-body-large person-card__bio">
+              Shaina is a biostatistics professor at Northwestern University and expert in causal
+              inference with over 10 years of experience in statistics consulting.
+            </p>
+            <div class="md-chip-set">
+              <span class="md-chip md-chip--tonal">Biostatistics</span>
+              <span class="md-chip md-chip--tonal">Causal inference</span>
+              <span class="md-chip md-chip--tonal">Northwestern University</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== Testimonials ===================== -->
+    <section class="section section--container" id="testimonials">
+      <div class="layout">
+        <div class="section__header">
+          <span class="section__eyebrow md-label-large" data-reveal>
+            <span class="material-symbols-rounded">format_quote</span>
+            testimonials
+          </span>
+          <h2 class="md-display-small" data-reveal style="--reveal-delay:60ms">In their words</h2>
+        </div>
+
+        <div class="carousel" data-reveal>
+          <div class="carousel__viewport" id="testimonialsViewport" tabindex="0" role="group" aria-label="Testimonials, scrollable">
+            <article class="md-card md-card--elevated testimonial-card">
+              <span class="testimonial-card__quote-mark" aria-hidden="true">“</span>
+              <p class="md-body-large testimonial-card__quote">
+                Joshua combines intellectual horsepower with an exceptional ability to communicate complex
+                ideas clearly and effectively. He’s that rare consultant who not only knows his craft inside
+                and out but also ensures everyone around him grows stronger through the collaboration.
+              </p>
+              <div class="testimonial-card__author">
+                <img class="testimonial-card__avatar"
+                     src="https://storage.googleapis.com/vectora-website/profiles/rob.png"
+                     alt="Rob Grzywinski" width="48" height="48" loading="lazy">
+                <div>
+                  <div class="md-title-medium">Rob Grzywinski</div>
+                  <div class="md-label-medium text-variant">CEO, CharmIQ</div>
+                </div>
+              </div>
+            </article>
+          </div>
+
+          <div class="carousel__controls" id="carouselControls" hidden>
+            <button class="md-icon-button md-icon-button--tonal md-state-layer" type="button" id="carouselPrev" aria-label="Previous testimonial">
+              <span class="material-symbols-rounded">arrow_back</span>
+            </button>
+            <button class="md-icon-button md-icon-button--tonal md-state-layer" type="button" id="carouselNext" aria-label="Next testimonial">
+              <span class="material-symbols-rounded">arrow_forward</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== Contact ===================== -->
+    <section class="section section--container-low" id="contact">
+      <div class="layout">
+        <div class="section__header">
+          <span class="section__eyebrow md-label-large" data-reveal>
+            <span class="material-symbols-rounded">mail</span>
+            contact
+          </span>
+          <h2 class="md-display-small" data-reveal style="--reveal-delay:60ms">Contact us</h2>
+          <p class="md-body-large section__supporting" data-reveal style="--reveal-delay:120ms">
+            Tell us what you are working on and we will get back to you.
+          </p>
+        </div>
+
+        <div class="contact-grid">
+          <form class="contact-form" id="contactForm" action="https://formspree.io/f/xeoopzje" method="POST" data-reveal novalidate>
+            <div class="md-field">
+              <input class="md-field__input" type="text" id="contactName" name="name" placeholder="Your name" autocomplete="name" required>
+              <label class="md-field__label" for="contactName">Name</label>
+            </div>
+
+            <div class="md-field">
+              <input class="md-field__input" type="email" id="contactEmail" name="email" placeholder="you@example.com" autocomplete="email" required>
+              <label class="md-field__label" for="contactEmail">Email</label>
+              <span class="md-field__support md-label-medium">We only use this to reply to you.</span>
+            </div>
+
+            <div class="md-field">
+              <textarea class="md-field__input" id="contactMessage" name="message" rows="5" placeholder="How can we help you?" required></textarea>
+              <label class="md-field__label" for="contactMessage">Message</label>
+            </div>
+
+            <div class="contact-form__actions">
+              <button class="md-button md-button--filled md-button--large md-state-layer" type="submit" id="contactSubmit">
+                <span class="material-symbols-rounded">send</span>
+                Send message
+              </button>
+              <span class="md-label-large text-variant" id="formStatus" role="status" aria-live="polite"></span>
+            </div>
+          </form>
+
+          <aside class="contact-aside" data-reveal style="--reveal-delay:100ms">
+            <div class="contact-detail">
+              <span class="contact-detail__icon" aria-hidden="true"><span class="material-symbols-rounded">location_on</span></span>
+              <div>
+                <div class="md-title-medium">Chicago, Illinois</div>
+                <p class="md-body-medium text-variant">Working with teams and academic centers around the world.</p>
+              </div>
+            </div>
+            <div class="contact-detail">
+              <span class="contact-detail__icon" aria-hidden="true"><span class="material-symbols-rounded">workspaces</span></span>
+              <div>
+                <div class="md-title-medium">What we take on</div>
+                <p class="md-body-medium text-variant">ML / AI consulting, clinical trial consulting, and AI workshops.</p>
+              </div>
+            </div>
+            <div class="map-card">
+              <iframe
+                src="https://www.google.com/maps?q=Chicago,IL&output=embed"
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+                title="Map of Chicago, Illinois"></iframe>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===================== Footer ===================== -->
+  <footer class="site-footer">
+    <div class="layout">
+      <div class="site-footer__top">
+        <div>
+          <a class="brand" href="#top" aria-label="vectora — home">
+            <span class="brand__mark" aria-hidden="true">
+              <span class="material-symbols-rounded" style="font-size:1.125rem">north_east</span>
+            </span>
+            vectora
+          </a>
+          <p class="md-body-medium site-footer__tagline">
+            Expert professors and industry professionals, working directly with you.
+          </p>
+        </div>
+        <nav class="site-footer__links" aria-label="Footer">
+          <a class="nav-link md-state-layer" href="#services">services</a>
+          <a class="nav-link md-state-layer" href="#leadership">leadership</a>
+          <a class="nav-link md-state-layer" href="#testimonials">testimonials</a>
+          <a class="nav-link md-state-layer" href="#contact">contact</a>
+        </nav>
+      </div>
+      <div class="site-footer__bottom md-label-large">
+        <span>&copy; <span id="footerYear">2025</span> vectora LLC. All rights reserved.</span>
+        <span>Chicago, IL</span>
+      </div>
+    </div>
+  </footer>
+
+  <button class="fab-top" id="backToTop" type="button" aria-label="Back to top" data-visible="false">
+    <span class="material-symbols-rounded">arrow_upward</span>
+  </button>
+
+  <!-- ===================== Dialog & snackbar ===================== -->
+  <dialog class="md-dialog" id="thankYouDialog" aria-labelledby="thankYouHeadline">
+    <div class="md-dialog__icon" aria-hidden="true"><span class="material-symbols-rounded">mark_email_read</span></div>
+    <h2 class="md-headline-small md-dialog__headline" id="thankYouHeadline">Thank you!</h2>
+    <p class="md-body-large md-dialog__body">
+      Your message has been sent. We appreciate your interest and will get back to you soon.
+    </p>
+    <div class="md-dialog__actions">
+      <button class="md-button md-button--text md-state-layer" type="button" id="thankYouClose">Close</button>
+    </div>
+  </dialog>
+
+  <div class="md-snackbar" id="snackbar" role="alert" data-open="false">
+    <span class="md-body-medium" id="snackbarText"></span>
+    <button class="md-button md-button--text md-state-layer" type="button" id="snackbarAction"
+            style="--_label: var(--md-sys-color-inverse-primary)">Dismiss</button>
+  </div>
+
+  <script src="https://unpkg.com/@lottiefiles/lottie-player@2.0.12/dist/lottie-player.js" defer></script>
+  <script src="assets/js/app.js" defer></script>
 </body>
 </html>
-
