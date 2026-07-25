@@ -1,0 +1,293 @@
+/* ==========================================================================
+   vectora — Material Design 3 design tokens
+   Dynamic tonal color generated from a single seed hue (green) using OKLCH.
+   All thirteen M3 tones per palette are derived in-browser via calc()/oklch(),
+   so re-seeding the palette (see the hue-intro animation below) recolors the
+   entire system with zero JavaScript per frame.
+   ========================================================================== */
+
+/* Animatable custom property: lets the browser interpolate hue smoothly
+   across every derived color in a single CSS keyframe animation. */
+@property --seed-hue {
+  syntax: '<number>';
+  inherits: true;
+  initial-value: 150;
+}
+
+:root {
+  color-scheme: light;
+
+  /* ---- Seed ---------------------------------------------------------- */
+  --seed-hue: 150; /* green */
+
+  /* Chroma per M3 palette role (OKLCH chroma units) */
+  --c-primary: 0.135;
+  --c-secondary: 0.045;
+  --c-tertiary: 0.10;
+  --c-neutral: 0.010;
+  --c-neutral-variant: 0.026;
+  --c-error: 0.19;
+  --h-tertiary-offset: 60;
+  --h-error: 25; /* fixed, brand-independent */
+
+  /* ---- Primary tonal palette ------------------------------------------ */
+  --p-10: oklch(10% var(--c-primary) var(--seed-hue));
+  --p-20: oklch(20% var(--c-primary) var(--seed-hue));
+  --p-30: oklch(30% var(--c-primary) var(--seed-hue));
+  --p-40: oklch(40% var(--c-primary) var(--seed-hue));
+  --p-80: oklch(80% var(--c-primary) var(--seed-hue));
+  --p-90: oklch(90% var(--c-primary) var(--seed-hue));
+  --p-100: oklch(100% 0 var(--seed-hue));
+
+  /* ---- Secondary tonal palette ----------------------------------------- */
+  --s-10: oklch(10% var(--c-secondary) var(--seed-hue));
+  --s-20: oklch(20% var(--c-secondary) var(--seed-hue));
+  --s-30: oklch(30% var(--c-secondary) var(--seed-hue));
+  --s-40: oklch(40% var(--c-secondary) var(--seed-hue));
+  --s-90: oklch(90% var(--c-secondary) var(--seed-hue));
+  --s-100: oklch(100% 0 var(--seed-hue));
+
+  /* ---- Tertiary tonal palette (seed hue + 60°, analogous accent) ------- */
+  --t-10: oklch(10% var(--c-tertiary) calc(var(--seed-hue) + var(--h-tertiary-offset)));
+  --t-20: oklch(20% var(--c-tertiary) calc(var(--seed-hue) + var(--h-tertiary-offset)));
+  --t-30: oklch(30% var(--c-tertiary) calc(var(--seed-hue) + var(--h-tertiary-offset)));
+  --t-40: oklch(40% var(--c-tertiary) calc(var(--seed-hue) + var(--h-tertiary-offset)));
+  --t-90: oklch(90% var(--c-tertiary) calc(var(--seed-hue) + var(--h-tertiary-offset)));
+  --t-100: oklch(100% 0 var(--seed-hue));
+
+  /* ---- Neutral tonal palette (surfaces) --------------------------------- */
+  --n-0: oklch(0% var(--c-neutral) var(--seed-hue));
+  --n-4: oklch(4% var(--c-neutral) var(--seed-hue));
+  --n-6: oklch(6% var(--c-neutral) var(--seed-hue));
+  --n-10: oklch(10% var(--c-neutral) var(--seed-hue));
+  --n-12: oklch(12% var(--c-neutral) var(--seed-hue));
+  --n-17: oklch(17% var(--c-neutral) var(--seed-hue));
+  --n-20: oklch(20% var(--c-neutral) var(--seed-hue));
+  --n-22: oklch(22% var(--c-neutral) var(--seed-hue));
+  --n-24: oklch(24% var(--c-neutral) var(--seed-hue));
+  --n-87: oklch(87% var(--c-neutral) var(--seed-hue));
+  --n-90: oklch(90% var(--c-neutral) var(--seed-hue));
+  --n-92: oklch(92% var(--c-neutral) var(--seed-hue));
+  --n-94: oklch(94% var(--c-neutral) var(--seed-hue));
+  --n-95: oklch(95% var(--c-neutral) var(--seed-hue));
+  --n-96: oklch(96% var(--c-neutral) var(--seed-hue));
+  --n-98: oklch(98% var(--c-neutral) var(--seed-hue));
+  --n-99: oklch(99% var(--c-neutral) var(--seed-hue));
+  --n-100: oklch(100% 0 var(--seed-hue));
+
+  /* ---- Neutral-variant tonal palette ------------------------------------ */
+  --nv-30: oklch(30% var(--c-neutral-variant) var(--seed-hue));
+  --nv-50: oklch(50% var(--c-neutral-variant) var(--seed-hue));
+  --nv-60: oklch(60% var(--c-neutral-variant) var(--seed-hue));
+  --nv-80: oklch(80% var(--c-neutral-variant) var(--seed-hue));
+  --nv-90: oklch(90% var(--c-neutral-variant) var(--seed-hue));
+
+  /* ---- Error tonal palette (fixed hue) ---------------------------------- */
+  --e-10: oklch(10% var(--c-error) var(--h-error));
+  --e-20: oklch(20% var(--c-error) var(--h-error));
+  --e-30: oklch(30% var(--c-error) var(--h-error));
+  --e-40: oklch(40% var(--c-error) var(--h-error));
+  --e-90: oklch(90% var(--c-error) var(--h-error));
+  --e-100: oklch(100% 0 var(--h-error));
+
+  /* ---- System color roles — light scheme -------------------------------- */
+  --md-sys-color-primary: var(--p-40);
+  --md-sys-color-on-primary: var(--p-100);
+  --md-sys-color-primary-container: var(--p-90);
+  --md-sys-color-on-primary-container: var(--p-10);
+  --md-sys-color-inverse-primary: var(--p-80);
+
+  --md-sys-color-secondary: var(--s-40);
+  --md-sys-color-on-secondary: var(--s-100);
+  --md-sys-color-secondary-container: var(--s-90);
+  --md-sys-color-on-secondary-container: var(--s-10);
+
+  --md-sys-color-tertiary: var(--t-40);
+  --md-sys-color-on-tertiary: var(--t-100);
+  --md-sys-color-tertiary-container: var(--t-90);
+  --md-sys-color-on-tertiary-container: var(--t-10);
+
+  --md-sys-color-error: var(--e-40);
+  --md-sys-color-on-error: var(--e-100);
+  --md-sys-color-error-container: var(--e-90);
+  --md-sys-color-on-error-container: var(--e-10);
+
+  --md-sys-color-background: var(--n-98);
+  --md-sys-color-on-background: var(--n-10);
+  --md-sys-color-surface: var(--n-98);
+  --md-sys-color-on-surface: var(--n-10);
+  --md-sys-color-surface-variant: var(--nv-90);
+  --md-sys-color-on-surface-variant: var(--nv-30);
+
+  --md-sys-color-outline: var(--nv-50);
+  --md-sys-color-outline-variant: var(--nv-80);
+
+  --md-sys-color-surface-dim: var(--n-87);
+  --md-sys-color-surface-bright: var(--n-98);
+  --md-sys-color-surface-container-lowest: var(--n-100);
+  --md-sys-color-surface-container-low: var(--n-96);
+  --md-sys-color-surface-container: var(--n-94);
+  --md-sys-color-surface-container-high: var(--n-92);
+  --md-sys-color-surface-container-highest: var(--n-90);
+
+  --md-sys-color-inverse-surface: var(--n-20);
+  --md-sys-color-inverse-on-surface: var(--n-95);
+  --md-sys-color-scrim: var(--n-0);
+
+  /* ---- Shape scale ------------------------------------------------------- */
+  --md-sys-shape-none: 0px;
+  --md-sys-shape-xs: 4px;
+  --md-sys-shape-sm: 8px;
+  --md-sys-shape-md: 12px;
+  --md-sys-shape-lg: 16px;
+  --md-sys-shape-xl: 28px;
+  --md-sys-shape-full: 999px;
+
+  /* ---- Type scale (Roboto) ------------------------------------------------ */
+  --md-sys-type-display-lg: 400 clamp(2.75rem, 2.3rem + 2vw, 3.563rem)/1.12 'Roboto', system-ui, sans-serif;
+  --md-sys-type-display-md: 400 clamp(2.25rem, 1.95rem + 1.3vw, 2.813rem)/1.16 'Roboto', system-ui, sans-serif;
+  --md-sys-type-headline-lg: 400 clamp(1.75rem, 1.55rem + 0.8vw, 2rem)/1.25 'Roboto', system-ui, sans-serif;
+  --md-sys-type-headline-md: 400 1.75rem/1.29 'Roboto', system-ui, sans-serif;
+  --md-sys-type-headline-sm: 400 1.5rem/1.33 'Roboto', system-ui, sans-serif;
+  --md-sys-type-title-lg: 500 1.375rem/1.27 'Roboto', system-ui, sans-serif;
+  --md-sys-type-title-md: 500 1rem/1.5 'Roboto', system-ui, sans-serif;
+  --md-sys-type-title-sm: 500 0.875rem/1.43 'Roboto', system-ui, sans-serif;
+  --md-sys-type-body-lg: 400 1rem/1.5 'Roboto', system-ui, sans-serif;
+  --md-sys-type-body-md: 400 0.875rem/1.43 'Roboto', system-ui, sans-serif;
+  --md-sys-type-body-sm: 400 0.75rem/1.33 'Roboto', system-ui, sans-serif;
+  --md-sys-type-label-lg: 500 0.875rem/1.43 'Roboto', system-ui, sans-serif;
+  --md-sys-type-label-md: 500 0.75rem/1.33 'Roboto', system-ui, sans-serif;
+  --md-sys-type-label-sm: 500 0.688rem/1.45 'Roboto', system-ui, sans-serif;
+
+  /* ---- Motion ------------------------------------------------------------- */
+  --md-sys-motion-easing-standard: cubic-bezier(0.2, 0, 0, 1);
+  --md-sys-motion-easing-emphasized: cubic-bezier(0.3, 0, 0, 1);
+  --md-sys-motion-easing-emphasized-decelerate: cubic-bezier(0.05, 0.7, 0.1, 1);
+  --md-sys-motion-easing-emphasized-accelerate: cubic-bezier(0.3, 0, 0.8, 0.15);
+  --md-sys-motion-duration-short: 150ms;
+  --md-sys-motion-duration-medium: 300ms;
+  --md-sys-motion-duration-long: 450ms;
+  --md-sys-motion-duration-extra-long: 700ms;
+
+  /* ---- State-layer opacities (M3 interaction states) ---------------------- */
+  --md-sys-state-hover: 0.08;
+  --md-sys-state-focus: 0.10;
+  --md-sys-state-pressed: 0.10;
+  --md-sys-state-dragged: 0.16;
+}
+
+/* ---- System color roles — dark scheme -------------------------------------- */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    color-scheme: dark;
+    --md-sys-color-primary: var(--p-80);
+    --md-sys-color-on-primary: var(--p-20);
+    --md-sys-color-primary-container: var(--p-30);
+    --md-sys-color-on-primary-container: var(--p-90);
+    --md-sys-color-inverse-primary: var(--p-40);
+
+    --md-sys-color-secondary: var(--s-90);
+    --md-sys-color-on-secondary: var(--s-20);
+    --md-sys-color-secondary-container: var(--s-30);
+    --md-sys-color-on-secondary-container: var(--s-90);
+
+    --md-sys-color-tertiary: var(--t-90);
+    --md-sys-color-on-tertiary: var(--t-20);
+    --md-sys-color-tertiary-container: var(--t-30);
+    --md-sys-color-on-tertiary-container: var(--t-90);
+
+    --md-sys-color-error: var(--e-90);
+    --md-sys-color-on-error: var(--e-20);
+    --md-sys-color-error-container: var(--e-30);
+    --md-sys-color-on-error-container: var(--e-90);
+
+    --md-sys-color-background: var(--n-6);
+    --md-sys-color-on-background: var(--n-90);
+    --md-sys-color-surface: var(--n-6);
+    --md-sys-color-on-surface: var(--n-90);
+    --md-sys-color-surface-variant: var(--nv-30);
+    --md-sys-color-on-surface-variant: var(--nv-80);
+
+    --md-sys-color-outline: var(--nv-60);
+    --md-sys-color-outline-variant: var(--nv-30);
+
+    --md-sys-color-surface-dim: var(--n-6);
+    --md-sys-color-surface-bright: var(--n-24);
+    --md-sys-color-surface-container-lowest: var(--n-4);
+    --md-sys-color-surface-container-low: var(--n-10);
+    --md-sys-color-surface-container: var(--n-12);
+    --md-sys-color-surface-container-high: var(--n-17);
+    --md-sys-color-surface-container-highest: var(--n-22);
+
+    --md-sys-color-inverse-surface: var(--n-90);
+    --md-sys-color-inverse-on-surface: var(--n-20);
+    --md-sys-color-scrim: var(--n-0);
+  }
+}
+
+:root[data-theme='dark'] {
+  color-scheme: dark;
+  --md-sys-color-primary: var(--p-80);
+  --md-sys-color-on-primary: var(--p-20);
+  --md-sys-color-primary-container: var(--p-30);
+  --md-sys-color-on-primary-container: var(--p-90);
+  --md-sys-color-inverse-primary: var(--p-40);
+
+  --md-sys-color-secondary: var(--s-90);
+  --md-sys-color-on-secondary: var(--s-20);
+  --md-sys-color-secondary-container: var(--s-30);
+  --md-sys-color-on-secondary-container: var(--s-90);
+
+  --md-sys-color-tertiary: var(--t-90);
+  --md-sys-color-on-tertiary: var(--t-20);
+  --md-sys-color-tertiary-container: var(--t-30);
+  --md-sys-color-on-tertiary-container: var(--t-90);
+
+  --md-sys-color-error: var(--e-90);
+  --md-sys-color-on-error: var(--e-20);
+  --md-sys-color-error-container: var(--e-30);
+  --md-sys-color-on-error-container: var(--e-90);
+
+  --md-sys-color-background: var(--n-6);
+  --md-sys-color-on-background: var(--n-90);
+  --md-sys-color-surface: var(--n-6);
+  --md-sys-color-on-surface: var(--n-90);
+  --md-sys-color-surface-variant: var(--nv-30);
+  --md-sys-color-on-surface-variant: var(--nv-80);
+
+  --md-sys-color-outline: var(--nv-60);
+  --md-sys-color-outline-variant: var(--nv-30);
+
+  --md-sys-color-surface-dim: var(--n-6);
+  --md-sys-color-surface-bright: var(--n-24);
+  --md-sys-color-surface-container-lowest: var(--n-4);
+  --md-sys-color-surface-container-low: var(--n-10);
+  --md-sys-color-surface-container: var(--n-12);
+  --md-sys-color-surface-container-high: var(--n-17);
+  --md-sys-color-surface-container-highest: var(--n-22);
+
+  --md-sys-color-inverse-surface: var(--n-90);
+  --md-sys-color-inverse-on-surface: var(--n-20);
+  --md-sys-color-scrim: var(--n-0);
+}
+
+/* ---- Seed intro: a brief, decelerating hue spin that lands on green -------
+   Three full revolutions (150 + 1080 = 150 mod 360) so the palette always
+   settles back on the brand seed, however long the animation runs. */
+@keyframes vec-hue-intro {
+  0% { --seed-hue: 150; }
+  55% { --seed-hue: 1050; }
+  78% { --seed-hue: 1190; }
+  92% { --seed-hue: 1225; }
+  100% { --seed-hue: 1230; }
+}
+
+.vec-hue-intro {
+  animation: vec-hue-intro 2.4s var(--md-sys-motion-easing-emphasized-decelerate) 1 both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .vec-hue-intro {
+    animation: none;
+  }
+}
