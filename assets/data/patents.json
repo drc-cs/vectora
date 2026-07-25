@@ -1,0 +1,13 @@
+[
+  {
+    "id": "pat-2025-aptamer-rl",
+    "title": "Aptamer Design by Reinforcement Learning-Based Fine-Tuning of Generative Language Models",
+    "type": "Patent",
+    "venue": "US Patent Application US 2025/0111890 A1 · X Development LLC",
+    "year": 2025,
+    "authors": "Jon Deaton, Ryan Poplin, Ray Nagatani, Michelle Wynn, Anand Pai, Joshua D'Arcy",
+    "domain_tags": ["Machine Learning", "Optimization"],
+    "executive_summary": "A closed-loop aptamer development system that fine-tunes a reward model and a decoder model — using in vitro experimental data and reinforcement learning — to iteratively generate novel aptamer sequences optimized against a molecular target.",
+    "external_url": "https://patents.google.com/patent/US20250111890A1/en"
+  }
+]
