@@ -6,8 +6,7 @@
  * and USPTO's PatentsView API began requiring an authenticated key in
  * February 2026, which cannot be embedded safely in client-side code on a
  * static site. So patents are manually curated in patents.json as they're
- * granted or published, with a live search link to the full Google Patents
- * record alongside them. Technical Insights have no public data source at
+ * granted or published. Technical Insights have no public data source at
  * all either and stay manually curated in insights.json.
  */
 (function () {
@@ -17,14 +16,12 @@
     {
       name: "Joshua D'Arcy",
       familyName: 'darcy',
-      domainTags: ['Machine Learning'],
-      patentsUrl: 'https://patents.google.com/?inventor=Joshua+D%27Arcy'
+      domainTags: ['Machine Learning']
     },
     {
       name: 'Shaina Alexandria',
       familyName: 'alexandria',
-      domainTags: ['Biostatistics', 'Clinical Trials'],
-      patentsUrl: 'https://patents.google.com/?inventor=Shaina+Alexandria'
+      domainTags: ['Biostatistics', 'Clinical Trials']
     }
   ];
 
@@ -32,6 +29,9 @@
   var CACHE_KEY = 'vectora-publications-cache-v2';
   var CACHE_TTL_MS = 60 * 60 * 1000; // 1 hour
   var FETCH_TIMEOUT_MS = 6000;
+  var MOBILE_BREAKPOINT = '(max-width: 640px)';
+  var PAGE_SIZE_MOBILE = 4;
+  var PAGE_SIZE_DESKTOP = 9;
 
   var grid = document.getElementById('works-grid');
   var emptyState = document.getElementById('gallery-empty');
@@ -39,12 +39,13 @@
   var categoryChips = document.querySelectorAll('.gallery-controls [data-filter]');
   var domainSelect = document.getElementById('domain-filter');
   var searchInput = document.getElementById('works-search');
-  var patentsLinks = document.getElementById('patents-links');
+  var pagination = document.getElementById('gallery-pagination');
+  var mobileQuery = window.matchMedia(MOBILE_BREAKPOINT);
 
   if (!grid) return;
 
   var items = [];
-  var state = { type: 'All', domain: 'All', query: '' };
+  var state = { type: 'All', domain: 'All', query: '', page: 1 };
 
   function esc(str) {
     var div = document.createElement('div');
@@ -185,26 +186,44 @@
     });
   }
 
-  function renderPatentLinks() {
-    if (!patentsLinks) return;
-    patentsLinks.innerHTML = PRINCIPALS.map(function (p) {
-      return '<a class="chip" href="' + p.patentsUrl + '" target="_blank" rel="noopener noreferrer">' +
-        'Patents &middot; ' + esc(p.name) + externalIcon() + '</a>';
-    }).join('');
+  function pageSize() {
+    return mobileQuery.matches ? PAGE_SIZE_MOBILE : PAGE_SIZE_DESKTOP;
   }
 
-  function renderWorks() {
+  function filteredItems() {
     var q = state.query.trim().toLowerCase();
-    var visibleCount = 0;
-    grid.innerHTML = '';
-    items.forEach(function (w) {
+    return items.filter(function (w) {
       var matchesType = state.type === 'All' || w.type === state.type;
       var matchesDomain = state.domain === 'All' || (w.domain_tags || []).indexOf(state.domain) !== -1;
       var haystack = [w.title, w.venue, w.executive_summary].concat(w.domain_tags || []).join(' ').toLowerCase();
       var matchesQuery = !q || haystack.indexOf(q) !== -1;
-      if (!(matchesType && matchesDomain && matchesQuery)) return;
-      visibleCount++;
+      return matchesType && matchesDomain && matchesQuery;
+    });
+  }
 
+  function renderPagination(pageCount) {
+    if (!pagination) return;
+    if (pageCount <= 1) {
+      pagination.innerHTML = '';
+      return;
+    }
+    pagination.innerHTML =
+      '<button type="button" class="btn btn-outlined" data-page-nav="prev"' + (state.page <= 1 ? ' disabled' : '') + '>Previous</button>' +
+      '<span class="gallery-pagination__status">Page ' + state.page + ' of ' + pageCount + '</span>' +
+      '<button type="button" class="btn btn-outlined" data-page-nav="next"' + (state.page >= pageCount ? ' disabled' : '') + '>Next</button>';
+  }
+
+  function renderWorks() {
+    var filtered = filteredItems();
+    var size = pageSize();
+    var pageCount = Math.max(1, Math.ceil(filtered.length / size));
+    if (state.page > pageCount) state.page = pageCount;
+    if (state.page < 1) state.page = 1;
+    var start = (state.page - 1) * size;
+    var pageItems = filtered.slice(start, start + size);
+
+    grid.innerHTML = '';
+    pageItems.forEach(function (w) {
       var card = document.createElement('a');
       card.className = 'work-card reveal is-visible';
       card.href = w.external_url || '#';
@@ -221,7 +240,8 @@
         '<div class="work-card__tags">' + (w.domain_tags || []).map(function (t) { return '<span>' + esc(t) + '</span>'; }).join('') + '</div>';
       grid.appendChild(card);
     });
-    if (emptyState) emptyState.hidden = visibleCount !== 0;
+    if (emptyState) emptyState.hidden = filtered.length !== 0;
+    renderPagination(pageCount);
   }
 
   function populateDomains() {
@@ -245,7 +265,6 @@
     if (galleryStatus) galleryStatus.innerHTML = message;
   }
 
-  renderPatentLinks();
   setStatus('Loading publications and technical insights…');
 
   Promise.all([
@@ -275,15 +294,31 @@
       categoryChips.forEach(function (c) { c.setAttribute('aria-pressed', 'false'); });
       chip.setAttribute('aria-pressed', 'true');
       state.type = chip.getAttribute('data-filter');
+      state.page = 1;
       renderWorks();
     });
   });
   if (domainSelect) domainSelect.addEventListener('change', function () {
     state.domain = domainSelect.value;
+    state.page = 1;
     renderWorks();
   });
   if (searchInput) searchInput.addEventListener('input', function () {
     state.query = searchInput.value;
+    state.page = 1;
     renderWorks();
   });
+  if (pagination) pagination.addEventListener('click', function (e) {
+    var btn = e.target.closest ? e.target.closest('[data-page-nav]') : null;
+    if (!btn || btn.disabled) return;
+    state.page += btn.getAttribute('data-page-nav') === 'prev' ? -1 : 1;
+    renderWorks();
+    grid.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+  var handleMobileChange = function () {
+    state.page = 1;
+    renderWorks();
+  };
+  if (mobileQuery.addEventListener) mobileQuery.addEventListener('change', handleMobileChange);
+  else if (mobileQuery.addListener) mobileQuery.addListener(handleMobileChange);
 })();
