@@ -271,19 +271,25 @@
   --md-sys-color-scrim: var(--n-0);
 }
 
-/* ---- Seed intro: a brief, decelerating hue spin that lands on green -------
-   Three full revolutions (150 + 1080 = 150 mod 360) so the palette always
-   settles back on the brand seed, however long the animation runs. */
+/* ---- Seed intro: a slow, three-color drift that lands back on green -------
+   Visits violet and amber before settling back on the brand seed. Deliberately
+   unhurried (vs. a fast multi-revolution spin) so the whole palette reads as
+   a calm wash of color rather than a flashy strobe. A quick version of the
+   same keyframes replays on hover/focus of the wordmark, synced to the
+   brand mark's blob speeding up (see .brand:hover in styles.css). */
 @keyframes vec-hue-intro {
   0% { --seed-hue: 150; }
-  55% { --seed-hue: 1050; }
-  78% { --seed-hue: 1190; }
-  92% { --seed-hue: 1225; }
-  100% { --seed-hue: 1230; }
+  40% { --seed-hue: 262; }
+  75% { --seed-hue: 28; }
+  100% { --seed-hue: 150; }
 }
 
 .vec-hue-intro {
-  animation: vec-hue-intro 2.4s var(--md-sys-motion-easing-emphasized-decelerate) 1 both;
+  animation: vec-hue-intro 5.2s var(--md-sys-motion-easing-emphasized-decelerate) 1 both;
+}
+
+.vec-hue-intro--quick {
+  animation-duration: 3s;
 }
 
 @media (prefers-reduced-motion: reduce) {

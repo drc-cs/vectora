@@ -158,10 +158,16 @@ h1, h2, h3, h4 { margin: 0; font-weight: 400; }
 }
 .brand span { color: var(--md-sys-color-primary); }
 
-/* ---- Brand mark: a morphing Material 3 "blob" with a vector arrow -------
+/* ---- Brand mark: a morphing, rotating Material 3 "blob" behind a vector
+   arrow -------------------------------------------------------------------
    The blob loops through four organic shapes (same point count, so the
-   browser interpolates the `d` path instead of snapping between frames).
-   Speeds up playfully on hover/focus of the wordmark. */
+   browser interpolates the `d` path instead of snapping between frames)
+   while its wrapping <g> spins it slowly behind the fixed arrow glyph.
+   Both speed up playfully on hover/focus of the wordmark. */
+.brand-mark__blob-spin {
+  transform-origin: 50px 50px;
+  animation: vec-blob-spin 12s linear infinite;
+}
 .brand-mark__blob {
   fill: var(--md-sys-color-primary);
   d: path("M 50.00,14.00 C 57.19,13.88 65.59,22.08 71.92,28.08 C 78.25,34.08 88.24,42.93 88.00,50.00 C 87.76,57.07 76.84,64.34 70.51,70.51 C 64.17,76.67 57.19,86.65 50.00,87.00 C 42.81,87.35 33.87,78.79 27.37,72.63 C 20.87,66.46 10.76,57.31 11.00,50.00 C 11.24,42.69 22.29,34.79 28.79,28.79 C 35.29,22.79 42.81,14.12 50.00,14.00 Z");
@@ -176,9 +182,18 @@ h1, h2, h3, h4 { margin: 0; font-weight: 400; }
   stroke-linecap: round;
   stroke-linejoin: round;
 }
+.brand:hover .brand-mark__blob-spin,
+.brand:focus-visible .brand-mark__blob-spin {
+  animation-duration: 4s;
+}
 .brand:hover .brand-mark__blob,
 .brand:focus-visible .brand-mark__blob {
   animation-duration: 3s;
+}
+
+@keyframes vec-blob-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
 }
 
 @keyframes vec-blob-morph {
@@ -189,7 +204,8 @@ h1, h2, h3, h4 { margin: 0; font-weight: 400; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .brand-mark__blob { animation: none; }
+  .brand-mark__blob,
+  .brand-mark__blob-spin { animation: none; }
 }
 
 .nav {
