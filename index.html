@@ -3,13 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>vectora LLC — Machine Learning &amp; Biostatistics Consulting</title>
-  <meta name="description" content="vectora LLC is a Chicago-based, Northwestern University faculty-led consultancy delivering machine learning architecture, generative AI systems, clinical trial design, and regulatory-grade biostatistics for enterprise and healthcare.">
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath fill='%23146c37' d='M 50,14 C 57.19,13.88 65.59,22.08 71.92,28.08 C 78.25,34.08 88.24,42.93 88,50 C 87.76,57.07 76.84,64.34 70.51,70.51 C 64.17,76.67 57.19,86.65 50,87 C 42.81,87.35 33.87,78.79 27.37,72.63 C 20.87,66.46 10.76,57.31 11,50 C 11.24,42.69 22.29,34.79 28.79,28.79 C 35.29,22.79 42.81,14.12 50,14 Z'/%3E%3Cpath fill='none' stroke='%23eafaf0' stroke-width='7' stroke-linecap='round' stroke-linejoin='round' d='M30,70 L70,30 M70,30 L70,46 M70,30 L54,30'/%3E%3C/svg%3E">
+  <title>vectora — Six-month delivery sprints for enterprise backlogs</title>
+  <meta name="description" content="vectora runs six-month, SCRUM-led delivery sprints that ship the goals stuck in enterprise backlogs, staffed from our network of senior engineers, executive leaders, and experienced MBA students. Pre-approved vendor at Nike, Google, and Microsoft.">
+  <meta name="theme-color" content="#4E2A84">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath fill='%234E2A84' d='M 50,14 C 57.19,13.88 65.59,22.08 71.92,28.08 C 78.25,34.08 88.24,42.93 88,50 C 87.76,57.07 76.84,64.34 70.51,70.51 C 64.17,76.67 57.19,86.65 50,87 C 42.81,87.35 33.87,78.79 27.37,72.63 C 20.87,66.46 10.76,57.31 11,50 C 11.24,42.69 22.29,34.79 28.79,28.79 C 35.29,22.79 42.81,14.12 50,14 Z'/%3E%3Cpath fill='none' stroke='%23f3eefb' stroke-width='7' stroke-linecap='round' stroke-linejoin='round' d='M30,70 L70,30 M70,30 L70,46 M70,30 L54,30'/%3E%3C/svg%3E">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,300..800&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="assets/css/tokens.css">
   <link rel="stylesheet" href="assets/css/styles.css">
@@ -19,7 +20,7 @@
 
   <header class="app-bar">
     <div class="container app-bar__row">
-      <button class="brand" type="button" aria-label="vectora — replay intro animation">
+      <a class="brand" href="#" aria-label="vectora home">
         <svg class="brand-mark" viewBox="0 0 100 100" width="34" height="34" aria-hidden="true">
           <g class="brand-mark__blob-spin">
             <path class="brand-mark__blob"></path>
@@ -27,300 +28,596 @@
           <path class="brand-mark__arrow" d="M30,70 L70,30 M70,30 L70,46 M70,30 L54,30"></path>
         </svg>
         <span class="brand-word">vector<span>a</span></span>
-      </button>
+      </a>
 
       <button class="nav__toggle" id="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="primary-nav">
         <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
       </button>
 
       <nav class="nav" id="primary-nav" aria-label="Primary">
-        <a class="nav__link" href="#services">Services</a>
+        <a class="nav__link" href="#how">How it works</a>
+        <a class="nav__link" href="#network">Network</a>
+        <a class="nav__link" href="#why">Why a sprint</a>
         <a class="nav__link" href="#leadership">Leadership</a>
-        <a class="nav__link" href="#research">Research &amp; IP</a>
-        <a class="nav__link" href="#impact">Impact</a>
+        <a class="nav__link" href="#faq">FAQ</a>
         <button class="theme-toggle" id="theme-toggle" type="button" aria-pressed="false" aria-label="Switch to dark theme">
           <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
         </button>
-        <a class="btn btn-filled" href="#contact">Contact</a>
+        <a class="btn btn-filled" href="#contact">Plan a sprint</a>
       </nav>
       <div class="nav-scrim" id="nav-scrim"></div>
     </div>
   </header>
 
   <main id="main">
-    <!-- Hero -->
+    <!-- ================================================================ Hero -->
     <section class="hero" aria-labelledby="hero-heading">
-      <div class="container hero__content">
-        <p class="eyebrow">Chicago, IL · Northwestern University Faculty-Led</p>
-        <h1 id="hero-heading" class="display-lg">Precision machine learning &amp; statistical strategy for enterprise and healthcare.</h1>
-        <p class="hero__subhead">Led by Northwestern University faculty applying rigorous mathematics to high-dimensional AI systems, clinical trial design, and executive technical training.</p>
-        <div class="hero__actions">
-          <a class="btn btn-filled" href="#contact">Start a conversation</a>
-          <a class="btn btn-outlined" href="#research">View research &amp; IP</a>
+      <div class="container hero__grid">
+        <div class="hero__copy">
+          <p class="eyebrow">Six-month delivery sprints · Chicago</p>
+          <h1 id="hero-heading" class="display-lg">The goals stuck in your backlog, <em>shipped in six months.</em></h1>
+          <p class="hero__subhead">We design a SCRUM sprint around one backlogged goal and staff it from our network of senior engineers, executive leaders, and experienced MBA students. Six months later, it's live.</p>
+          <div class="hero__actions">
+            <a class="btn btn-filled btn-lg" href="#contact">
+              Plan a sprint
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+            <a class="btn btn-tonal btn-lg" href="#how">See how it works</a>
+          </div>
         </div>
-        <div class="trust-ribbon" aria-label="Credentials">
-          <span class="chip chip-assist">Active faculty appointments, Northwestern University</span>
-          <span class="chip chip-assist">Delivered for Fortune 100/500 enterprises &amp; global academic medical centers</span>
-          <span class="chip chip-assist">15+ years combined applied execution</span>
-          <span class="chip chip-assist">Entity based in Chicago, IL</span>
+
+        <!-- Illustrative sprint card: purely decorative, loops on its own -->
+        <div class="hero__visual" aria-hidden="true">
+          <svg class="hero__shape" viewBox="0 0 200 200">
+            <path d="M100,8 C112,8 118,22 129,26 C140,30 154,22 163,30 C172,38 166,53 171,63 C176,73 192,79 192,92 C192,105 178,111 175,122 C172,133 181,147 173,157 C165,167 150,161 140,167 C130,173 124,192 110,192 C96,192 92,177 81,174 C70,171 56,180 46,172 C36,164 41,149 35,139 C29,129 12,124 10,111 C8,98 23,92 25,81 C27,70 17,57 25,47 C33,37 48,41 58,35 C68,29 88,8 100,8 Z"/>
+          </svg>
+
+          <div class="sprint-card">
+            <div class="sprint-card__head">
+              <span class="sprint-card__kicker">Sprint · 26 weeks</span>
+              <span class="status-chip">
+                <span class="status-chip__dot"></span>
+                <span class="status-chip__text">
+                  <span>Designing</span><span>Staffing</span><span>In flight</span><span>Shipped</span>
+                </span>
+              </span>
+            </div>
+            <p class="sprint-card__goal">Replatform partner payouts onto an event-driven ledger</p>
+
+            <div class="sprint-card__team">
+              <span class="avatar avatar--1">DL</span>
+              <span class="avatar avatar--2">EX</span>
+              <span class="avatar avatar--3">SE</span>
+              <span class="avatar avatar--4">SE</span>
+              <span class="avatar avatar--5">MB</span>
+              <span class="sprint-card__team-label">Delivery lead · Exec · Engineers · MBA</span>
+            </div>
+
+            <div class="sprint-card__timeline">
+              <div class="sprint-card__timeline-row">
+                <span>Iterations</span><span class="sprint-card__iter"><b>0</b>/12</span>
+              </div>
+              <div class="segments">
+                <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+              </div>
+            </div>
+
+            <div class="mini-board">
+              <div class="mini-board__col"><span>To do</span><i></i><i></i><i></i></div>
+              <div class="mini-board__col"><span>Doing</span><i></i><i></i></div>
+              <div class="mini-board__col"><span>Done</span><i></i><i></i><i></i><i></i></div>
+              <b class="mini-board__flyer"></b>
+            </div>
+          </div>
+
+          <div class="float-chip float-chip--a"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg>Definition of done agreed</div>
+          <div class="float-chip float-chip--b"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0M16 4.5a3.5 3.5 0 0 1 0 7M18.5 14.5a6.5 6.5 0 0 1 3 5.5"/></svg>Team matched from network</div>
         </div>
       </div>
     </section>
 
-    <!-- Services -->
-    <section id="services" aria-labelledby="services-heading">
+    <!-- ========================================================= Vendor strip -->
+    <section class="vendors" aria-labelledby="vendors-heading">
+      <div class="container vendors__row">
+        <p id="vendors-heading" class="vendors__label">Pre-approved vendor at</p>
+        <ul class="vendors__list">
+          <li class="vendor">
+            <span class="vendor__mark vendor__mark--icon" style="--logo: url('https://cdn.jsdelivr.net/npm/simple-icons@13.21.0/icons/nike.svg')" role="img" aria-label="Nike logo"></span>
+            <span class="vendor__name">Nike</span>
+          </li>
+          <li class="vendor">
+            <span class="vendor__mark vendor__mark--icon" style="--logo: url('https://cdn.jsdelivr.net/npm/simple-icons@13.21.0/icons/google.svg')" role="img" aria-label="Google logo"></span>
+            <span class="vendor__name">Google</span>
+          </li>
+          <li class="vendor">
+            <svg class="vendor__mark" viewBox="0 0 23 23" role="img" aria-label="Microsoft logo"><path fill="currentColor" d="M1 1h10v10H1zM12 1h10v10H12zM1 12h10v10H1zM12 12h10v10H12z"/></svg>
+            <span class="vendor__name">Microsoft</span>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ========================================================== The problem -->
+    <section class="problem" aria-labelledby="problem-heading">
       <div class="container">
         <div class="section-head reveal">
-          <p class="eyebrow">Service Lines</p>
-          <h2 id="services-heading" class="headline-lg">Deep theoretical rigor meets production-grade execution.</h2>
-          <p>We bridge cutting-edge mathematical foundations and enterprise-grade deployment — for the teams building AI systems, and the teams running clinical trials.</p>
+          <p class="eyebrow">The problem</p>
+          <h2 id="problem-heading" class="display-sm">Every enterprise has a goal that's been "next quarter" for two years.</h2>
+          <p>Strategic, well understood, and never urgent enough to beat the roadmap.</p>
         </div>
 
         <div class="grid grid-3">
-          <article class="card service-card reveal">
-            <div class="service-card__icon" aria-hidden="true">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="2.5"/><circle cx="18" cy="6" r="2.5"/><circle cx="12" cy="18" r="2.5"/><path d="M8.2 7.3 10.5 16M15.8 7.3 13.5 16M8.3 6h7.4"/></svg>
-            </div>
-            <h3 class="title-lg">ML / AI Consulting</h3>
-            <p class="card__meta">For CTOs, VPs of Engineering, technical leads, and Chief Data Officers</p>
-            <ul>
-              <li>Custom deep learning &amp; generative AI systems architecture</li>
-              <li>Mathematical and optimization theory auditing</li>
-              <li>Production pipeline, latency, and scalability optimization</li>
-              <li>Algorithmic fairness, interpretability, and technical due diligence</li>
-            </ul>
+          <article class="card problem-card reveal">
+            <span class="problem-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 2.5M9 2h6"/></svg>
+            </span>
+            <h3 class="title-lg">Hiring takes quarters</h3>
+            <p>And leaves you with permanent cost for temporary work.</p>
           </article>
-
-          <article class="card service-card reveal">
-            <div class="service-card__icon" aria-hidden="true">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3v4M15 3v4M4 8h16M5 8v11a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V8"/><path d="M8 13h3M8 17h5"/></svg>
-            </div>
-            <h3 class="title-lg">Clinical Trial &amp; Biostatistics Consulting</h3>
-            <p class="card__meta">For biotech, pharma, and clinical research leadership</p>
-            <ul>
-              <li>Adaptive clinical trial design and power calculations</li>
-              <li>Regulatory-grade biostatistical analysis plans</li>
-              <li>High-dimensional biological and pathology data modeling</li>
-              <li>Real-time protocol recalibration and data pipeline auditing</li>
-            </ul>
+          <article class="card problem-card reveal">
+            <span class="problem-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h18M3 12h12M3 17h7"/><path d="m16 16 5 5M21 16l-5 5"/></svg>
+            </span>
+            <h3 class="title-lg">Your best people are booked</h3>
+            <p>Pulling them off the roadmap slows the work that pays the bills.</p>
           </article>
-
-          <article class="card service-card reveal">
-            <div class="service-card__icon" aria-hidden="true">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5V6a2 2 0 0 1 2-2h13v14H6a2 2 0 0 0 0 4h13"/></svg>
-            </div>
-            <h3 class="title-lg">Executive AI Workshops &amp; Technical Training</h3>
-            <p class="card__meta">For executive leadership, R&amp;D teams, and corporate engineering units</p>
-            <ul>
-              <li>Executive briefings on modern AI architecture and strategic IP</li>
-              <li>Hands-on bootcamps in PyTorch, ML systems, and optimization</li>
-              <li>Applied statistical methods for R&amp;D personnel</li>
-            </ul>
+          <article class="card problem-card reveal">
+            <span class="problem-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg>
+            </span>
+            <h3 class="title-lg">Consultancies sell hours</h3>
+            <p>Open-ended SOWs reward activity, not outcomes.</p>
           </article>
         </div>
       </div>
     </section>
 
-    <!-- Leadership -->
-    <section id="leadership" aria-labelledby="leadership-heading">
+    <!-- ========================================================= How it works -->
+    <section id="how" class="how" aria-labelledby="how-heading">
+      <div class="container">
+        <div class="section-head section-head--wide reveal">
+          <p class="eyebrow">How it works</p>
+          <h2 id="how-heading" class="display-sm">Two weeks to plan. Twelve iterations to ship. One goal, done.</h2>
+          <p>One goal, a written definition of done, and working software every two weeks.</p>
+        </div>
+
+        <div class="how__layout reveal">
+          <div class="how__steps" role="tablist" aria-label="How a vectora sprint works" aria-orientation="vertical">
+            <button class="how-step" role="tab" id="how-tab-0" aria-controls="how-panel-0" aria-selected="true" tabindex="0" data-step="0">
+              <span class="how-step__num">01</span>
+              <span class="how-step__body">
+                <span class="how-step__title">Refine the backlog</span>
+                <span class="how-step__desc"><span>We break the goal into a prioritized backlog and pick the outcome worth six months.</span></span>
+              </span>
+              <span class="how-step__progress" aria-hidden="true"></span>
+            </button>
+            <button class="how-step" role="tab" id="how-tab-1" aria-controls="how-panel-1" aria-selected="false" tabindex="-1" data-step="1">
+              <span class="how-step__num">02</span>
+              <span class="how-step__body">
+                <span class="how-step__title">Design the sprint together</span>
+                <span class="how-step__desc"><span>We agree the goal and definition of done, then design the team role by role.</span></span>
+              </span>
+              <span class="how-step__progress" aria-hidden="true"></span>
+            </button>
+            <button class="how-step" role="tab" id="how-tab-2" aria-controls="how-panel-2" aria-selected="false" tabindex="-1" data-step="2">
+              <span class="how-step__num">03</span>
+              <span class="how-step__body">
+                <span class="how-step__title">Staff it from our network</span>
+                <span class="how-step__desc"><span>Each role is filled from our network of senior engineers, executive leaders, and experienced MBA students.</span></span>
+              </span>
+              <span class="how-step__progress" aria-hidden="true"></span>
+            </button>
+            <button class="how-step" role="tab" id="how-tab-3" aria-controls="how-panel-3" aria-selected="false" tabindex="-1" data-step="3">
+              <span class="how-step__num">04</span>
+              <span class="how-step__body">
+                <span class="how-step__title">Ship in two-week iterations</span>
+                <span class="how-step__desc"><span>Planning, stand-ups, review, and retro every iteration, in your tools.</span></span>
+              </span>
+              <span class="how-step__progress" aria-hidden="true"></span>
+            </button>
+            <button class="how-step" role="tab" id="how-tab-4" aria-controls="how-panel-4" aria-selected="false" tabindex="-1" data-step="4">
+              <span class="how-step__num">05</span>
+              <span class="how-step__body">
+                <span class="how-step__title">Deliver and hand off</span>
+                <span class="how-step__desc"><span>At week 26 it's in production, documented, and owned by your team.</span></span>
+              </span>
+              <span class="how-step__progress" aria-hidden="true"></span>
+            </button>
+          </div>
+
+          <div class="how__stage">
+            <div class="how__stage-bar">
+              <span class="how__stage-week" id="how-week">Weeks 0–2</span>
+              <button class="icon-btn" id="how-play" type="button" aria-pressed="true" aria-label="Pause walkthrough">
+                <svg class="icon-pause" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="6" y="5" width="4" height="14" rx="1.5"/><rect x="14" y="5" width="4" height="14" rx="1.5"/></svg>
+                <svg class="icon-play" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13a1 1 0 0 0 1.5.86l10.5-6.5a1 1 0 0 0 0-1.72L9.5 4.64A1 1 0 0 0 8 5.5z"/></svg>
+              </button>
+            </div>
+
+            <!-- Scene 1: priority sort -->
+            <div class="scene scene--backlog is-active" role="tabpanel" id="how-panel-0" aria-labelledby="how-tab-0" data-scene="backlog">
+              <p class="visually-hidden">Animation: six backlog items are compared and sorted by priority; the top item becomes the sprint goal.</p>
+              <div class="scene__label"><span>Product backlog</span><span class="scene__hint">Sorting by value ÷ effort</span></div>
+              <ol class="backlog" aria-hidden="true">
+                <li class="backlog__item" style="--slot: 0" data-score="4.1"><span class="backlog__rank"></span><span class="backlog__title">Mobile release pipeline</span><span class="backlog__score">4.1</span></li>
+                <li class="backlog__item" style="--slot: 1" data-score="9.2"><span class="backlog__rank"></span><span class="backlog__title">Partner payouts replatform</span><span class="backlog__score">9.2</span></li>
+                <li class="backlog__item" style="--slot: 2" data-score="2.6"><span class="backlog__rank"></span><span class="backlog__title">Internal admin tooling</span><span class="backlog__score">2.6</span></li>
+                <li class="backlog__item" style="--slot: 3" data-score="7.4"><span class="backlog__rank"></span><span class="backlog__title">Legacy auth migration</span><span class="backlog__score">7.4</span></li>
+                <li class="backlog__item" style="--slot: 4" data-score="5.8"><span class="backlog__rank"></span><span class="backlog__title">Data platform consolidation</span><span class="backlog__score">5.8</span></li>
+                <li class="backlog__item" style="--slot: 5" data-score="3.3"><span class="backlog__rank"></span><span class="backlog__title">Checkout latency budget</span><span class="backlog__score">3.3</span></li>
+              </ol>
+            </div>
+
+            <!-- Scene 2: sprint design -->
+            <div class="scene scene--design" role="tabpanel" id="how-panel-1" aria-labelledby="how-tab-1" data-scene="design" hidden>
+              <p class="visually-hidden">Animation: the sprint goal is written, the definition of done is checked off item by item, and empty role slots appear for the team.</p>
+              <div class="design" aria-hidden="true">
+                <div class="design__goal">
+                  <span class="scene__label"><span>Sprint goal</span></span>
+                  <p>Partner payouts on an event-driven ledger, live for all regions</p>
+                </div>
+                <div class="design__dod">
+                  <span class="scene__label"><span>Definition of done</span></span>
+                  <ul>
+                    <li><i></i>Running in production at full traffic</li>
+                    <li><i></i>Load-tested at 3× peak</li>
+                    <li><i></i>Runbooks &amp; architecture docs</li>
+                    <li><i></i>Owned by your on-call rotation</li>
+                  </ul>
+                </div>
+                <div class="design__team">
+                  <span class="scene__label"><span>Team shape</span></span>
+                  <div class="slots">
+                    <span class="slot">Delivery lead</span>
+                    <span class="slot">Eng. executive</span>
+                    <span class="slot">Staff engineer</span>
+                    <span class="slot">Senior engineer</span>
+                    <span class="slot">Senior engineer</span>
+                    <span class="slot">MBA associate</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Scene 3: staffing from the network -->
+            <div class="scene scene--staff" role="tabpanel" id="how-panel-2" aria-labelledby="how-tab-2" data-scene="staff" hidden>
+              <p class="visually-hidden">Animation: people from the vectora network are matched and move into each role on the sprint team.</p>
+              <div class="staff" aria-hidden="true">
+                <div class="staff__pool">
+                  <span class="scene__label"><span>vectora network</span><span class="scene__hint">Matching</span></span>
+                  <div class="pool"></div>
+                </div>
+                <div class="staff__team">
+                  <span class="scene__label"><span>Your sprint team</span></span>
+                  <div class="roster">
+                    <div class="roster__row" data-role="lead"><span class="roster__seat"></span><span>Delivery lead</span><small>Scrum master</small></div>
+                    <div class="roster__row" data-role="exec"><span class="roster__seat"></span><span>Eng. executive</span><small>Former VP Eng</small></div>
+                    <div class="roster__row" data-role="staff"><span class="roster__seat"></span><span>Staff engineer</span><small>Payments</small></div>
+                    <div class="roster__row" data-role="senior"><span class="roster__seat"></span><span>Senior engineer</span><small>Backend</small></div>
+                    <div class="roster__row" data-role="senior"><span class="roster__seat"></span><span>Senior engineer</span><small>Platform</small></div>
+                    <div class="roster__row" data-role="mba"><span class="roster__seat"></span><span>MBA associate</span><small>Product strategy</small></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Scene 4: iterations -->
+            <div class="scene scene--iterate" role="tabpanel" id="how-panel-3" aria-labelledby="how-tab-3" data-scene="iterate" hidden>
+              <p class="visually-hidden">Animation: stories move across a To do, Doing, Done board while ceremonies light up in sequence and a burndown chart falls, iteration after iteration.</p>
+              <div class="iterate" aria-hidden="true">
+                <div class="ceremonies">
+                  <span class="ceremony" data-c="0">Planning</span>
+                  <span class="ceremony" data-c="1">Daily stand-up</span>
+                  <span class="ceremony" data-c="2">Review</span>
+                  <span class="ceremony" data-c="3">Retro</span>
+                  <span class="iterate__count">Iteration <b>1</b> of 12</span>
+                </div>
+                <div class="board">
+                  <div class="board__col" data-col="0"><span class="board__head">To do</span><div class="board__cards"></div></div>
+                  <div class="board__col" data-col="1"><span class="board__head">Doing</span><div class="board__cards"></div></div>
+                  <div class="board__col" data-col="2"><span class="board__head">Done</span><div class="board__cards"></div></div>
+                </div>
+                <div class="burndown">
+                  <span class="scene__label"><span>Burndown</span></span>
+                  <svg viewBox="0 0 300 70" preserveAspectRatio="none">
+                    <path class="burndown__ideal" d="M0,6 L300,64"/>
+                    <path class="burndown__line" d="M0,6 L25,9 L50,16 L75,18 L100,27 L125,31 L150,36 L175,40 L200,48 L225,53 L250,57 L275,62 L300,64" pathLength="1"/>
+                  </svg>
+                </div>
+              </div>
+            </div>
+
+            <!-- Scene 5: ship -->
+            <div class="scene scene--ship" role="tabpanel" id="how-panel-4" aria-labelledby="how-tab-4" data-scene="ship" hidden>
+              <p class="visually-hidden">Animation: a 26-week timeline fills, a progress ring completes with a checkmark, and the handoff checklist appears.</p>
+              <div class="ship" aria-hidden="true">
+                <div class="ship__ring">
+                  <svg viewBox="0 0 120 120">
+                    <circle class="ship__track" cx="60" cy="60" r="50"/>
+                    <circle class="ship__arc" cx="60" cy="60" r="50" pathLength="1"/>
+                    <path class="ship__check" d="M40,62 L54,76 L82,46" pathLength="1"/>
+                  </svg>
+                  <span class="ship__burst"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>
+                  <span class="ship__label">Shipped</span>
+                </div>
+                <div class="ship__side">
+                  <div class="ship__timeline">
+                    <span class="scene__label"><span>26 weeks</span><span class="scene__hint">Week <b class="ship__week">0</b></span></span>
+                    <div class="segments segments--lg"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+                    <div class="ship__legend"><span>Plan</span><span>Iterations 1–12</span></div>
+                  </div>
+                  <ul class="ship__handoff">
+                    <li><i></i>In production, meeting the definition of done</li>
+                    <li><i></i>Docs, runbooks &amp; recorded walkthroughs</li>
+                    <li><i></i>Paired handoff to your engineers</li>
+                    <li><i></i>Team rolls off; IP is yours</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Roles -->
+        <div class="roles reveal">
+          <div class="roles__col">
+            <h3 class="title-lg">From your side</h3>
+            <ul class="role-list">
+              <li><span class="role-chip role-chip--you">Executive sponsor</span>Owns the outcome.</li>
+              <li><span class="role-chip role-chip--you">Product owner</span>Owns the backlog and accepts the work.</li>
+            </ul>
+          </div>
+          <div class="roles__join" aria-hidden="true">
+            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M14 24h20M24 14v20"/></svg>
+          </div>
+          <div class="roles__col">
+            <h3 class="title-lg">From vectora</h3>
+            <ul class="role-list">
+              <li><span class="role-chip">Delivery lead</span>Runs the SCRUM cadence.</li>
+              <li><span class="role-chip">Engineering executive</span>Leads architecture and stakeholder calls.</li>
+              <li><span class="role-chip">Senior &amp; staff engineers</span>Build it, matched to your stack.</li>
+              <li><span class="role-chip">MBA associates</span>Drive product strategy and analysis.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================== Network -->
+    <section id="network" class="network" aria-labelledby="network-heading">
+      <div class="container network__grid">
+        <div class="network__copy reveal">
+          <p class="eyebrow">The network</p>
+          <h2 id="network-heading" class="display-sm">A senior bench you couldn't hire in a year.</h2>
+          <p class="lead">Experienced engineers, executive leaders who've built enterprise products, and experienced MBA students. They join for one sprint and leave when it ships.</p>
+          <ul class="checks">
+            <li><b>Senior engineering.</b> Staff and principal engineers, plus former VPs and CTOs.</li>
+            <li><b>MBA talent with real experience.</b> Experienced MBA students on product strategy, analysis, and stakeholder alignment.</li>
+            <li><b>Vetted and matched.</b> Reviewed by our principals and staffed to your stack and goal.</li>
+          </ul>
+          <div class="chip-row">
+            <span class="chip chip-assist">Backend &amp; distributed systems</span>
+            <span class="chip chip-assist">Platform &amp; infrastructure</span>
+            <span class="chip chip-assist">Data &amp; ML engineering</span>
+            <span class="chip chip-assist">Security &amp; identity</span>
+            <span class="chip chip-assist">Product &amp; engineering leadership</span>
+            <span class="chip chip-assist">Strategy &amp; operations</span>
+          </div>
+        </div>
+        <div class="network__visual reveal" aria-hidden="true">
+          <svg class="constellation" id="constellation" viewBox="0 0 480 440"></svg>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================== Why a sprint -->
+    <section id="why" class="why" aria-labelledby="why-heading">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="eyebrow">Why a sprint</p>
+          <h2 id="why-heading" class="display-sm">You're buying a shipped goal, not hours.</h2>
+          <p>Fixed goal. Fixed team. Fixed six months.</p>
+        </div>
+
+        <div class="compare reveal" role="table" aria-label="vectora sprint compared with hiring and traditional consultancies">
+          <div class="compare__row compare__row--head" role="row">
+            <span role="columnheader"><span class="visually-hidden">Dimension</span></span>
+            <span role="columnheader">Hire full-time</span>
+            <span role="columnheader">Traditional consultancy</span>
+            <span role="columnheader" class="is-us">vectora sprint</span>
+          </div>
+          <div class="compare__row" role="row">
+            <span role="rowheader">Time to a working team</span>
+            <span role="cell" data-label="Hire full-time">Quarters</span>
+            <span role="cell" data-label="Traditional consultancy">Months</span>
+            <span role="cell" data-label="vectora sprint" class="is-us">Weeks</span>
+          </div>
+          <div class="compare__row" role="row">
+            <span role="rowheader">Who does the work</span>
+            <span role="cell" data-label="Hire full-time">Whoever you can hire</span>
+            <span role="cell" data-label="Traditional consultancy">Partners sell, juniors deliver</span>
+            <span role="cell" data-label="vectora sprint" class="is-us">Senior engineers, execs &amp; MBAs</span>
+          </div>
+          <div class="compare__row" role="row">
+            <span role="rowheader">What you're buying</span>
+            <span role="cell" data-label="Hire full-time">Headcount</span>
+            <span role="cell" data-label="Traditional consultancy">Hours</span>
+            <span role="cell" data-label="vectora sprint" class="is-us">A defined, shipped goal</span>
+          </div>
+          <div class="compare__row" role="row">
+            <span role="rowheader">Commitment</span>
+            <span role="cell" data-label="Hire full-time">Permanent</span>
+            <span role="cell" data-label="Traditional consultancy">Open-ended SOWs</span>
+            <span role="cell" data-label="vectora sprint" class="is-us">Six months, fixed scope</span>
+          </div>
+          <div class="compare__row" role="row">
+            <span role="rowheader">Knowledge afterward</span>
+            <span role="cell" data-label="Hire full-time">Stays, if they do</span>
+            <span role="cell" data-label="Traditional consultancy">Walks out the door</span>
+            <span role="cell" data-label="vectora sprint" class="is-us">Handed off by design</span>
+          </div>
+        </div>
+
+        <div class="grid grid-3 assurances">
+          <article class="card card--tonal reveal">
+            <h3 class="title-md">Procurement-ready</h3>
+            <p>Pre-approved vendor at Nike, Google, and Microsoft.</p>
+          </article>
+          <article class="card card--tonal reveal">
+            <h3 class="title-md">Your IP, your tools</h3>
+            <p>NDAs, full IP assignment, and work inside your systems.</p>
+          </article>
+          <article class="card card--tonal reveal">
+            <h3 class="title-md">Visible every two weeks</h3>
+            <p>Working software at every sprint review.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================== Leadership -->
+    <section id="leadership" class="leadership" aria-labelledby="leadership-heading">
       <div class="container">
         <div class="section-head reveal">
           <p class="eyebrow">Leadership</p>
-          <h2 id="leadership-heading" class="headline-lg">Principals</h2>
+          <h2 id="leadership-heading" class="display-sm">Principals who stay hands-on.</h2>
+          <p>A principal designs every sprint and owns it through handoff.</p>
         </div>
 
         <div class="grid grid-2">
           <article class="card card--outline person-card reveal">
-            <img src="https://storage.googleapis.com/vectora-website/profiles/joshua.jpg" alt="Portrait of Joshua D'Arcy" loading="lazy" width="84" height="84">
+            <img src="https://storage.googleapis.com/vectora-website/profiles/joshua.jpg" alt="Portrait of Joshua D'Arcy" loading="lazy" width="96" height="96">
             <div>
               <h3 class="title-lg">Joshua D'Arcy, M.D., M.Eng.</h3>
               <p class="person-card__role">Principal &amp; Co-Founder</p>
-              <span class="person-card__focus">Machine Learning · AI Systems Architecture · Computational Infrastructure</span>
-              <p>Clinical Assistant Professor of Computer Science at Northwestern University. Five-plus years building, optimizing, and deploying machine learning pipelines, deep learning models, and scalable software architecture across industry startups and academic labs.</p>
+              <span class="person-card__focus">Engineering delivery · AI systems · Platform architecture</span>
+              <p>Leads engineering teams shipping production ML and scalable software. Clinical Assistant Professor of Computer Science, Northwestern University.</p>
             </div>
           </article>
 
           <article class="card card--outline person-card reveal">
-            <img src="https://storage.googleapis.com/vectora-website/profiles/shaina.jpg" alt="Portrait of Shaina Alexandria" loading="lazy" width="84" height="84">
+            <img src="https://storage.googleapis.com/vectora-website/profiles/shaina.jpg" alt="Portrait of Shaina Alexandria" loading="lazy" width="96" height="96">
             <div>
               <h3 class="title-lg">Shaina Alexandria, Ph.D.</h3>
               <p class="person-card__role">Principal &amp; Co-Founder</p>
-              <span class="person-card__focus">Biostatistics · Experimental Design · Clinical Trial Analytics</span>
-              <p>Assistant Professor of Biostatistics at Northwestern University. Ten-plus years advising biopharma firms, medical technology companies, and academic research centers on statistical methodology, clinical protocol design, and complex data analysis.</p>
+              <span class="person-card__focus">Experimental design · Data strategy · Measurement</span>
+              <p>Ten-plus years advising biopharma and medtech on study design and data analysis. Makes every definition of done measurable. Assistant Professor of Biostatistics, Northwestern University.</p>
             </div>
           </article>
         </div>
-      </div>
-    </section>
 
-    <!-- Research & IP -->
-    <section id="research" aria-labelledby="research-heading">
-      <div class="container">
-        <div class="section-head reveal">
-          <p class="eyebrow">Research &amp; IP</p>
-          <h2 id="research-heading" class="headline-lg">Proof of work.</h2>
-          <p>Publications update automatically from Crossref. Patents and technical briefs are curated here as they're granted or published.</p>
-        </div>
+        <figure class="quote reveal">
+          <svg class="quote__mark" viewBox="0 0 48 48" aria-hidden="true"><path fill="currentColor" d="M20 12C11 14 6 21 6 30v6h14V22h-7c0-4 3-7 8-8zM42 12c-9 2-14 9-14 18v6h14V22h-7c0-4 3-7 8-8z"/></svg>
+          <blockquote>Joshua combines intellectual horsepower with an exceptional ability to communicate complex ideas clearly and effectively. He's that rare consultant who not only knows his craft inside and out but also ensures everyone around him grows stronger through the collaboration.</blockquote>
+          <figcaption><b>Rob Grzywinski</b> · CEO, CharmIQ</figcaption>
+        </figure>
 
-        <div class="gallery-controls reveal">
-          <div class="chip-row" role="group" aria-label="Filter by type">
-            <button class="chip" type="button" data-filter="All" aria-pressed="true">All</button>
-            <button class="chip" type="button" data-filter="Publication" aria-pressed="false">Publications</button>
-            <button class="chip" type="button" data-filter="Patent" aria-pressed="false">Patents</button>
-            <button class="chip" type="button" data-filter="Technical Insight" aria-pressed="false">Technical Insights</button>
+        <div class="selected-work reveal">
+          <div class="selected-work__head">
+            <h3 class="title-lg">Selected work</h3>
+            <p>Patents and peer-reviewed research.</p>
           </div>
-          <div style="display:flex; gap:12px; flex-wrap:wrap;">
-            <label class="visually-hidden" for="domain-filter">Filter by domain</label>
-            <select class="domain-select" id="domain-filter">
-              <option value="All">All Domains</option>
-            </select>
-            <div class="gallery-search">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
-              <label class="visually-hidden" for="works-search">Filter by title, journal, or keyword</label>
-              <input type="search" id="works-search" placeholder="Filter by title, journal, or keyword…">
-            </div>
-          </div>
-        </div>
-
-        <p class="gallery-status" id="gallery-status" role="status" aria-live="polite"></p>
-        <div class="works-grid reveal" id="works-grid" aria-live="polite"></div>
-        <p class="gallery-empty" id="gallery-empty" hidden>No matching entries yet — try a different filter, or check back soon as our library grows.</p>
-        <nav class="gallery-pagination" id="gallery-pagination" aria-label="Publications pagination"></nav>
-      </div>
-    </section>
-
-    <!-- Impact -->
-    <section id="impact" aria-labelledby="impact-heading">
-      <div class="container">
-        <div class="section-head reveal">
-          <p class="eyebrow">Enterprise Governance &amp; Client Impact</p>
-          <h2 id="impact-heading" class="headline-lg">Trusted by teams who can't afford to guess.</h2>
-        </div>
-
-        <div style="display:flex; align-items:center; justify-content:space-between; gap:16px; margin-bottom:20px;">
-          <h3 class="title-lg">Client Impact</h3>
-          <div style="display:flex; gap:8px;">
-            <button class="btn btn-text" id="testimonial-prev" type="button" aria-label="Previous testimonial">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>
-            </button>
-            <button class="btn btn-text" id="testimonial-next" type="button" aria-label="Next testimonial">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg>
-            </button>
-          </div>
-        </div>
-
-        <div class="testimonials reveal" id="testimonials-track">
-          <figure class="testimonial">
-            <blockquote>"Joshua combines intellectual horsepower with an exceptional ability to communicate complex ideas clearly and effectively. He's that rare consultant who not only knows his craft inside and out but also ensures everyone around him grows stronger through the collaboration."</blockquote>
-            <figcaption><cite>Rob Grzywinski<span>CEO, CharmIQ</span></cite></figcaption>
-          </figure>
-          <figure class="testimonial">
-            <blockquote>"Joshua combines intellectual horsepower with an exceptional ability to communicate complex ideas clearly and effectively. He's that rare consultant who not only knows his craft inside and out but also ensures everyone around him grows stronger through the collaboration."</blockquote>
-            <figcaption><cite>Rob Grzywinski<span>CEO, CharmIQ</span></cite></figcaption>
-          </figure>
-          <figure class="testimonial">
-            <blockquote>"Joshua combines intellectual horsepower with an exceptional ability to communicate complex ideas clearly and effectively. He's that rare consultant who not only knows his craft inside and out but also ensures everyone around him grows stronger through the collaboration."</blockquote>
-            <figcaption><cite>Rob Grzywinski<span>CEO, CharmIQ</span></cite></figcaption>
-          </figure>
-        </div>
-
-        <h3 class="title-lg reveal" style="margin: 56px 0 20px;">Engagement Models</h3>
-        <div class="grid grid-3">
-          <article class="card card--outline reveal">
-            <h3 class="title-lg">Advisory Retainer</h3>
-            <p class="card__meta">Ongoing strategic oversight, code and math reviews, and executive counsel.</p>
-          </article>
-          <article class="card card--outline reveal">
-            <h3 class="title-lg">Project-Based Execution</h3>
-            <p class="card__meta">Defined-scope model development, biostatistical analysis, or pipeline builds.</p>
-          </article>
-          <article class="card card--outline reveal">
-            <h3 class="title-lg">Corporate Intensives</h3>
-            <p class="card__meta">Custom multi-day technical workshops for enterprise teams.</p>
-          </article>
-        </div>
-
-        <div class="governance-banner reveal">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"/><path d="m9 12 2 2 4-4"/></svg>
-          <div>
-            <h3 class="title-lg" style="margin-bottom:8px;">Governance &amp; Data Security</h3>
-            <p style="margin:0; color: var(--md-sys-color-on-surface-variant);">All vectora LLC engagements operate under standard mutual NDAs with strict HIPAA compliance considerations, enterprise IP assignment, and secure, isolated data handling.</p>
-          </div>
+          <div class="works-strip" id="works-strip" aria-live="polite"></div>
         </div>
       </div>
     </section>
 
-    <!-- Contact -->
-    <section id="contact" aria-labelledby="contact-heading">
-      <div class="container">
+    <!-- ================================================================== FAQ -->
+    <section id="faq" class="faq" aria-labelledby="faq-heading">
+      <div class="container faq__grid">
         <div class="section-head reveal">
-          <p class="eyebrow">Contact</p>
-          <h2 id="contact-heading" class="headline-lg">Tell us about the problem.</h2>
+          <p class="eyebrow">FAQ</p>
+          <h2 id="faq-heading" class="display-sm">Good questions, straight answers.</h2>
         </div>
+        <div class="faq__list reveal">
+          <details class="faq-item">
+            <summary>What kind of goal is a good fit?<span class="faq-item__icon" aria-hidden="true"></span></summary>
+            <p>A well-understood goal that's stalled on capacity, not clarity: replatforms, migrations, new internal products, data consolidation, or AI features headed to production.</p>
+          </details>
+          <details class="faq-item">
+            <summary>Why six months?<span class="faq-item__icon" aria-hidden="true"></span></summary>
+            <p>Long enough to ship to production, short enough to keep scope fixed: two weeks of planning plus twelve two-week iterations.</p>
+          </details>
+          <details class="faq-item">
+            <summary>What if priorities change mid-sprint?<span class="faq-item__icon" aria-hidden="true"></span></summary>
+            <p>Your product owner reprioritizes at every iteration planning. If the goal itself changes, we re-plan it with you openly.</p>
+          </details>
+          <details class="faq-item">
+            <summary>How quickly can a team start?<span class="faq-item__icon" aria-hidden="true"></span></summary>
+            <p>At Nike, Google, and Microsoft, procurement is already done. Elsewhere, we refine the backlog while onboarding runs.</p>
+          </details>
+          <details class="faq-item">
+            <summary>Who owns the code and IP?<span class="faq-item__icon" aria-hidden="true"></span></summary>
+            <p>You do: mutual NDAs, full IP assignment, and work inside your repositories.</p>
+          </details>
+          <details class="faq-item">
+            <summary>What happens after week 26?<span class="faq-item__icon" aria-hidden="true"></span></summary>
+            <p>Your team owns it, with docs, runbooks, and a paired handoff. Or we design the next sprint.</p>
+          </details>
+        </div>
+      </div>
+    </section>
 
-        <div class="contact-layout">
-          <form class="reveal" id="contact-form" action="https://formspree.io/f/xeoopzje" method="POST" novalidate>
+    <!-- ============================================================== Contact -->
+    <section id="contact" class="contact" aria-labelledby="contact-heading">
+      <div class="container">
+        <div class="contact__panel">
+          <div class="contact__intro reveal">
+            <p class="eyebrow">Plan a sprint</p>
+            <h2 id="contact-heading" class="display-sm">Bring us the goal that keeps slipping.</h2>
+            <p>Tell us what's stuck. We'll reply with a sprint shape and team.</p>
+            <ol class="next-steps">
+              <li><b>Intro call.</b> 30 minutes on the goal and timing.</li>
+              <li><b>Design session.</b> We refine the backlog with your product owner.</li>
+              <li><b>Proposal.</b> Goal, definition of done, team, and a fixed plan.</li>
+            </ol>
+          </div>
+
+          <form class="contact__form reveal" id="contact-form" action="https://formspree.io/f/xeoopzje" method="POST" novalidate>
             <div class="field">
-              <input type="text" id="contactName" name="name" placeholder=" " required>
+              <input type="text" id="contactName" name="name" placeholder=" " autocomplete="name" required>
               <label for="contactName">Full name</label>
             </div>
             <div class="field">
-              <input type="email" id="contactEmail" name="email" placeholder=" " required>
+              <input type="email" id="contactEmail" name="email" placeholder=" " autocomplete="email" required>
               <label for="contactEmail">Work email</label>
             </div>
-            <div class="field">
-              <input type="text" id="contactOrg" name="organization" placeholder=" " required>
-              <label for="contactOrg">Organization / entity name</label>
+            <div class="field-row">
+              <div class="field">
+                <input type="text" id="contactOrg" name="company" placeholder=" " autocomplete="organization" required>
+                <label for="contactOrg">Company</label>
+              </div>
+              <div class="field">
+                <select id="contactStart" name="target_start" required>
+                  <option value="" disabled selected></option>
+                  <option value="This quarter">This quarter</option>
+                  <option value="Next quarter">Next quarter</option>
+                  <option value="Planning ahead">Planning ahead</option>
+                </select>
+                <label for="contactStart">Target start</label>
+              </div>
             </div>
             <div class="field">
-              <select id="contactFocus" name="service_focus" required>
-                <option value="" disabled selected></option>
-                <option value="ML/AI Consulting">ML/AI Consulting</option>
-                <option value="Clinical Trial Strategy">Clinical Trial Strategy</option>
-                <option value="Corporate Workshops">Corporate Workshops</option>
-                <option value="Multi-Disciplinary Advisory">Multi-Disciplinary Advisory</option>
-              </select>
-              <label for="contactFocus">Primary service focus</label>
+              <textarea id="contactGoal" name="backlogged_goal" placeholder=" " required></textarea>
+              <label for="contactGoal">What's the backlogged goal?</label>
             </div>
-            <div class="field">
-              <select id="contactTimeline" name="timeline" required>
-                <option value="" disabled selected></option>
-                <option value="Immediate / < 1 Month">Immediate / &lt; 1 month</option>
-                <option value="1-3 Months">1–3 months</option>
-                <option value="Strategic Planning / Retainer">Strategic planning / retainer</option>
-              </select>
-              <label for="contactTimeline">Project timeline</label>
-            </div>
-            <div class="field">
-              <textarea id="contactOverview" name="project_overview" placeholder=" " required></textarea>
-              <label for="contactOverview">Project overview</label>
-            </div>
-            <button class="btn btn-filled" type="submit">
-              Send inquiry
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            <p class="form-error" id="form-error" role="alert" hidden>Please fill in every field with a valid work email.</p>
+            <button class="btn btn-filled btn-lg" type="submit">
+              Send
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
             </button>
-            <p class="field-hint" style="margin-top:20px;">vectora LLC is based in Chicago, IL. We respond to qualified enterprise and institutional inquiries within 24–48 hours.</p>
+            <p class="field-hint">We reply within 24–48 hours.</p>
           </form>
-
-          <div class="map-frame reveal">
-            <iframe
-              src="https://www.google.com/maps?q=Chicago,IL&output=embed"
-              loading="lazy"
-              referrerpolicy="no-referrer-when-downgrade"
-              title="Map of Chicago, IL"></iframe>
-          </div>
         </div>
       </div>
     </section>
   </main>
 
   <footer class="site-footer">
-    <div class="container">
-      <span>&copy; 2026 vectora LLC. All rights reserved. &nbsp;·&nbsp; Chicago, IL &nbsp;·&nbsp; Northwestern University Faculty-Led Consultancy</span>
-      <ul class="footer-links">
-        <li>Privacy Policy</li>
-        <li>Terms of Engagement</li>
-      </ul>
+    <div class="container site-footer__row">
+      <span class="brand-word brand-word--sm">vector<span>a</span></span>
+      <span>&copy; 2026 vectora LLC · Chicago, IL</span>
+      <a href="#main" class="site-footer__top">Back to top</a>
     </div>
   </footer>
 
@@ -331,6 +628,8 @@
 
   <script src="assets/js/color.js" defer></script>
   <script src="assets/js/app.js" defer></script>
+  <script src="assets/js/how.js" defer></script>
+  <script src="assets/js/network.js" defer></script>
   <script src="assets/js/works.js" defer></script>
 </body>
 </html>

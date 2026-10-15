@@ -58,7 +58,7 @@
   });
 
   /* ---- Ripple state-layer feedback -------------------------------------- */
-  var RIPPLE_SELECTOR = '.btn, .chip, .work-card, .nav__link, .theme-toggle';
+  var RIPPLE_SELECTOR = '.btn, .nav__link, .theme-toggle, .icon-btn, .how-step, .nav__toggle';
   document.addEventListener('pointerdown', function (e) {
     var el = e.target.closest(RIPPLE_SELECTOR);
     if (!el) return;
@@ -92,20 +92,6 @@
     revealTargets.forEach(function (el) { el.classList.add('is-visible'); });
   }
 
-  /* ---- Testimonial scroll controls ---------------------------------------- */
-  var track = document.getElementById('testimonials-track');
-  var prevBtn = document.getElementById('testimonial-prev');
-  var nextBtn = document.getElementById('testimonial-next');
-  if (track && prevBtn && nextBtn) {
-    var scrollByCard = function (dir) {
-      var card = track.querySelector('.testimonial');
-      var distance = card ? card.getBoundingClientRect().width + 20 : 340;
-      track.scrollBy({ left: dir * distance, behavior: 'smooth' });
-    };
-    prevBtn.addEventListener('click', function () { scrollByCard(-1); });
-    nextBtn.addEventListener('click', function () { scrollByCard(1); });
-  }
-
   /* ---- Contact form -------------------------------------------------------- */
   var form = document.getElementById('contact-form');
   var snackbar = document.getElementById('snackbar');
@@ -128,8 +114,36 @@
   });
 
   if (form) {
+    var formError = document.getElementById('form-error');
+    var EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    function fieldValid(input) {
+      var value = input.value.trim();
+      if (!value) return false;
+      return input.type !== 'email' || EMAIL_RE.test(value);
+    }
+
+    form.querySelectorAll('[required]').forEach(function (input) {
+      var clear = function () {
+        if (fieldValid(input)) input.closest('.field').classList.remove('is-invalid');
+      };
+      input.addEventListener('input', clear);
+      input.addEventListener('change', clear);
+    });
+
     form.addEventListener('submit', function (e) {
       e.preventDefault();
+      var invalid = [].filter.call(form.querySelectorAll('[required]'), function (input) {
+        var bad = !fieldValid(input);
+        input.closest('.field').classList.toggle('is-invalid', bad);
+        input.setAttribute('aria-invalid', String(bad));
+        return bad;
+      });
+      if (formError) formError.hidden = invalid.length === 0;
+      if (invalid.length) {
+        invalid[0].focus();
+        return;
+      }
       var submitBtn = form.querySelector('button[type="submit"]');
       if (submitBtn) submitBtn.disabled = true;
       fetch(form.action, {
@@ -140,12 +154,12 @@
         if (res.ok) {
           form.reset();
           form.querySelectorAll('.field').forEach(function (f) { f.classList.remove('has-value'); });
-          showSnackbar('Thank you — your inquiry has been sent. We respond within 24–48 hours.');
+          showSnackbar('Thanks, your note is on its way. We reply within 24–48 hours.');
         } else {
-          showSnackbar('Something went wrong. Please try again or email us directly.');
+          showSnackbar('Something went wrong. Please try again in a moment.');
         }
       }).catch(function () {
-        showSnackbar('Something went wrong. Please try again or email us directly.');
+        showSnackbar('Something went wrong. Please try again in a moment.');
       }).finally(function () {
         if (submitBtn) submitBtn.disabled = false;
       });
