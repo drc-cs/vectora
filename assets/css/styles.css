@@ -140,7 +140,6 @@ h1, h2, h3, h4 { margin: 0; font-weight: 500; }
 /* Wordmark: "vectora" in medium weight, "solutions" in regular. */
 .brand-word { font-weight: 400; white-space: nowrap; }
 .brand-word b { font-weight: 500; }
-.brand-word b span { color: var(--md-sys-color-primary); }
 .brand-word--sm { font: var(--md-sys-type-title-md); font-weight: 400; color: var(--md-sys-color-on-surface); }
 
 .nav {
