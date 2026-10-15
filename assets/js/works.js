@@ -1,51 +1,27 @@
-/* Research & IP gallery.
+/* Selected work strip (Leadership section).
  *
  * Publications are fetched live from the Crossref REST API (free, no key,
  * CORS-enabled — safe to call directly from the browser). Patents have no
- * equivalent public, keyless API: Google Patents exposes no JSON endpoint,
- * and USPTO's PatentsView API began requiring an authenticated key in
- * February 2026, which cannot be embedded safely in client-side code on a
- * static site. So patents are manually curated in patents.json as they're
- * granted or published. Technical Insights have no public data source at
- * all either and stay manually curated in insights.json.
+ * equivalent public, keyless API (USPTO's PatentsView requires an
+ * authenticated key, which can't be embedded on a static site), so they are
+ * curated by hand in patents.json and always lead the strip.
  */
 (function () {
   'use strict';
 
   var PRINCIPALS = [
-    {
-      name: "Joshua D'Arcy",
-      familyName: 'darcy',
-      domainTags: ['Machine Learning']
-    },
-    {
-      name: 'Shaina Alexandria',
-      familyName: 'alexandria',
-      domainTags: ['Biostatistics', 'Clinical Trials']
-    }
+    { name: "Joshua D'Arcy", familyName: 'darcy' },
+    { name: 'Shaina Alexandria', familyName: 'alexandria' }
   ];
 
-  var CROSSREF_FIELDS = 'DOI,title,author,container-title,issued,published-print,published-online,type,abstract,URL';
-  var CACHE_KEY = 'vectora-publications-cache-v2';
+  var CROSSREF_FIELDS = 'DOI,title,author,container-title,issued,published-print,published-online,URL';
+  var CACHE_KEY = 'vectora-selected-work-v1';
   var CACHE_TTL_MS = 60 * 60 * 1000; // 1 hour
   var FETCH_TIMEOUT_MS = 6000;
-  var MOBILE_BREAKPOINT = '(max-width: 640px)';
-  var PAGE_SIZE_MOBILE = 4;
-  var PAGE_SIZE_DESKTOP = 9;
+  var MAX_PUBLICATIONS = 5;
 
-  var grid = document.getElementById('works-grid');
-  var emptyState = document.getElementById('gallery-empty');
-  var galleryStatus = document.getElementById('gallery-status');
-  var categoryChips = document.querySelectorAll('.gallery-controls [data-filter]');
-  var domainSelect = document.getElementById('domain-filter');
-  var searchInput = document.getElementById('works-search');
-  var pagination = document.getElementById('gallery-pagination');
-  var mobileQuery = window.matchMedia(MOBILE_BREAKPOINT);
-
-  if (!grid) return;
-
-  var items = [];
-  var state = { type: 'All', domain: 'All', query: '', page: 1 };
+  var strip = document.getElementById('works-strip');
+  if (!strip) return;
 
   function esc(str) {
     var div = document.createElement('div');
@@ -68,15 +44,6 @@
     return dateParts && dateParts[0] && dateParts[0][0] ? dateParts[0][0] : null;
   }
 
-  function authorsFromWork(w) {
-    if (!Array.isArray(w.author)) return '';
-    var names = w.author.map(function (a) {
-      return [a.given, a.family].filter(Boolean).join(' ');
-    }).filter(Boolean);
-    if (names.length > 4) return names.slice(0, 3).join(', ') + ', et al.';
-    return names.join(', ');
-  }
-
   function normalizeName(str) {
     return String(str || '').toLowerCase().replace(/[^a-z]/g, '');
   }
@@ -88,30 +55,10 @@
     });
   }
 
-  function normalizeCrossrefWork(raw, principal) {
-    var year = yearFromWork(raw);
-    var venue = (raw['container-title'] && raw['container-title'][0]) || 'Preprint / working paper';
-    var summary = stripTags(raw.abstract) || ('Peer-reviewed work published in ' + venue + '.');
-    return {
-      id: 'doi-' + raw.DOI,
-      title: stripTags((raw.title && raw.title[0]) || 'Untitled work'),
-      type: 'Publication',
-      venue: venue,
-      year: year,
-      authors: authorsFromWork(raw),
-      domain_tags: principal.domainTags,
-      executive_summary: summary,
-      external_url: raw.URL || ('https://doi.org/' + raw.DOI)
-    };
-  }
-
   function fetchPublicationsFor(principal) {
-    // Deliberately no sort=published here: Crossref's default is relevance
-    // (best author-name match first). Sorting by date instead would return
-    // the most *recent* loosely-matching items regardless of author, which
-    // can push a less-prolific author's actual papers out of the row limit
-    // entirely — the client-side family-name filter below would then zero
-    // out every result even though real matches exist further down.
+    // Crossref's default relevance sort puts the best author-name matches
+    // first; sorting by date instead can push a principal's real papers out
+    // of the row limit entirely.
     var url = 'https://api.crossref.org/works?query.author=' +
       encodeURIComponent(principal.name) +
       '&rows=20&select=' + CROSSREF_FIELDS;
@@ -123,44 +70,54 @@
         return res.json();
       })
       .then(function (data) {
-        var results = (data.message && data.message.items) || [];
-        return results
+        return ((data.message && data.message.items) || [])
           .filter(function (w) { return w.title && w.title[0] && matchesPrincipal(w, principal); })
-          .map(function (w) { return normalizeCrossrefWork(w, principal); });
+          .map(function (w) {
+            return {
+              id: 'doi-' + w.DOI,
+              title: stripTags(w.title[0]),
+              type: 'Publication',
+              venue: (w['container-title'] && w['container-title'][0]) || 'Preprint',
+              year: yearFromWork(w),
+              external_url: w.URL || ('https://doi.org/' + w.DOI)
+            };
+          });
       })
       .finally(function () { clearTimeout(timer); });
   }
 
-  function dedupe(list) {
-    var seen = Object.create(null);
-    return list.filter(function (w) {
-      if (seen[w.id]) return false;
-      seen[w.id] = true;
-      return true;
-    });
-  }
-
   function readCache() {
     try {
-      var raw = window.sessionStorage.getItem(CACHE_KEY);
-      if (!raw) return null;
-      var parsed = JSON.parse(raw);
-      if (Date.now() - parsed.ts > CACHE_TTL_MS) return null;
+      var parsed = JSON.parse(window.sessionStorage.getItem(CACHE_KEY));
+      if (!parsed || Date.now() - parsed.ts > CACHE_TTL_MS) return null;
       return parsed.items;
     } catch (e) { return null; }
   }
 
-  function writeCache(pubItems) {
+  function writeCache(items) {
     try {
-      window.sessionStorage.setItem(CACHE_KEY, JSON.stringify({ ts: Date.now(), items: pubItems }));
+      window.sessionStorage.setItem(CACHE_KEY, JSON.stringify({ ts: Date.now(), items: items }));
     } catch (e) { /* storage unavailable or full — non-fatal */ }
   }
 
-  function loadInsights() {
-    return fetch('assets/data/insights.json').then(function (res) {
-      if (!res.ok) throw new Error('insights.json request failed');
-      return res.json();
-    }).catch(function () { return []; });
+  function loadPublications() {
+    var cached = readCache();
+    if (cached) return Promise.resolve(cached);
+    return Promise.all(PRINCIPALS.map(function (p) {
+      return fetchPublicationsFor(p).catch(function () { return null; });
+    })).then(function (results) {
+      if (results.every(function (r) { return r === null; })) throw new Error('All Crossref requests failed');
+      var seen = Object.create(null);
+      var merged = [].concat.apply([], results.filter(Boolean)).filter(function (w) {
+        if (seen[w.id]) return false;
+        seen[w.id] = true;
+        return true;
+      });
+      merged.sort(function (a, b) { return (b.year || 0) - (a.year || 0); });
+      merged = merged.slice(0, MAX_PUBLICATIONS);
+      writeCache(merged);
+      return merged;
+    });
   }
 
   function loadPatents() {
@@ -170,155 +127,28 @@
     }).catch(function () { return []; });
   }
 
-  function loadPublications() {
-    var cached = readCache();
-    if (cached) return Promise.resolve(cached);
-    return Promise.all(PRINCIPALS.map(function (p) {
-      return fetchPublicationsFor(p).catch(function () { return null; }); // null = this principal's fetch failed
-    })).then(function (results) {
-      if (results.every(function (r) { return r === null; })) {
-        throw new Error('All Crossref requests failed');
-      }
-      var merged = dedupe([].concat.apply([], results.filter(Boolean)));
-      merged.sort(function (a, b) { return (b.year || 0) - (a.year || 0); });
-      writeCache(merged);
-      return merged;
-    });
+  function card(w) {
+    return '<a class="work-card' + (w.type === 'Patent' ? ' work-card--patent' : '') + '" href="' + esc(w.external_url) + '" target="_blank" rel="noopener noreferrer">' +
+      '<span class="work-card__top"><span class="work-type">' + esc(w.type) + '</span>' + externalIcon() + '</span>' +
+      '<h4>' + esc(w.title) + '</h4>' +
+      '<span class="work-card__venue">' + esc(w.venue) + (w.year ? ' · ' + esc(String(w.year)) : '') + '</span>' +
+    '</a>';
   }
 
-  function pageSize() {
-    return mobileQuery.matches ? PAGE_SIZE_MOBILE : PAGE_SIZE_DESKTOP;
-  }
-
-  function filteredItems() {
-    var q = state.query.trim().toLowerCase();
-    return items.filter(function (w) {
-      var matchesType = state.type === 'All' || w.type === state.type;
-      var matchesDomain = state.domain === 'All' || (w.domain_tags || []).indexOf(state.domain) !== -1;
-      var haystack = [w.title, w.venue, w.executive_summary].concat(w.domain_tags || []).join(' ').toLowerCase();
-      var matchesQuery = !q || haystack.indexOf(q) !== -1;
-      return matchesType && matchesDomain && matchesQuery;
-    });
-  }
-
-  function renderPagination(pageCount) {
-    if (!pagination) return;
-    if (pageCount <= 1) {
-      pagination.innerHTML = '';
-      return;
-    }
-    pagination.innerHTML =
-      '<button type="button" class="btn btn-outlined" data-page-nav="prev"' + (state.page <= 1 ? ' disabled' : '') + '>Previous</button>' +
-      '<span class="gallery-pagination__status">Page ' + state.page + ' of ' + pageCount + '</span>' +
-      '<button type="button" class="btn btn-outlined" data-page-nav="next"' + (state.page >= pageCount ? ' disabled' : '') + '>Next</button>';
-  }
-
-  function renderWorks() {
-    var filtered = filteredItems();
-    var size = pageSize();
-    var pageCount = Math.max(1, Math.ceil(filtered.length / size));
-    if (state.page > pageCount) state.page = pageCount;
-    if (state.page < 1) state.page = 1;
-    var start = (state.page - 1) * size;
-    var pageItems = filtered.slice(start, start + size);
-
-    grid.innerHTML = '';
-    pageItems.forEach(function (w) {
-      var card = document.createElement('a');
-      card.className = 'work-card reveal is-visible';
-      card.href = w.external_url || '#';
-      card.target = '_blank';
-      card.rel = 'noopener noreferrer';
-      card.innerHTML =
-        '<div class="work-card__top">' +
-          '<span class="work-type">' + esc(w.type) + '</span>' +
-          externalIcon() +
-        '</div>' +
-        '<h3>' + esc(w.title) + '</h3>' +
-        '<p class="work-card__venue">' + esc(w.venue) + (w.year ? ' &middot; ' + esc(String(w.year)) : '') + '</p>' +
-        '<p>' + esc(w.executive_summary) + '</p>' +
-        '<div class="work-card__tags">' + (w.domain_tags || []).map(function (t) { return '<span>' + esc(t) + '</span>'; }).join('') + '</div>';
-      grid.appendChild(card);
-    });
-    if (emptyState) emptyState.hidden = filtered.length !== 0;
-    renderPagination(pageCount);
-  }
-
-  function populateDomains() {
-    if (!domainSelect) return;
-    var domains = [];
-    items.forEach(function (w) {
-      (w.domain_tags || []).forEach(function (t) {
-        if (domains.indexOf(t) === -1) domains.push(t);
-      });
-    });
-    domains.sort();
-    domains.forEach(function (t) {
-      var opt = document.createElement('option');
-      opt.value = t;
-      opt.textContent = t;
-      domainSelect.appendChild(opt);
-    });
-  }
-
-  function setStatus(message) {
-    if (galleryStatus) galleryStatus.innerHTML = message;
-  }
-
-  setStatus('Loading publications and technical insights…');
+  strip.innerHTML = new Array(4).join('<div class="work-card work-card--skeleton" aria-hidden="true"></div>');
 
   Promise.all([
-    loadPublications().catch(function (err) { return { error: err }; }),
-    loadInsights(),
-    loadPatents()
+    loadPatents(),
+    loadPublications().catch(function () { return null; })
   ]).then(function (results) {
-    var pubResult = results[0];
-    var insights = results[1] || [];
-    var patents = results[2] || [];
-
-    if (pubResult && pubResult.error) {
-      setStatus('Live publication lookup is temporarily unavailable — browse directly on ' +
-        '<a href="https://search.crossref.org/?q=' + encodeURIComponent(PRINCIPALS.map(function (p) { return p.name; }).join(' ')) + '" target="_blank" rel="noopener noreferrer">Crossref</a>.');
-      items = insights.concat(patents);
-    } else {
-      items = (pubResult || []).concat(insights).concat(patents);
-      setStatus('');
+    var patents = results[0] || [];
+    var pubs = results[1];
+    var html = patents.concat(pubs || []).map(card).join('');
+    if (pubs === null) {
+      html += '<p class="works-strip__fallback">Live publication lookup is unavailable right now. Browse on ' +
+        '<a href="https://search.crossref.org/?q=' + encodeURIComponent(PRINCIPALS.map(function (p) { return p.name; }).join(' ')) +
+        '" target="_blank" rel="noopener noreferrer">Crossref</a>.</p>';
     }
-
-    populateDomains();
-    renderWorks();
+    strip.innerHTML = html;
   });
-
-  categoryChips.forEach(function (chip) {
-    chip.addEventListener('click', function () {
-      categoryChips.forEach(function (c) { c.setAttribute('aria-pressed', 'false'); });
-      chip.setAttribute('aria-pressed', 'true');
-      state.type = chip.getAttribute('data-filter');
-      state.page = 1;
-      renderWorks();
-    });
-  });
-  if (domainSelect) domainSelect.addEventListener('change', function () {
-    state.domain = domainSelect.value;
-    state.page = 1;
-    renderWorks();
-  });
-  if (searchInput) searchInput.addEventListener('input', function () {
-    state.query = searchInput.value;
-    state.page = 1;
-    renderWorks();
-  });
-  if (pagination) pagination.addEventListener('click', function (e) {
-    var btn = e.target.closest ? e.target.closest('[data-page-nav]') : null;
-    if (!btn || btn.disabled) return;
-    state.page += btn.getAttribute('data-page-nav') === 'prev' ? -1 : 1;
-    renderWorks();
-    grid.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  });
-  var handleMobileChange = function () {
-    state.page = 1;
-    renderWorks();
-  };
-  if (mobileQuery.addEventListener) mobileQuery.addEventListener('change', handleMobileChange);
-  else if (mobileQuery.addListener) mobileQuery.addListener(handleMobileChange);
 })();
