@@ -42,40 +42,6 @@
     window.addEventListener('scroll', onScroll, { passive: true });
   }
 
-  /* ---- Smooth anchor scroll with app-bar offset ------------------------ */
-  document.querySelectorAll('a[href^="#"]').forEach(function (link) {
-    link.addEventListener('click', function (e) {
-      var id = this.getAttribute('href').slice(1);
-      var target = id && document.getElementById(id);
-      if (!target) return;
-      e.preventDefault();
-      var offset = appBar ? appBar.offsetHeight : 0;
-      var top = target.getBoundingClientRect().top + window.pageYOffset - offset - 12;
-      window.scrollTo({ top: top, behavior: 'smooth' });
-      target.setAttribute('tabindex', '-1');
-      target.focus({ preventScroll: true });
-    });
-  });
-
-  /* ---- Ripple state-layer feedback -------------------------------------- */
-  var RIPPLE_SELECTOR = '.btn, .nav__link, .theme-toggle, .icon-btn, .how-step, .nav__toggle';
-  document.addEventListener('pointerdown', function (e) {
-    var el = e.target.closest(RIPPLE_SELECTOR);
-    if (!el) return;
-    var rect = el.getBoundingClientRect();
-    var size = Math.max(rect.width, rect.height) * 1.6;
-    var span = document.createElement('span');
-    span.className = 'ripple';
-    span.style.width = span.style.height = size + 'px';
-    span.style.left = (e.clientX - rect.left - size / 2) + 'px';
-    span.style.top = (e.clientY - rect.top - size / 2) + 'px';
-    var prevPosition = getComputedStyle(el).position;
-    if (prevPosition === 'static') el.style.position = 'relative';
-    el.style.overflow = 'hidden';
-    el.appendChild(span);
-    span.addEventListener('animationend', function () { span.remove(); });
-  });
-
   /* ---- Reveal-on-scroll -------------------------------------------------- */
   var revealTargets = document.querySelectorAll('.reveal');
   if ('IntersectionObserver' in window && revealTargets.length) {

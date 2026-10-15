@@ -1,12 +1,14 @@
 /* ==========================================================================
    vectora — Material Design 3 design tokens
-   Dynamic tonal color generated from a single seed: Northwestern purple
-   (#4E2A84 ≈ oklch(38.3% 0.143 297.6)). Every M3 tone is derived in-browser
+   Tonal color generated from a single seed: Northwestern purple
+   (#4E2A84 ≈ oklch(38.3% 0.143 297.6)). Every tone is derived in-browser
    with oklch(), so changing --seed-hue recolors the entire system.
    ========================================================================== */
 
 :root {
-  color-scheme: light;
+  /* Follow the OS by default; the theme toggle pins one via data-theme. Each
+     color role below picks its light or dark tone with light-dark(). */
+  color-scheme: light dark;
 
   /* ---- Seed ---------------------------------------------------------- */
   --seed-hue: 298; /* Northwestern purple */
@@ -15,20 +17,16 @@
      taper chroma so they stay inside the sRGB gamut. */
   --c-primary: 0.143;
   --c-secondary: 0.05;
-  --c-tertiary: 0.11;
   --c-neutral: 0.008;
   --c-neutral-variant: 0.024;
   --c-error: 0.19;
-  --h-tertiary-offset: 62;
   --h-error: 25; /* fixed, brand-independent */
-  --h-tertiary: calc(var(--seed-hue) + var(--h-tertiary-offset));
 
   /* ---- Primary tonal palette (tone 40 is the exact brand purple) ------ */
   --p-10: oklch(14% calc(var(--c-primary) * 0.55) var(--seed-hue));
   --p-20: oklch(24% calc(var(--c-primary) * 0.8) var(--seed-hue));
   --p-30: oklch(32% var(--c-primary) var(--seed-hue));
   --p-40: oklch(38.3% var(--c-primary) var(--seed-hue));
-  --p-50: oklch(50% var(--c-primary) var(--seed-hue));
   --p-80: oklch(80% calc(var(--c-primary) * 0.62) var(--seed-hue));
   --p-90: oklch(91% calc(var(--c-primary) * 0.32) var(--seed-hue));
   --p-95: oklch(96% calc(var(--c-primary) * 0.15) var(--seed-hue));
@@ -36,21 +34,8 @@
 
   /* ---- Secondary tonal palette ----------------------------------------- */
   --s-10: oklch(16% var(--c-secondary) var(--seed-hue));
-  --s-20: oklch(26% var(--c-secondary) var(--seed-hue));
   --s-30: oklch(35% var(--c-secondary) var(--seed-hue));
-  --s-40: oklch(45% var(--c-secondary) var(--seed-hue));
-  --s-80: oklch(82% calc(var(--c-secondary) * 0.8) var(--seed-hue));
   --s-90: oklch(91% calc(var(--c-secondary) * 0.6) var(--seed-hue));
-  --s-100: oklch(100% 0 var(--seed-hue));
-
-  /* ---- Tertiary tonal palette (seed hue + 62°, a warm rose accent) ----- */
-  --t-10: oklch(16% calc(var(--c-tertiary) * 0.6) var(--h-tertiary));
-  --t-20: oklch(26% calc(var(--c-tertiary) * 0.8) var(--h-tertiary));
-  --t-30: oklch(36% var(--c-tertiary) var(--h-tertiary));
-  --t-40: oklch(46% var(--c-tertiary) var(--h-tertiary));
-  --t-80: oklch(82% calc(var(--c-tertiary) * 0.6) var(--h-tertiary));
-  --t-90: oklch(92% calc(var(--c-tertiary) * 0.3) var(--h-tertiary));
-  --t-100: oklch(100% 0 var(--h-tertiary));
 
   /* ---- Neutral tonal palette (surfaces) --------------------------------- */
   --n-0: oklch(0% var(--c-neutral) var(--seed-hue));
@@ -61,8 +46,6 @@
   --n-17: oklch(24.5% var(--c-neutral) var(--seed-hue));
   --n-20: oklch(27% var(--c-neutral) var(--seed-hue));
   --n-22: oklch(29% var(--c-neutral) var(--seed-hue));
-  --n-24: oklch(31% var(--c-neutral) var(--seed-hue));
-  --n-87: oklch(88% var(--c-neutral) var(--seed-hue));
   --n-90: oklch(91% var(--c-neutral) var(--seed-hue));
   --n-92: oklch(93% var(--c-neutral) var(--seed-hue));
   --n-94: oklch(94.5% var(--c-neutral) var(--seed-hue));
@@ -76,89 +59,63 @@
   --nv-50: oklch(54% var(--c-neutral-variant) var(--seed-hue));
   --nv-60: oklch(63% var(--c-neutral-variant) var(--seed-hue));
   --nv-80: oklch(83% var(--c-neutral-variant) var(--seed-hue));
-  --nv-90: oklch(91% var(--c-neutral-variant) var(--seed-hue));
 
   /* ---- Error tonal palette (fixed hue) ---------------------------------- */
-  --e-10: oklch(18% calc(var(--c-error) * 0.5) var(--h-error));
-  --e-20: oklch(28% calc(var(--c-error) * 0.7) var(--h-error));
-  --e-30: oklch(38% var(--c-error) var(--h-error));
   --e-40: oklch(50% var(--c-error) var(--h-error));
   --e-80: oklch(82% calc(var(--c-error) * 0.5) var(--h-error));
-  --e-90: oklch(92% calc(var(--c-error) * 0.25) var(--h-error));
-  --e-100: oklch(100% 0 var(--h-error));
 
-  /* ---- System color roles — light scheme -------------------------------- */
-  --md-sys-color-primary: var(--p-40);
-  --md-sys-color-on-primary: var(--p-100);
-  --md-sys-color-primary-container: var(--p-90);
-  --md-sys-color-on-primary-container: var(--p-10);
-  --md-sys-color-primary-fixed-dim: var(--p-80);
-  --md-sys-color-inverse-primary: var(--p-80);
+  /* ---- System color roles: light-dark(light tone, dark tone) ------------ */
+  --md-sys-color-primary: light-dark(var(--p-40), var(--p-80));
+  --md-sys-color-on-primary: light-dark(var(--p-100), var(--p-20));
+  --md-sys-color-primary-container: light-dark(var(--p-90), var(--p-30));
+  --md-sys-color-on-primary-container: light-dark(var(--p-10), var(--p-90));
+  --md-sys-color-inverse-primary: light-dark(var(--p-80), var(--p-40));
 
-  --md-sys-color-secondary: var(--s-40);
-  --md-sys-color-on-secondary: var(--s-100);
-  --md-sys-color-secondary-container: var(--s-90);
-  --md-sys-color-on-secondary-container: var(--s-10);
+  --md-sys-color-secondary-container: light-dark(var(--s-90), var(--s-30));
+  --md-sys-color-on-secondary-container: light-dark(var(--s-10), var(--s-90));
 
-  --md-sys-color-tertiary: var(--t-40);
-  --md-sys-color-on-tertiary: var(--t-100);
-  --md-sys-color-tertiary-container: var(--t-90);
-  --md-sys-color-on-tertiary-container: var(--t-10);
+  --md-sys-color-error: light-dark(var(--e-40), var(--e-80));
 
-  --md-sys-color-error: var(--e-40);
-  --md-sys-color-on-error: var(--e-100);
-  --md-sys-color-error-container: var(--e-90);
-  --md-sys-color-on-error-container: var(--e-10);
+  --md-sys-color-background: light-dark(var(--n-98), var(--n-6));
+  --md-sys-color-on-background: light-dark(var(--n-10), var(--n-90));
+  --md-sys-color-surface: light-dark(var(--n-98), var(--n-6));
+  --md-sys-color-on-surface: light-dark(var(--n-10), var(--n-90));
+  --md-sys-color-on-surface-variant: light-dark(var(--nv-30), var(--nv-80));
 
-  --md-sys-color-background: var(--n-98);
-  --md-sys-color-on-background: var(--n-10);
-  --md-sys-color-surface: var(--n-98);
-  --md-sys-color-on-surface: var(--n-10);
-  --md-sys-color-surface-variant: var(--nv-90);
-  --md-sys-color-on-surface-variant: var(--nv-30);
+  --md-sys-color-outline: light-dark(var(--nv-50), var(--nv-60));
+  --md-sys-color-outline-variant: light-dark(var(--nv-80), var(--nv-30));
 
-  --md-sys-color-outline: var(--nv-50);
-  --md-sys-color-outline-variant: var(--nv-80);
+  --md-sys-color-surface-container-lowest: light-dark(var(--n-100), var(--n-4));
+  --md-sys-color-surface-container-low: light-dark(var(--n-96), var(--n-10));
+  --md-sys-color-surface-container: light-dark(var(--n-94), var(--n-12));
+  --md-sys-color-surface-container-high: light-dark(var(--n-92), var(--n-17));
+  --md-sys-color-surface-container-highest: light-dark(var(--n-90), var(--n-22));
 
-  --md-sys-color-surface-dim: var(--n-87);
-  --md-sys-color-surface-bright: var(--n-98);
-  --md-sys-color-surface-container-lowest: var(--n-100);
-  --md-sys-color-surface-container-low: var(--n-96);
-  --md-sys-color-surface-container: var(--n-94);
-  --md-sys-color-surface-container-high: var(--n-92);
-  --md-sys-color-surface-container-highest: var(--n-90);
-
-  --md-sys-color-inverse-surface: var(--n-20);
-  --md-sys-color-inverse-on-surface: var(--n-95);
+  --md-sys-color-inverse-surface: light-dark(var(--n-20), var(--n-90));
+  --md-sys-color-inverse-on-surface: light-dark(var(--n-95), var(--n-20));
   --md-sys-color-scrim: var(--n-0);
 
   /* Raised card surface: brightest in light, a lifted tone in dark */
-  --vec-surface-raised: var(--md-sys-color-surface-container-lowest);
+  --vec-surface-raised: light-dark(var(--n-100), var(--n-17));
 
-  /* Brand band: always the deep purple, in both schemes */
-  --vec-brand-band: var(--p-40);
-  --vec-on-brand-band: var(--p-95);
+  /* Brand band: always a deep purple, in both schemes */
+  --vec-brand-band: light-dark(var(--p-40), var(--p-20));
+  --vec-on-brand-band: light-dark(var(--p-95), var(--p-90));
   --vec-brand-band-accent: var(--p-80);
 
-  /* ---- Shape scale (M3 Expressive) ----------------------------------------- */
-  --md-sys-shape-none: 0px;
+  /* ---- Shape scale ------------------------------------------------------- */
   --md-sys-shape-xs: 4px;
   --md-sys-shape-sm: 8px;
   --md-sys-shape-md: 12px;
   --md-sys-shape-lg: 16px;
-  --md-sys-shape-lg-inc: 20px;
-  --md-sys-shape-xl: 28px;
-  --md-sys-shape-xl-inc: 32px;
-  --md-sys-shape-xxl: 48px;
+  --md-sys-shape-xl: 20px;
+  --md-sys-shape-xxl: 28px;
   --md-sys-shape-full: 999px;
 
   /* ---- Type scale (Roboto Flex) ---------------------------------------------- */
   --vec-font: 'Roboto Flex', 'Roboto', system-ui, -apple-system, 'Segoe UI', sans-serif;
   --md-sys-type-display-lg: 500 clamp(2.6rem, 1.6rem + 4.2vw, 4.5rem)/1.04 var(--vec-font);
-  --md-sys-type-display-md: 500 clamp(2.2rem, 1.6rem + 2.6vw, 3.25rem)/1.1 var(--vec-font);
   --md-sys-type-display-sm: 500 clamp(1.9rem, 1.5rem + 1.6vw, 2.5rem)/1.14 var(--vec-font);
-  --md-sys-type-headline-lg: 500 clamp(1.6rem, 1.4rem + 0.8vw, 2rem)/1.22 var(--vec-font);
-  --md-sys-type-headline-md: 500 1.75rem/1.29 var(--vec-font);
   --md-sys-type-headline-sm: 400 clamp(1.15rem, 1.05rem + 0.4vw, 1.375rem)/1.45 var(--vec-font);
   --md-sys-type-title-lg: 600 1.375rem/1.27 var(--vec-font);
   --md-sys-type-title-md: 600 1rem/1.5 var(--vec-font);
@@ -174,121 +131,15 @@
   --md-sys-motion-easing-standard: cubic-bezier(0.2, 0, 0, 1);
   --md-sys-motion-easing-emphasized: cubic-bezier(0.3, 0, 0, 1);
   --md-sys-motion-easing-emphasized-decelerate: cubic-bezier(0.05, 0.7, 0.1, 1);
-  --md-sys-motion-easing-emphasized-accelerate: cubic-bezier(0.3, 0, 0.8, 0.15);
   --md-sys-motion-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
   --md-sys-motion-duration-short: 150ms;
   --md-sys-motion-duration-medium: 300ms;
   --md-sys-motion-duration-long: 450ms;
   --md-sys-motion-duration-extra-long: 700ms;
 
-  /* ---- State-layer opacities (M3 interaction states) ---------------------- */
+  /* ---- State-layer opacity ------------------------------------------------- */
   --md-sys-state-hover: 0.08;
-  --md-sys-state-focus: 0.10;
-  --md-sys-state-pressed: 0.10;
-  --md-sys-state-dragged: 0.16;
 }
 
-/* ---- System color roles — dark scheme --------------------------------------
-   Declared once as a mixin-like block and applied both for the OS preference
-   (unless the visitor forced light) and for an explicit dark choice. */
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme='light']) {
-    color-scheme: dark;
-    --md-sys-color-primary: var(--p-80);
-    --md-sys-color-on-primary: var(--p-20);
-    --md-sys-color-primary-container: var(--p-30);
-    --md-sys-color-on-primary-container: var(--p-90);
-    --md-sys-color-inverse-primary: var(--p-40);
-
-    --md-sys-color-secondary: var(--s-80);
-    --md-sys-color-on-secondary: var(--s-20);
-    --md-sys-color-secondary-container: var(--s-30);
-    --md-sys-color-on-secondary-container: var(--s-90);
-
-    --md-sys-color-tertiary: var(--t-80);
-    --md-sys-color-on-tertiary: var(--t-20);
-    --md-sys-color-tertiary-container: var(--t-30);
-    --md-sys-color-on-tertiary-container: var(--t-90);
-
-    --md-sys-color-error: var(--e-80);
-    --md-sys-color-on-error: var(--e-20);
-    --md-sys-color-error-container: var(--e-30);
-    --md-sys-color-on-error-container: var(--e-90);
-
-    --md-sys-color-background: var(--n-6);
-    --md-sys-color-on-background: var(--n-90);
-    --md-sys-color-surface: var(--n-6);
-    --md-sys-color-on-surface: var(--n-90);
-    --md-sys-color-surface-variant: var(--nv-30);
-    --md-sys-color-on-surface-variant: var(--nv-80);
-
-    --md-sys-color-outline: var(--nv-60);
-    --md-sys-color-outline-variant: var(--nv-30);
-
-    --md-sys-color-surface-dim: var(--n-6);
-    --md-sys-color-surface-bright: var(--n-24);
-    --md-sys-color-surface-container-lowest: var(--n-4);
-    --md-sys-color-surface-container-low: var(--n-10);
-    --md-sys-color-surface-container: var(--n-12);
-    --md-sys-color-surface-container-high: var(--n-17);
-    --md-sys-color-surface-container-highest: var(--n-22);
-
-    --md-sys-color-inverse-surface: var(--n-90);
-    --md-sys-color-inverse-on-surface: var(--n-20);
-    --md-sys-color-scrim: var(--n-0);
-
-    --vec-brand-band: var(--p-20);
-    --vec-surface-raised: var(--n-17);
-    --vec-on-brand-band: var(--p-90);
-  }
-}
-
-:root[data-theme='dark'] {
-  color-scheme: dark;
-  --md-sys-color-primary: var(--p-80);
-  --md-sys-color-on-primary: var(--p-20);
-  --md-sys-color-primary-container: var(--p-30);
-  --md-sys-color-on-primary-container: var(--p-90);
-  --md-sys-color-inverse-primary: var(--p-40);
-
-  --md-sys-color-secondary: var(--s-80);
-  --md-sys-color-on-secondary: var(--s-20);
-  --md-sys-color-secondary-container: var(--s-30);
-  --md-sys-color-on-secondary-container: var(--s-90);
-
-  --md-sys-color-tertiary: var(--t-80);
-  --md-sys-color-on-tertiary: var(--t-20);
-  --md-sys-color-tertiary-container: var(--t-30);
-  --md-sys-color-on-tertiary-container: var(--t-90);
-
-  --md-sys-color-error: var(--e-80);
-  --md-sys-color-on-error: var(--e-20);
-  --md-sys-color-error-container: var(--e-30);
-  --md-sys-color-on-error-container: var(--e-90);
-
-  --md-sys-color-background: var(--n-6);
-  --md-sys-color-on-background: var(--n-90);
-  --md-sys-color-surface: var(--n-6);
-  --md-sys-color-on-surface: var(--n-90);
-  --md-sys-color-surface-variant: var(--nv-30);
-  --md-sys-color-on-surface-variant: var(--nv-80);
-
-  --md-sys-color-outline: var(--nv-60);
-  --md-sys-color-outline-variant: var(--nv-30);
-
-  --md-sys-color-surface-dim: var(--n-6);
-  --md-sys-color-surface-bright: var(--n-24);
-  --md-sys-color-surface-container-lowest: var(--n-4);
-  --md-sys-color-surface-container-low: var(--n-10);
-  --md-sys-color-surface-container: var(--n-12);
-  --md-sys-color-surface-container-high: var(--n-17);
-  --md-sys-color-surface-container-highest: var(--n-22);
-
-  --md-sys-color-inverse-surface: var(--n-90);
-  --md-sys-color-inverse-on-surface: var(--n-20);
-  --md-sys-color-scrim: var(--n-0);
-
-  --vec-brand-band: var(--p-20);
-  --vec-on-brand-band: var(--p-90);
-  --vec-surface-raised: var(--n-17);
-}
+:root[data-theme='light'] { color-scheme: light; }
+:root[data-theme='dark'] { color-scheme: dark; }

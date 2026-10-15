@@ -22,9 +22,7 @@
     <div class="container app-bar__row">
       <a class="brand" href="#" aria-label="vectora home">
         <svg class="brand-mark" viewBox="0 0 100 100" width="34" height="34" aria-hidden="true">
-          <g class="brand-mark__blob-spin">
-            <path class="brand-mark__blob"></path>
-          </g>
+          <path class="brand-mark__blob" d="M 50,14 C 57.19,13.88 65.59,22.08 71.92,28.08 C 78.25,34.08 88.24,42.93 88,50 C 87.76,57.07 76.84,64.34 70.51,70.51 C 64.17,76.67 57.19,86.65 50,87 C 42.81,87.35 33.87,78.79 27.37,72.63 C 20.87,66.46 10.76,57.31 11,50 C 11.24,42.69 22.29,34.79 28.79,28.79 C 35.29,22.79 42.81,14.12 50,14 Z"></path>
           <path class="brand-mark__arrow" d="M30,70 L70,30 M70,30 L70,46 M70,30 L54,30"></path>
         </svg>
         <span class="brand-word">vector<span>a</span></span>
@@ -56,7 +54,7 @@
         <div class="hero__copy">
           <p class="eyebrow">Six-month delivery sprints · Chicago</p>
           <h1 id="hero-heading" class="display-lg">The goals stuck in your backlog, <em>shipped in six months.</em></h1>
-          <p class="hero__subhead">We design a SCRUM sprint around one backlogged goal and staff it from our network of senior engineers, executive leaders, and experienced MBA students. Six months later, it's live.</p>
+          <p class="hero__subhead">We design a SCRUM sprint around one backlogged goal and staff it from our network of senior engineers, executive leaders, and experienced MBA students.</p>
           <div class="hero__actions">
             <a class="btn btn-filled btn-lg" href="#contact">
               Plan a sprint
@@ -68,15 +66,10 @@
 
         <!-- Illustrative sprint card: purely decorative, loops on its own -->
         <div class="hero__visual" aria-hidden="true">
-          <svg class="hero__shape" viewBox="0 0 200 200">
-            <path d="M100,8 C112,8 118,22 129,26 C140,30 154,22 163,30 C172,38 166,53 171,63 C176,73 192,79 192,92 C192,105 178,111 175,122 C172,133 181,147 173,157 C165,167 150,161 140,167 C130,173 124,192 110,192 C96,192 92,177 81,174 C70,171 56,180 46,172 C36,164 41,149 35,139 C29,129 12,124 10,111 C8,98 23,92 25,81 C27,70 17,57 25,47 C33,37 48,41 58,35 C68,29 88,8 100,8 Z"/>
-          </svg>
-
           <div class="sprint-card">
             <div class="sprint-card__head">
               <span class="sprint-card__kicker">Sprint · 26 weeks</span>
               <span class="status-chip">
-                <span class="status-chip__dot"></span>
                 <span class="status-chip__text">
                   <span>Designing</span><span>Staffing</span><span>In flight</span><span>Shipped</span>
                 </span>
@@ -101,17 +94,7 @@
                 <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
               </div>
             </div>
-
-            <div class="mini-board">
-              <div class="mini-board__col"><span>To do</span><i></i><i></i><i></i></div>
-              <div class="mini-board__col"><span>Doing</span><i></i><i></i></div>
-              <div class="mini-board__col"><span>Done</span><i></i><i></i><i></i><i></i></div>
-              <b class="mini-board__flyer"></b>
-            </div>
           </div>
-
-          <div class="float-chip float-chip--a"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg>Definition of done agreed</div>
-          <div class="float-chip float-chip--b"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0M16 4.5a3.5 3.5 0 0 1 0 7M18.5 14.5a6.5 6.5 0 0 1 3 5.5"/></svg>Team matched from network</div>
         </div>
       </div>
     </section>
@@ -140,34 +123,10 @@
     <!-- ========================================================== The problem -->
     <section class="problem" aria-labelledby="problem-heading">
       <div class="container">
-        <div class="section-head reveal">
+        <div class="section-head section-head--flush reveal">
           <p class="eyebrow">The problem</p>
           <h2 id="problem-heading" class="display-sm">Every enterprise has a goal that's been "next quarter" for two years.</h2>
-          <p>Strategic, well understood, and never urgent enough to beat the roadmap.</p>
-        </div>
-
-        <div class="grid grid-3">
-          <article class="card problem-card reveal">
-            <span class="problem-card__icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 2.5M9 2h6"/></svg>
-            </span>
-            <h3 class="title-lg">Hiring takes quarters</h3>
-            <p>And leaves you with permanent cost for temporary work.</p>
-          </article>
-          <article class="card problem-card reveal">
-            <span class="problem-card__icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h18M3 12h12M3 17h7"/><path d="m16 16 5 5M21 16l-5 5"/></svg>
-            </span>
-            <h3 class="title-lg">Your best people are booked</h3>
-            <p>Pulling them off the roadmap slows the work that pays the bills.</p>
-          </article>
-          <article class="card problem-card reveal">
-            <span class="problem-card__icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg>
-            </span>
-            <h3 class="title-lg">Consultancies sell hours</h3>
-            <p>Open-ended SOWs reward activity, not outcomes.</p>
-          </article>
+          <p>Strategic, well understood, and never urgent enough to beat the roadmap. Hiring takes quarters, your best people are booked, and consultancies sell hours.</p>
         </div>
       </div>
     </section>
@@ -177,7 +136,7 @@
       <div class="container">
         <div class="section-head section-head--wide reveal">
           <p class="eyebrow">How it works</p>
-          <h2 id="how-heading" class="display-sm">Two weeks to plan. Twelve iterations to ship. One goal, done.</h2>
+          <h2 id="how-heading" class="display-sm">Two weeks to plan. Twelve iterations to ship.</h2>
           <p>One goal, a written definition of done, and working software every two weeks.</p>
         </div>
 
@@ -203,7 +162,7 @@
               <span class="how-step__num">03</span>
               <span class="how-step__body">
                 <span class="how-step__title">Staff it from our network</span>
-                <span class="how-step__desc"><span>Each role is filled from our network of senior engineers, executive leaders, and experienced MBA students.</span></span>
+                <span class="how-step__desc"><span>Each role is filled from our vetted network and matched to your stack.</span></span>
               </span>
               <span class="how-step__progress" aria-hidden="true"></span>
             </button>
@@ -337,7 +296,6 @@
                     <circle class="ship__arc" cx="60" cy="60" r="50" pathLength="1"/>
                     <path class="ship__check" d="M40,62 L54,76 L82,46" pathLength="1"/>
                   </svg>
-                  <span class="ship__burst"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>
                   <span class="ship__label">Shipped</span>
                 </div>
                 <div class="ship__side">
@@ -361,22 +319,19 @@
         <!-- Roles -->
         <div class="roles reveal">
           <div class="roles__col">
-            <h3 class="title-lg">From your side</h3>
+            <h3 class="roles__title">From your side</h3>
             <ul class="role-list">
-              <li><span class="role-chip role-chip--you">Executive sponsor</span>Owns the outcome.</li>
-              <li><span class="role-chip role-chip--you">Product owner</span>Owns the backlog and accepts the work.</li>
+              <li><b>Executive sponsor</b>Owns the outcome.</li>
+              <li><b>Product owner</b>Owns the backlog and accepts the work.</li>
             </ul>
           </div>
-          <div class="roles__join" aria-hidden="true">
-            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M14 24h20M24 14v20"/></svg>
-          </div>
           <div class="roles__col">
-            <h3 class="title-lg">From vectora</h3>
+            <h3 class="roles__title">From vectora</h3>
             <ul class="role-list">
-              <li><span class="role-chip">Delivery lead</span>Runs the SCRUM cadence.</li>
-              <li><span class="role-chip">Engineering executive</span>Leads architecture and stakeholder calls.</li>
-              <li><span class="role-chip">Senior &amp; staff engineers</span>Build it, matched to your stack.</li>
-              <li><span class="role-chip">MBA associates</span>Drive product strategy and analysis.</li>
+              <li><b>Delivery lead</b>Runs the SCRUM cadence.</li>
+              <li><b>Engineering executive</b>Leads architecture and stakeholder calls.</li>
+              <li><b>Senior &amp; staff engineers</b>Build it, matched to your stack.</li>
+              <li><b>MBA associates</b>Drive product strategy and analysis.</li>
             </ul>
           </div>
         </div>
@@ -389,20 +344,12 @@
         <div class="network__copy reveal">
           <p class="eyebrow">The network</p>
           <h2 id="network-heading" class="display-sm">A senior bench you couldn't hire in a year.</h2>
-          <p class="lead">Experienced engineers, executive leaders who've built enterprise products, and experienced MBA students. They join for one sprint and leave when it ships.</p>
+          <p class="lead">Talent that joins for one sprint and rolls off when it ships.</p>
           <ul class="checks">
-            <li><b>Senior engineering.</b> Staff and principal engineers, plus former VPs and CTOs.</li>
-            <li><b>MBA talent with real experience.</b> Experienced MBA students on product strategy, analysis, and stakeholder alignment.</li>
+            <li><b>Senior by default.</b> Staff and principal engineers, plus former VPs and CTOs who've built enterprise products.</li>
+            <li><b>MBAs with real experience.</b> Product strategy, analysis, and stakeholder alignment.</li>
             <li><b>Vetted and matched.</b> Reviewed by our principals and staffed to your stack and goal.</li>
           </ul>
-          <div class="chip-row">
-            <span class="chip chip-assist">Backend &amp; distributed systems</span>
-            <span class="chip chip-assist">Platform &amp; infrastructure</span>
-            <span class="chip chip-assist">Data &amp; ML engineering</span>
-            <span class="chip chip-assist">Security &amp; identity</span>
-            <span class="chip chip-assist">Product &amp; engineering leadership</span>
-            <span class="chip chip-assist">Strategy &amp; operations</span>
-          </div>
         </div>
         <div class="network__visual reveal" aria-hidden="true">
           <svg class="constellation" id="constellation" viewBox="0 0 480 440"></svg>
@@ -457,21 +404,6 @@
             <span role="cell" data-label="vectora sprint" class="is-us">Handed off by design</span>
           </div>
         </div>
-
-        <div class="grid grid-3 assurances">
-          <article class="card card--tonal reveal">
-            <h3 class="title-md">Procurement-ready</h3>
-            <p>Pre-approved vendor at Nike, Google, and Microsoft.</p>
-          </article>
-          <article class="card card--tonal reveal">
-            <h3 class="title-md">Your IP, your tools</h3>
-            <p>NDAs, full IP assignment, and work inside your systems.</p>
-          </article>
-          <article class="card card--tonal reveal">
-            <h3 class="title-md">Visible every two weeks</h3>
-            <p>Working software at every sprint review.</p>
-          </article>
-        </div>
       </div>
     </section>
 
@@ -507,7 +439,6 @@
         </div>
 
         <figure class="quote reveal">
-          <svg class="quote__mark" viewBox="0 0 48 48" aria-hidden="true"><path fill="currentColor" d="M20 12C11 14 6 21 6 30v6h14V22h-7c0-4 3-7 8-8zM42 12c-9 2-14 9-14 18v6h14V22h-7c0-4 3-7 8-8z"/></svg>
           <blockquote>Joshua combines intellectual horsepower with an exceptional ability to communicate complex ideas clearly and effectively. He's that rare consultant who not only knows his craft inside and out but also ensures everyone around him grows stronger through the collaboration.</blockquote>
           <figcaption><b>Rob Grzywinski</b> · CEO, CharmIQ</figcaption>
         </figure>
