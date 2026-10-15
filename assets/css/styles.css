@@ -257,7 +257,35 @@ h1, h2, h3, h4 { margin: 0; font-weight: 500; }
 }
 
 /* ==================================================================== Hero ===== */
-.hero { padding-block: clamp(40px, 7vw, 96px) clamp(56px, 8vw, 104px); }
+.hero {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  padding-block: clamp(40px, 7vw, 96px) clamp(56px, 8vw, 104px);
+}
+
+/* -- Hero background: the loss-landscape scene (hero-landscape.js). Masked
+   back under the copy so the headline always reads first. -- */
+.hero__bg {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  display: block;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity var(--md-sys-motion-duration-extra-long) var(--md-sys-motion-easing-standard);
+  -webkit-mask-image:
+    linear-gradient(to right, rgb(0 0 0 / 0.25), rgb(0 0 0 / 0.4) 35%, #000 60%),
+    linear-gradient(to bottom, transparent, #000 12%, #000 88%, transparent);
+  -webkit-mask-composite: source-in;
+  mask-image:
+    linear-gradient(to right, rgb(0 0 0 / 0.25), rgb(0 0 0 / 0.4) 35%, #000 60%),
+    linear-gradient(to bottom, transparent, #000 12%, #000 88%, transparent);
+  mask-composite: intersect;
+}
+.hero__bg.is-ready { opacity: 1; }
 .hero__grid {
   display: grid;
   grid-template-columns: 1.1fr 0.9fr;
@@ -286,6 +314,12 @@ h1, h2, h3, h4 { margin: 0; font-weight: 500; }
   gap: 20px;
   box-shadow: 0 16px 40px -24px color-mix(in oklab, var(--md-sys-color-scrim) 35%, transparent);
   animation: hero-loop 16s linear infinite;
+}
+/* Let the landscape read faintly through the card when it's running. */
+.hero__bg.is-ready + .hero__grid .sprint-card {
+  background: color-mix(in oklab, var(--vec-surface-raised) 84%, transparent);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
 }
 .sprint-card__head { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
 .sprint-card__kicker {
@@ -397,6 +431,10 @@ h1, h2, h3, h4 { margin: 0; font-weight: 500; }
 
 @media (max-width: 960px) {
   .hero__grid { grid-template-columns: 1fr; }
+  .hero__bg {
+    -webkit-mask-image: linear-gradient(to bottom, rgb(0 0 0 / 0.12), rgb(0 0 0 / 0.2) 48%, #000 64%, #000 90%, transparent);
+    mask-image: linear-gradient(to bottom, rgb(0 0 0 / 0.12), rgb(0 0 0 / 0.2) 48%, #000 64%, #000 90%, transparent);
+  }
 }
 @media (max-width: 480px) {
   .sprint-card { padding: 18px; }
