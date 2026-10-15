@@ -119,7 +119,6 @@
       }).then(function (res) {
         if (res.ok) {
           form.reset();
-          form.querySelectorAll('.field').forEach(function (f) { f.classList.remove('has-value'); });
           showSnackbar('Thanks, your note is on its way. We reply within 24–48 hours.');
         } else {
           showSnackbar('Something went wrong. Please try again in a moment.');
@@ -129,15 +128,6 @@
       }).finally(function () {
         if (submitBtn) submitBtn.disabled = false;
       });
-    });
-
-    // Native <select> elements need a class hook to float their label,
-    // since :not(:placeholder-shown) has no equivalent for <select>.
-    form.querySelectorAll('select').forEach(function (select) {
-      var field = select.closest('.field');
-      var sync = function () { field.classList.toggle('has-value', !!select.value); };
-      sync();
-      select.addEventListener('change', sync);
     });
   }
 })();

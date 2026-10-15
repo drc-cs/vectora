@@ -502,38 +502,40 @@
 
           <form class="contact__form reveal" id="contact-form" action="https://formspree.io/f/xeoopzje" method="POST" novalidate>
             <div class="field">
-              <input type="text" id="contactName" name="name" placeholder=" " autocomplete="name" required>
               <label for="contactName">Full name</label>
+              <input type="text" id="contactName" name="name" placeholder="Jane Smith" autocomplete="name" required>
             </div>
             <div class="field">
-              <input type="email" id="contactEmail" name="email" placeholder=" " autocomplete="email" required>
               <label for="contactEmail">Work email</label>
+              <input type="email" id="contactEmail" name="email" placeholder="jane@company.com" autocomplete="email" required>
             </div>
             <div class="field-row">
               <div class="field">
-                <input type="text" id="contactOrg" name="company" placeholder=" " autocomplete="organization" required>
                 <label for="contactOrg">Company</label>
+                <input type="text" id="contactOrg" name="company" placeholder="Acme Corp" autocomplete="organization" required>
               </div>
               <div class="field">
+                <label for="contactStart">Target start</label>
                 <select id="contactStart" name="target_start" required>
-                  <option value="" disabled selected></option>
+                  <option value="" disabled selected>Select…</option>
                   <option value="This quarter">This quarter</option>
                   <option value="Next quarter">Next quarter</option>
                   <option value="Planning ahead">Planning ahead</option>
                 </select>
-                <label for="contactStart">Target start</label>
               </div>
             </div>
             <div class="field">
-              <textarea id="contactGoal" name="backlogged_goal" placeholder=" " required></textarea>
               <label for="contactGoal">What's the backlogged goal?</label>
+              <textarea id="contactGoal" name="backlogged_goal" placeholder="e.g. Replatform partner payouts onto an event-driven ledger" required></textarea>
             </div>
             <p class="form-error" id="form-error" role="alert" hidden>Please fill in every field with a valid work email.</p>
-            <button class="btn btn-filled btn-lg" type="submit">
-              Send
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-            </button>
-            <p class="field-hint">We reply within 24–48 hours.</p>
+            <div class="form-actions">
+              <button class="btn btn-filled" type="submit">
+                Send
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+              </button>
+              <p class="field-hint">We reply within 24–48 hours.</p>
+            </div>
           </form>
         </div>
       </div>
