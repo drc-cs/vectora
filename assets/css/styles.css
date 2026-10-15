@@ -129,32 +129,19 @@ h1, h2, h3, h4 { margin: 0; font-weight: 500; }
 
 .brand {
   font: var(--md-sys-type-title-lg);
-  font-weight: 600;
+  font-weight: 400;
   letter-spacing: -0.02em;
   text-decoration: none;
   color: var(--md-sys-color-on-surface);
   border-radius: var(--md-sys-shape-sm);
   padding: 6px 8px;
   margin-inline-start: -8px;
-  cursor: pointer;
-  border: none;
-  background: none;
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
 }
-.brand-word span { color: var(--md-sys-color-primary); }
-.brand-word--sm { font: var(--md-sys-type-title-md); font-weight: 600; color: var(--md-sys-color-on-surface); }
-
-/* ---- Brand mark: the vectora blob behind a vector arrow ------------------ */
-.brand-mark__blob { fill: var(--md-sys-color-primary); }
-.brand-mark__arrow {
-  fill: none;
-  stroke: var(--md-sys-color-on-primary);
-  stroke-width: 7;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-}
+/* Wordmark: "vectora" in medium weight, "solutions" in regular. */
+.brand-word { font-weight: 400; white-space: nowrap; }
+.brand-word b { font-weight: 500; }
+.brand-word b span { color: var(--md-sys-color-primary); }
+.brand-word--sm { font: var(--md-sys-type-title-md); font-weight: 400; color: var(--md-sys-color-on-surface); }
 
 .nav {
   display: flex;
